@@ -1,0 +1,18 @@
+spring.application.name=bookhaven
+
+spring.datasource.url=url
+spring.datasource.username=username
+spring.datasource.password=password
+
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto = create-drop
+
+server.error.include-message=always
+server.port=port
+server.servlet.context-path=/api
+
+jwt.secret=password
+jwt.expiration=timelength

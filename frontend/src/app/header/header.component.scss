@@ -1,0 +1,59 @@
+nav {
+  background: linear-gradient(to right, #ED3325, #F2645A);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+
+  #homepageButton, #profile, #winkelmand {
+    :hover {
+      cursor: pointer;
+    }
+
+    border: none;
+    background-color: transparent;
+
+    img {
+      height: 75px;
+      width: auto;
+    }
+  }
+
+  .taal{
+    a{
+      padding: 0 5px;
+    }
+    img{
+      height: 35px;
+      width: auto;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    section{
+      a{
+        img{
+          max-height: 40px;
+          height: auto;
+          width: auto;
+        }
+      }
+    }
+    .taal{
+      a{
+        img{
+          max-height: 20px;
+          height: auto;
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+
+

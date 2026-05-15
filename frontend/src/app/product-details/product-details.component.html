@@ -1,0 +1,39 @@
+@if (isAddingItem) {
+  <app-add-winkelmand [product]="product!" (cancel)="onCancelAddItem()"/>
+}
+
+<main>
+  <section id="voorkant">
+    <img src="{{product?.plaatje}}">
+  </section>
+
+  <article class="info_container">
+    <section id = "primaire_info">
+      <h1>{{product?.naam}}</h1>
+      <p>{{ 'schrijver' | translate }} {{product?.schrijver?.voornaam}} {{product?.schrijver?.tussenvoegsel}} {{product?.schrijver?.achternaam}}</p>
+      <p>{{ 'soort:' | translate }} {{ 'soort.' + product?.soort | translate }} <i>{{product?.cover}}</i></p>
+      <p>{{ 'taal:' | translate }} {{ 'taal.' + product?.taal | translate }}</p>
+      <p>{{ 'hoeveelheid.bladzijdes.1' | translate }} {{product?.hoeveelheidPaginas}} {{ 'hoeveelheid.bladzijdes.2' | translate }}</p>
+      <h2>{{ 'prijs' | translate }} €{{product?.prijs}}</h2>
+      <button (click)="onStartAddItem()">{{ 'winkelwagen.toevoegen' | translate }}</button>
+    </section>
+
+    <section id = "secundaire_info">
+      <h3>{{ 'samenvatting' | translate }}    <i>{{ 'alleen.in.nederlands' | translate }}</i></h3>
+      <p>Genre:
+        <span *ngFor="let genre of product?.genreList; let last = last">
+          <i>{{ genre.naam }}</i>
+          <span *ngIf="!last">, </span>
+        </span>
+      </p>
+      <p>{{product?.samenvatting}}</p>
+    </section>
+
+    <section id="extra">
+      <p>{{ 'uitgever' | translate }} {{product?.uitgever?.uitgeverNaam}}</p>
+      <img src="{{product?.uitgever?.plaatje}}}" alt="{{ 'logo.uitgever' | translate }} {{product?.uitgever?.uitgeverNaam}}">
+    </section>
+  </article>
+</main>
+
+

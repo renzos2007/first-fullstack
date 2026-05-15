@@ -1,0 +1,16 @@
+<main>
+  <h1>{{ 'filterlijst' | translate }}</h1>
+
+  <ul class="filter-list">
+    @for (filter of filterlist ; track filter.niveauID){
+      <li class="filter-item">
+        <button [routerLink]="['/niveau/'+getFilterByID(filter)]">{{ 'niveau.' + filter.niveau | translate }}</button>
+      </li>
+    }
+
+    <li class="filter-item">
+      <button routerLink="/niveau/boeken/alles">{{ 'alle.boeken' | translate }}</button>
+    </li>
+  </ul>
+</main>
+

@@ -1,0 +1,135 @@
+main {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 5px;
+  min-height: 75vh;
+
+  section {
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+
+    h1, h3 {
+      margin-bottom: 10px;
+      color: black;
+    }
+
+    p {
+      color: black;
+      line-height: 1.5;
+    }
+  }
+
+  button {
+    background-color: #ED3325;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #C72A1D;
+    }
+
+    &:disabled {
+      background-color: gray;
+      cursor: not-allowed;
+    }
+  }
+
+  .orderlist {
+    list-style-type: none;
+    padding: 0;
+
+    .order {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .orderdetails{
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        width: 100%;
+        background-color: #F9E4E1;
+
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+      }
+      margin: 15px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+
+      .orderitem{
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        width: 35rem;
+
+
+        .product{
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          margin-bottom: 10px;
+          padding: 15px;
+
+          display: flex;
+          align-items: center;
+
+          img {
+            max-width: 50px;
+            margin-right: 10px;
+            border-radius: 5px;
+          }
+        }
+      }
+
+    }
+  }
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    span {
+      color: black;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .order{
+    width: 70vw;
+  }
+
+  .orderitem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70vw;
+  }
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+    margin: 0;
+    width: 70vw;
+  }
+}
+

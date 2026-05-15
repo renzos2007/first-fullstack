@@ -1,0 +1,34 @@
+<nav>
+  <section>
+    <a id="homepageButton">
+      <img src="/images/thumbnail_Bruna-logo_wit.png" alt="{{ 'naar.startpagina' | translate }}" [routerLink]="['/']">
+    </a>
+  </section>
+
+  <section>
+    <a id="profile">
+      @if (this.loginService.isLoggedIn()){
+        <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.gebruikerspagina' | translate }}" [routerLink]="['/gebruiker']">
+      } @else {
+        <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.inlogpagina' | translate }}" [routerLink]="['/login']">
+      }
+    </a>
+
+    <a id="winkelmand">
+      <img src="/images/thumbnail_winkelMandButton_wit.png" alt="{{ 'naar.winkelmand' | translate }}" [routerLink]="['/winkelmand']">
+    </a>
+  </section>
+
+  <section class="taal">
+    <a (click)="useLanguage('nl')">
+      <img src="/images/Flag_of_the_Netherlands.png" alt="wissel naar Nederlands">
+    </a>
+    <a (click)="useLanguage('en')">
+      <img src="/images/Flag_of_the_United_Kingdom.png" alt="switch to english ">
+    </a>
+  </section>
+</nav>
+
+
+
+

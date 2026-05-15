@@ -1,0 +1,39 @@
+<main>
+  <h1>{{ 'inloggen.titel' | translate }}</h1>
+
+  <section>
+    <form (ngSubmit)="login()">
+      <div>
+        <label>
+          Email:
+        </label>
+        <input type="text" name="email" [(ngModel)]="email">
+      </div>
+
+      <div>
+        <label>
+          {{ 'wachtwoord' | translate }}
+        </label>
+        <input type="password" name="wachtwoord" [(ngModel)]="wachtwoord">
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+    <div id="register">
+      <p>{{ 'geen.account' | translate }}</p>
+      <button [routerLink]="'/register'">{{ 'registreren' | translate }}</button>
+    </div>
+
+  </section>
+
+  <section id="error">
+    @if (errorType === null){
+    } @else if (errorType === 401) {
+      <h2>{{ 'bestel.error' | translate }}</h2>
+    } @else {
+      <h2>{{ 'inlog.error' | translate }}</h2>
+    }
+  </section>
+</main>
+
+

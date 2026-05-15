@@ -1,0 +1,22 @@
+
+<main>
+  <section class="bestseller">
+    <button class="direction-left" (click)="previousBestSeller()"> < </button>
+    <div class = "title-afbeelding">
+      <h2 class="title">BESTSELLERS</h2>
+      <div *ngIf="bestSellers.length > 0">
+        <a [routerLink]="['/product', bestSellers[index].boekID]">
+          <img [src]="bestSellers[index].plaatje" alt="{{ 'afbeelding.van.bestseller' | translate }} {{bestSellers[index].naam}}">
+        </a>
+      </div>
+    </div>
+    <button class="direction-right" (click)="nextBestSeller()"> > </button>
+  </section>
+  <section class="allProducts">
+    <img src="/images/boeken.png" alt="Een set aan boeken">
+    <div class="info">
+      <button [routerLink]="['/niveau']">{{ 'bekijk.alle.producten' | translate }}</button>
+    </div>
+  </section>
+</main>
+

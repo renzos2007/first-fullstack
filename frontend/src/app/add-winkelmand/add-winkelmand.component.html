@@ -1,0 +1,24 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog open>
+  <form (ngSubmit)="onSubmit($event)">
+    <section>
+      <h2>{{ 'winkelwagen.toevoegen' | translate }}</h2>
+      <p>
+        {{ 'toevoegen.zin.1' | translate }}{{product.naam}}{{ 'toevoegen.zin.2' | translate }}
+      </p>
+    </section>
+    <section class="change_amount">
+      <button type="button" class="addMinusButton" (click)="onMinus()">
+        -
+      </button>
+      <p>{{ hoeveelheidItem }}</p>
+      <button type="button" class="addMinusButton" (click)="onAdd()">
+        +
+      </button>
+    </section>
+    <section class="actions">
+      <button type="button" (click)="onCancel()">{{ 'annuleren' | translate }}</button>
+      <button type="submit">{{ 'toevoegen' | translate }}</button>
+    </section>
+  </form>
+</dialog>

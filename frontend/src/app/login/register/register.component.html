@@ -1,0 +1,82 @@
+<main>
+  <h1>{{ 'registeren.titel' | translate }}</h1>
+
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <section>
+      <label for="gebruikersnaam">{{ 'gebruikersnaam' | translate }}</label>
+      <input type="text" formControlName="gebruikersnaam" id="gebruikersnaam">
+      @if (registerForm.get('gebruikersnaam')?.touched && registerForm.get('gebruikersnaam')?.invalid){
+        <span>{{ 'moet.je.invullen' | translate }}</span>
+      }
+    </section>
+
+    <section>
+      <label for="email">Email:</label>
+      <input type="email" formControlName="email" id="email">
+      @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid){
+        @if (registerForm.get('email')?.errors?.['required']){
+          <span>{{ 'moet.je.invullen' | translate }}</span>
+        } @else if (registerForm.get('email')?.errors?.['email']){
+          <span>{{ 'ongeldig.emailadres' | translate }}</span>
+        }
+      }
+    </section>
+
+    <section>
+      <label for="wachtwoord">{{ 'wachtwoord' | translate }}</label>
+      <input type="password" formControlName="wachtwoord" id="wachtwoord">
+      @if (registerForm.get('wachtwoord')?.touched && registerForm.get('wachtwoord')?.invalid){
+        @if(registerForm.get('wachtwoord')?.errors?.['required']){
+          <span>{{ 'moet.je.invullen' | translate }}</span>
+        } @else if (registerForm.get('wachtwoord')?.errors?.['minlength']) {
+          <span>{{ 'minimum.lengte' | translate }}</span>
+        } @else if (registerForm.get('wachtwoord')?.errors?.['pattern']){
+          <span>{{ 'wachtwoord.requirements' | translate }}</span>
+        }
+      }
+    </section>
+
+    <section>
+      <label for="woonplaats">{{ 'woonplaats' | translate }}</label>
+      <input type="text" formControlName="woonplaats" id="woonplaats">
+      @if (registerForm.get('woonplaats')?.touched && registerForm.get('woonplaats')?.invalid){
+        <span>{{ 'moet.je.invullen' | translate }}</span>
+      }
+    </section>
+
+    <section>
+      <label for="postcode">{{ 'postcode' | translate }}</label>
+      <input type="text" formControlName="postcode" id="postcode">
+      @if (registerForm.get('postcode')?.touched && registerForm.get('postcode')?.invalid){
+        <span>{{ 'moet.je.invullen' | translate }}</span>
+      }
+    </section>
+
+    <section>
+      <label for="staatnaam">{{ 'straatnaam' | translate }}</label>
+      <input type="text" formControlName="staatnaam" id="staatnaam">
+      @if (registerForm.get('staatnaam')?.touched && registerForm.get('staatnaam')?.invalid){
+        <span>{{ 'moet.je.invullen' | translate }}</span>
+      }
+    </section>
+
+    <section>
+      <label for="huisnummer">{{ 'huisnummer' | translate }}</label>
+      <input type="text" formControlName="huisnummer" id="huisnummer">
+      @if (registerForm.get('huisnummer')?.touched && registerForm.get('huisnummer')?.invalid){
+        <span>{{ 'moet.je.invullen' | translate }}</span>
+      }
+    </section>
+
+    <button type="submit" [disabled]="registerForm.invalid">{{ 'registreren' | translate }}</button>
+
+    <section id="error-register">
+      @if (this.error === null){
+      } @else {
+        <p>{{ 'registreren.error' | translate }}</p>
+      }
+    </section>
+  </form>
+
+
+</main>

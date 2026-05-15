@@ -1,0 +1,28 @@
+@if (isBetaald === true) {
+  {{createOrder()}}
+}
+
+<main class="winkelmand">
+  <h1>{{ 'winkelmand' | translate }}</h1>
+  <article>
+    <section>
+      <ul>
+        <li *ngFor="let boek of getBestelList()">
+          <img src="{{boek.plaatje}}">
+          <div>
+            <p>{{ 'titel' | translate }} {{ boek.naam }} </p>
+            <p>{{ 'prijs.per.stuk' | translate }} €{{ boek.prijs }}</p>
+            <p>{{ 'hoeveelheid' | translate }} {{ boek.hoeveelheid }}</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <p id="totaleprijs">{{ 'totale.prijs' | translate }} €{{getTotalePrijs()}}</p>
+      <button (click)="clearBestelList()">{{ 'leeg.winkelmand' | translate }}</button>
+      <button (click)="betaalPage()" [disabled]="boekenBestelList.length === 0">{{ 'bestel' | translate }}</button>
+    </section>
+  </article>
+</main>
+

@@ -1,0 +1,15 @@
+<main *ngIf="filter">
+  <h1>{{ 'selecteerde.filter' | translate }} {{ 'niveau.' + filter.niveau | translate }}</h1>
+  <button id="filter" [routerLink]="['/niveau']">{{ 'terug.naar.filter' | translate }}</button>
+  <ul>
+    @for (product of paginatedProducts ; track product.boekID){
+      <app-product-items [product]="product" />
+    }
+  </ul>
+
+  <section class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">{{ 'vorige' | translate }}</button>
+    <span>{{ 'pagina' | translate }} {{ currentPage }} {{ 'van' | translate }} {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">{{ 'volgende' | translate }}</button>
+  </section>
+</main>

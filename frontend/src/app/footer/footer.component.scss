@@ -1,0 +1,53 @@
+.footer {
+  background: linear-gradient(to right, #ED3325, #F2645A);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+
+
+  .info {
+    flex: 1;
+    text-align: left;
+
+    #name {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 0 10px;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+  }
+
+  .partners {
+    flex: 1;
+    text-align: right;
+
+    #partners-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .logos {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+
+      li {
+        display: inline-block;
+      }
+
+      .logo {
+        padding: 0 5px;
+        max-height: 50px;
+        height: auto;
+      }
+    }
+  }
+}

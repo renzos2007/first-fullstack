@@ -1,0 +1,48 @@
+<main>
+  <article>
+    <section>
+      <h1>
+        {{ 'Betalen' | translate }}
+      </h1>
+      <p> {{ 'je.moet.betalen.1' | translate }} €{{ getTotalePrijs() }} {{ 'je.moet.betalen.2' | translate }}</p>
+    </section>
+
+    <section>
+      <h2>{{ 'betaalmethode' | translate }}</h2>
+      <form (ngSubmit)="verwerkBetaling()">
+        <div>
+          <label>
+            <input type="radio" name="betalmethode" value="creditcard" [(ngModel)]="gekozenBetaalmethode" required>
+            Visa
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" name="betalmethode" value="ideal" [(ngModel)]="gekozenBetaalmethode" required>
+            iDEAL
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" name="betalmethode" value="paypal" [(ngModel)]="gekozenBetaalmethode" required>
+            PayPal
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" name="betalmethode" value="bankoverschrijving" [(ngModel)]="gekozenBetaalmethode" required>
+            Mastercard
+          </label>
+        </div>
+        <button type="submit">{{ 'betaal.bevestigen' | translate }}</button>
+        <button type="button" (click)="annuleren()">{{ 'annuleren' | translate }}</button>
+      </form>
+    </section>
+
+    <section id="error">
+      <div *ngIf="!betaalmethodeGekozen && !gekozenBetaalmethode">
+        <p>{{ 'betaal.error' | translate }}</p>
+      </div>
+    </section>
+  </article>
+</main>

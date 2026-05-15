@@ -1,0 +1,36 @@
+<main>
+  <section>
+    <h1>{{ 'gebruikerspagina' | translate }}</h1>
+    <p>{{ 'welkom' | translate }} {{gebruikersGegevens?.gebruikerNaam}}</p>
+  </section>
+  <section>
+    <button (click)="loginService.logout()">{{ 'uitloggen' | translate }}</button>
+  </section>
+  <section>
+    <h3>{{ 'bestellingen' | translate }}</h3>
+    <ul class="orderlist">
+      <li class = "order" *ngFor="let order of paginatedOrders">
+        <div class="orderdetails">
+          <p><b>{{ 'bestelnummer' | translate }} {{ order.orderNumber }}</b></p>
+          <p>{{ 'datum' | translate }} {{ order.orderDatum | date:'dd-MM-yyyy' }}</p>
+          <p>{{ 'totale.prijs' | translate }} €{{berekenTotalePrijs(order)}}</p>
+          <p> {{ 'bestelde.boeken' | translate }}:</p>
+        </div>
+
+        <ul class="orderitem">
+          <li class = "product" *ngFor="let boek of order.besteldeBoeken">
+            <img src="{{boek.boek.plaatje}}" alt="{{ 'afbeelding.van' | translate }} {{boek.boek.naam}}">
+            {{ 'titel' | translate }} {{ boek.boek.naam }}, {{ 'hoeveelheid' | translate }} {{ boek.hoeveelheid }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">{{ 'vorige' | translate }}</button>
+    <span>{{ 'pagina' | translate }} {{ currentPage }} {{ 'van' | translate }} {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage >= totalPages">{{ 'volgende' | translate }}</button>
+  </section>
+</main>
+
+
