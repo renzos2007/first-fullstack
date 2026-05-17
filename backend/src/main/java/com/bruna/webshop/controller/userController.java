@@ -1,6 +1,6 @@
 package com.bruna.webshop.controller;
 
-import com.bruna.webshop.dao.GebruikerGegevensDAO;
+import com.bruna.webshop.dao.UserDataDAO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import com.bruna.webshop.modules.UserData;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class userController {
-    private GebruikerGegevensDAO gebruikerGegevensDAO;
+    private UserDataDAO userDataDAO;
 
-    public userController(GebruikerGegevensDAO gebruikerGegevensDAO) {
-        this.gebruikerGegevensDAO = gebruikerGegevensDAO;
+    public userController(UserDataDAO userDataDAO) {
+        this.userDataDAO = userDataDAO;
     }
 
     @GetMapping("/me")
@@ -26,7 +26,7 @@ public class userController {
 
         String currentUser = (String) authentication.getPrincipal();
 
-        UserData userData = this.gebruikerGegevensDAO.getByEmail(currentUser);
+        UserData userData = this.userDataDAO.getUserDataByEmail(currentUser);
 
         return ResponseEntity.ok(userData);
     }

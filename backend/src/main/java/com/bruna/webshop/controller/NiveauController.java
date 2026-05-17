@@ -1,6 +1,6 @@
 package com.bruna.webshop.controller;
 
-import com.bruna.webshop.dao.NiveauDAO;
+import com.bruna.webshop.dao.DifficultyDAO;
 import com.bruna.webshop.modules.Difficulty;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,19 +11,19 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/niveau")
 public class NiveauController {
-    private NiveauDAO niveauDAO;
+    private DifficultyDAO difficultyDAO;
 
-    public NiveauController(NiveauDAO niveauDAO) {
-        this.niveauDAO = niveauDAO;
+    public NiveauController(DifficultyDAO difficultyDAO) {
+        this.difficultyDAO = difficultyDAO;
     }
 
     @GetMapping
     public List<Difficulty> getAllNiveau() {
-        return niveauDAO.getAllNiveaus();
+        return difficultyDAO.getAllDifficulties();
     }
 
     @GetMapping("/{id}")
     public Optional<Difficulty> getNiveauById(@PathVariable long id) {
-        return niveauDAO.getNiveauById(id);
+        return difficultyDAO.getDifficultyById(id);
     }
 }

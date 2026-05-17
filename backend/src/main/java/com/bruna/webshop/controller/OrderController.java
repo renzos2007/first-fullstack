@@ -1,9 +1,9 @@
 package com.bruna.webshop.controller;
 
-import com.bruna.webshop.dao.BoekDAO;
-import com.bruna.webshop.dao.GebruikerGegevensDAO;
+import com.bruna.webshop.dao.ProductDAO;
+import com.bruna.webshop.dao.UserDataDAO;
 import com.bruna.webshop.dao.OrderDAO;
-import com.bruna.webshop.dao.OrderRegelDAO;
+import com.bruna.webshop.dao.OrderItemDAO;
 import com.bruna.webshop.dto.OrderDTO;
 import com.bruna.webshop.modules.Product;
 import com.bruna.webshop.modules.UserData;
@@ -23,16 +23,16 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
-    private final BoekDAO boekDAO;
+    private final ProductDAO productDAO;
     private OrderDAO orderDAO;
-    private OrderRegelDAO orderRegelDAO;
-    private GebruikerGegevensDAO gebruikerGegevensDAO;
+    private OrderItemDAO orderItemDAO;
+    private UserDataDAO userDataDAO;
 
-    public OrderController(BoekDAO boekDAO, OrderDAO orderDAO, OrderRegelDAO orderRegelDAO, GebruikerGegevensDAO gebruikerGegevensDAO) {
-        this.boekDAO = boekDAO;
+    public OrderController(ProductDAO productDAO, OrderDAO orderDAO, OrderItemDAO orderItemDAO, UserDataDAO userDataDAO) {
+        this.productDAO = productDAO;
         this.orderDAO = orderDAO;
-        this.orderRegelDAO = orderRegelDAO;
-        this.gebruikerGegevensDAO = gebruikerGegevensDAO;
+        this.orderItemDAO = orderItemDAO;
+        this.userDataDAO = userDataDAO;
     }
 
     @PostMapping
@@ -40,20 +40,20 @@ public class OrderController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String gebruikerEmail = (String) authentication.getPrincipal();
 
-        UserData gebruikergevens = gebruikerGegevensDAO.getByEmail(gebruikerEmail);
+        UserData gebruikergevens = userDataDAO.getUserDataByEmail(gebruikerEmail);
 
         Order order = orderDAO.createOrder(gebruikergevens);
-        orderDAO.save(order);
+        orderDAO.saveOrder(order);
 
         ArrayList<OrderItem> besteldeBoeken = new ArrayList<OrderItem>();
 
         for (OrderDTO orderRegelDTO : orderRegels) {
-            Optional<Product> boekOpt = boekDAO.getBoekById(orderRegelDTO.getBoekID());
+            Optional<Product> boekOpt = productDAO.getProductById(orderRegelDTO.getBoekID());
             if (boekOpt.isPresent()) {
                 Product product = boekOpt.get();
-                OrderItem orderItem = orderRegelDAO.createOrderRegel(order, product, orderRegelDTO.getHoeveelheid());
+                OrderItem orderItem = orderItemDAO.createOrderItem(order, product, orderRegelDTO.getHoeveelheid());
                 besteldeBoeken.add(orderItem);
-                orderRegelDAO.save(orderItem);
+                orderItemDAO.saveOrderItem(orderItem);
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }

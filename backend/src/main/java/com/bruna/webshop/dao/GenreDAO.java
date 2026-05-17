@@ -7,14 +7,14 @@ import java.util.List;
 
 @Component
 public class GenreDAO {
-    private GenreRepository genreRepository;
+    private final GenreRepository genreRepository;
 
     public GenreDAO(GenreRepository genreRepository) {
         this.genreRepository = genreRepository;
     }
 
     public List<Genre> getAllGenres() {
-        List<Genre> genres = genreRepository.findAll();
-        return genres;
+        List<Genre> genreList = genreRepository.findAll();
+        return genreList;
     }
 }

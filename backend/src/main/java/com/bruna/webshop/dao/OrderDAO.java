@@ -8,22 +8,22 @@ import java.util.List;
 
 @Component
 public class OrderDAO {
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
     public OrderDAO(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
     public List<Order> getAllOrders() {
-        List<Order> orders = orderRepository.findAll();
-        return orders;
+        List<Order> orderList = orderRepository.findAll();
+        return orderList;
     }
 
-    public Order createOrder(UserData gebruikergevens) {
-        return new Order(gebruikergevens);
+    public Order createOrder(UserData userData) {
+        return new Order(userData);
     }
 
-    public Order save(Order order) {
-        return orderRepository.save(order);
+    public void saveOrder(Order order) {
+        orderRepository.save(order);
     }
 }

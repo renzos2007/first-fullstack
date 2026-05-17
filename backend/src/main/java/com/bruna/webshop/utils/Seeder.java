@@ -15,7 +15,7 @@
         private ProductRepository productRepository;
         private PublisherRepository publisherRepository;
         private WriterRepository writerRepository;
-        private RecensieRepository recensieRepository;
+        private ReviewRepository reviewRepository;
         private UserDataRepository gebruikerGegevensRepository;
         private OrderRepository orderRepository;
         private OrderController orderController;
@@ -24,11 +24,11 @@
         private DifficultyRepository difficultyRepository;
         private RoleRepository roleRepository;
 
-        public Seeder(ProductRepository productRepository, PublisherRepository publisherRepository, WriterRepository writerRepository, RecensieRepository recensieRepository, UserDataRepository gebruikerGegevensRepository, OrderRepository orderRepository, OrderController orderController, OrderItemRepository orderItemRepository, GenreRepository genreRepository, DifficultyRepository difficultyRepository, RoleRepository roleRepository) {
+        public Seeder(ProductRepository productRepository, PublisherRepository publisherRepository, WriterRepository writerRepository, ReviewRepository reviewRepository, UserDataRepository gebruikerGegevensRepository, OrderRepository orderRepository, OrderController orderController, OrderItemRepository orderItemRepository, GenreRepository genreRepository, DifficultyRepository difficultyRepository, RoleRepository roleRepository) {
             this.productRepository = productRepository;
             this.publisherRepository = publisherRepository;
             this.writerRepository = writerRepository;
-            this.recensieRepository = recensieRepository;
+            this.reviewRepository = reviewRepository;
             this.gebruikerGegevensRepository = gebruikerGegevensRepository;
             this.orderRepository = orderRepository;
             this.orderController = orderController;
