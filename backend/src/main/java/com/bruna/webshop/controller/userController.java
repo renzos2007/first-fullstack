@@ -21,12 +21,12 @@ public class userController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<UserData> authenticatedGebruiker() {
+    public ResponseEntity<UserData> authenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        String currentUser = (String) authentication.getPrincipal();
+        String currentUserEmail = (String) authentication.getPrincipal();
 
-        UserData userData = this.userDataDAO.getUserDataByEmail(currentUser);
+        UserData userData = this.userDataDAO.getUserDataByEmail(currentUserEmail);
 
         return ResponseEntity.ok(userData);
     }

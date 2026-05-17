@@ -1,19 +1,19 @@
 package com.bruna.webshop.dto;
 
 public class OrderDTO {
-    private long boekID;
-    private int hoeveelheid;
+    private long ProductID;
+    private int amount;
 
-    public OrderDTO(long boekID, int hoeveelheid) {
-        this.boekID = boekID;
-        this.hoeveelheid = hoeveelheid;
+    public OrderDTO(long ProductID, int amount) {
+        this.ProductID = ProductID;
+        this.amount = amount;
     }
 
-    public long getBoekID() {
-        return boekID;
+    public long getProductID() {
+        return ProductID;
     }
 
-    public int getHoeveelheid() {
-        return hoeveelheid;
+    public int getAmount() {
+        return amount;
     }
 }

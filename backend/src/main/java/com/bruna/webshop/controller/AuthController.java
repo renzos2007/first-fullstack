@@ -52,9 +52,9 @@ public class AuthController {
 //            );
 //        }
 //
-//        if (!validator.isValidPassword(authenticationDTO.wachtwoord)) {
+//        if (!validator.isValidPassword(authenticationDTO.password)) {
 //            throw new ResponseStatusException(
-//                    HttpStatus.BAD_REQUEST, "No valid wachtwoord provided"
+//                    HttpStatus.BAD_REQUEST, "No valid password provided"
 //            );
 //        }
 //
@@ -65,9 +65,9 @@ public class AuthController {
 //                    HttpStatus.NOT_FOUND, "Can not register with this email"
 //            );
 //        }
-//        String encodedPassword = passwordEncoder.encode(authenticationDTO.wachtwoord);
+//        String encodedPassword = passwordEncoder.encode(authenticationDTO.password);
 //
-//        GebruikerGegevens registerdCustomUser = new GebruikerGegevens(authenticationDTO.gebruikersnaam, encodedPassword, authenticationDTO.email, authenticationDTO.woonplaats, authenticationDTO.postcode, authenticationDTO.straatnaam, authenticationDTO.huisnummer);
+//        GebruikerGegevens registerdCustomUser = new GebruikerGegevens(authenticationDTO.userName, encodedPassword, authenticationDTO.email, authenticationDTO.city, authenticationDTO.postalCode, authenticationDTO.streetName, authenticationDTO.houseNumber);
 //
 //        Set<Role> strRoles = authenticationDTO.role;
 //        Set<Role> roles = new HashSet<>();
@@ -104,7 +104,7 @@ public class AuthController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No valid email provided");
         }
 
-        if (!validator.isValidPassword(authenticationDTO.wachtwoord)) {
+        if (!validator.isValidPassword(authenticationDTO.password)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No valid password provided");
         }
 
@@ -112,8 +112,8 @@ public class AuthController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email is already in use");
         }
 
-        String encodedPassword = passwordEncoder.encode(authenticationDTO.wachtwoord);
-        UserData registeredUser  = new UserData(authenticationDTO.gebruikersnaam, encodedPassword, authenticationDTO.email, authenticationDTO.woonplaats, authenticationDTO.postcode, authenticationDTO.straatnaam, authenticationDTO.huisnummer);
+        String encodedPassword = passwordEncoder.encode(authenticationDTO.password);
+        UserData registeredUser  = new UserData(authenticationDTO.userName, encodedPassword, authenticationDTO.email, authenticationDTO.city, authenticationDTO.postalCode, authenticationDTO.streetName, authenticationDTO.houseNumber);
 
         Set<Role> roles = new HashSet<>();
         if (authenticationDTO.role == null || authenticationDTO.role.isEmpty()) {
@@ -146,7 +146,7 @@ public class AuthController {
     public ResponseEntity<LoginResponse> login(@RequestBody AuthenticationDTO body) {
         try {
             UsernamePasswordAuthenticationToken authInputToken =
-                    new UsernamePasswordAuthenticationToken(body.email, body.wachtwoord);
+                    new UsernamePasswordAuthenticationToken(body.email, body.password);
 
             authManager.authenticate(authInputToken);
 

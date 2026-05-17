@@ -48,10 +48,10 @@ public class OrderController {
         ArrayList<OrderItem> besteldeBoeken = new ArrayList<OrderItem>();
 
         for (OrderDTO orderRegelDTO : orderRegels) {
-            Optional<Product> boekOpt = productDAO.getProductById(orderRegelDTO.getBoekID());
+            Optional<Product> boekOpt = productDAO.getProductById(orderRegelDTO.getProductID());
             if (boekOpt.isPresent()) {
                 Product product = boekOpt.get();
-                OrderItem orderItem = orderItemDAO.createOrderItem(order, product, orderRegelDTO.getHoeveelheid());
+                OrderItem orderItem = orderItemDAO.createOrderItem(order, product, orderRegelDTO.getAmount());
                 besteldeBoeken.add(orderItem);
                 orderItemDAO.saveOrderItem(orderItem);
             } else {

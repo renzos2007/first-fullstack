@@ -10,23 +10,23 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/product")
-public class BoekController {
+public class ProductController {
     private ProductDAO productDao;
 
-    public BoekController(ProductDAO productDao) {
+    public ProductController(ProductDAO productDao) {
         this.productDao = productDao;
     }
 
     @GetMapping
-    public List<Product> GetAllBoek(){
+    public List<Product> GetAllProducts(){
         return this.productDao.getAllProducts();
     }
 
     @GetMapping("/{id}")
-    public Optional<Product> GetBoekById(@PathVariable long id){
+    public Optional<Product> GetProductById(@PathVariable long id){
         return productDao.getProductById(id);
     }
 
     @GetMapping("search/{naam}")
-    public Optional<List<Product>> GetBookByName(@PathVariable String naam){return productDao.getProductByName(naam);}
+    public Optional<List<Product>> GetProductByName(@PathVariable String naam){return productDao.getProductByName(naam);}
 }

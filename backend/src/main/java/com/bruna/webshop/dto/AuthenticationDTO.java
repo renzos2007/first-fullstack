@@ -6,23 +6,23 @@ import java.util.Set;
 
 public class AuthenticationDTO {
     public String email;
-    public String gebruikersnaam;
-    public String wachtwoord;
-    public String woonplaats;
-    public String postcode;
-    public String straatnaam;
-    public String huisnummer;
+    public String userName;
+    public String password;
+    public String city;
+    public String postalCode;
+    public String streetName;
+    public String houseNumber;
     public Set<Role> role;
 
 
-    public AuthenticationDTO(String email, String gebruikersnaam, String wachtwoord, String woonplaats, String postcode, String straatnaam, String huisnummer, Set<Role> role) {
+    public AuthenticationDTO(String email, String userName, String password, String city, String postalCode, String streetName, String houseNumber, Set<Role> role) {
         this.email = email;
-        this.gebruikersnaam = gebruikersnaam;
-        this.wachtwoord = wachtwoord;
-        this.woonplaats = woonplaats;
-        this.postcode = postcode;
-        this.straatnaam = straatnaam;
-        this.huisnummer = huisnummer;
+        this.userName = userName;
+        this.password = password;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.streetName = streetName;
+        this.houseNumber = houseNumber;
         this.role = role;
     }
 

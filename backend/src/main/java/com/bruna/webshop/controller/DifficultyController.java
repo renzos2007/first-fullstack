@@ -9,21 +9,21 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/niveau")
-public class NiveauController {
+@RequestMapping("/difficulty")
+public class DifficultyController {
     private DifficultyDAO difficultyDAO;
 
-    public NiveauController(DifficultyDAO difficultyDAO) {
+    public DifficultyController(DifficultyDAO difficultyDAO) {
         this.difficultyDAO = difficultyDAO;
     }
 
     @GetMapping
-    public List<Difficulty> getAllNiveau() {
+    public List<Difficulty> getAlldifficulties() {
         return difficultyDAO.getAllDifficulties();
     }
 
     @GetMapping("/{id}")
-    public Optional<Difficulty> getNiveauById(@PathVariable long id) {
+    public Optional<Difficulty> getdifficultyById(@PathVariable long id) {
         return difficultyDAO.getDifficultyById(id);
     }
 }
