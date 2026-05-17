@@ -23,31 +23,31 @@
     </section>
 
     <section>
-      <label for="wachtwoord">{{ 'wachtwoord' | translate }}</label>
-      <input type="password" formControlName="wachtwoord" id="wachtwoord">
-      @if (registerForm.get('wachtwoord')?.touched && registerForm.get('wachtwoord')?.invalid){
-        @if(registerForm.get('wachtwoord')?.errors?.['required']){
+      <label for="password">{{ 'password' | translate }}</label>
+      <input type="password" formControlName="password" id="password">
+      @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid){
+        @if(registerForm.get('password')?.errors?.['required']){
           <span>{{ 'moet.je.invullen' | translate }}</span>
-        } @else if (registerForm.get('wachtwoord')?.errors?.['minlength']) {
+        } @else if (registerForm.get('password')?.errors?.['minlength']) {
           <span>{{ 'minimum.lengte' | translate }}</span>
-        } @else if (registerForm.get('wachtwoord')?.errors?.['pattern']){
-          <span>{{ 'wachtwoord.requirements' | translate }}</span>
+        } @else if (registerForm.get('password')?.errors?.['pattern']){
+          <span>{{ 'password.requirements' | translate }}</span>
         }
       }
     </section>
 
     <section>
-      <label for="woonplaats">{{ 'woonplaats' | translate }}</label>
-      <input type="text" formControlName="woonplaats" id="woonplaats">
-      @if (registerForm.get('woonplaats')?.touched && registerForm.get('woonplaats')?.invalid){
+      <label for="city">{{ 'city' | translate }}</label>
+      <input type="text" formControlName="city" id="city">
+      @if (registerForm.get('city')?.touched && registerForm.get('city')?.invalid){
         <span>{{ 'moet.je.invullen' | translate }}</span>
       }
     </section>
 
     <section>
-      <label for="postcode">{{ 'postcode' | translate }}</label>
-      <input type="text" formControlName="postcode" id="postcode">
-      @if (registerForm.get('postcode')?.touched && registerForm.get('postcode')?.invalid){
+      <label for="postalCode">{{ 'postalCode' | translate }}</label>
+      <input type="text" formControlName="postalCode" id="postalCode">
+      @if (registerForm.get('postalCode')?.touched && registerForm.get('postalCode')?.invalid){
         <span>{{ 'moet.je.invullen' | translate }}</span>
       }
     </section>
@@ -61,9 +61,9 @@
     </section>
 
     <section>
-      <label for="huisnummer">{{ 'huisnummer' | translate }}</label>
-      <input type="text" formControlName="huisnummer" id="huisnummer">
-      @if (registerForm.get('huisnummer')?.touched && registerForm.get('huisnummer')?.invalid){
+      <label for="houseNumber">{{ 'houseNumber' | translate }}</label>
+      <input type="text" formControlName="houseNumber" id="houseNumber">
+      @if (registerForm.get('houseNumber')?.touched && registerForm.get('houseNumber')?.invalid){
         <span>{{ 'moet.je.invullen' | translate }}</span>
       }
     </section>
