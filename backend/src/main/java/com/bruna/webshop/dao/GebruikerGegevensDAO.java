@@ -1,24 +1,24 @@
 package com.bruna.webshop.dao;
 
-import com.bruna.webshop.modules.GebruikerGegevens;
+import com.bruna.webshop.modules.UserData;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class GebruikerGegevensDAO {
-    private UserRepository gebruikerGegevensRepository;
+    private UserDataRepository gebruikerGegevensRepository;
 
-    public GebruikerGegevensDAO(UserRepository gebruikerGegevensRepository) {
+    public GebruikerGegevensDAO(UserDataRepository gebruikerGegevensRepository) {
         this.gebruikerGegevensRepository = gebruikerGegevensRepository;
     }
 
-    public List<GebruikerGegevens> getAllGebruikerGegevens() {
-        List<GebruikerGegevens> GebruikerGegevens = gebruikerGegevensRepository.findAll();
-        return GebruikerGegevens;
+    public List<UserData> getAllGebruikerGegevens() {
+        List<UserData> UserData = gebruikerGegevensRepository.findAll();
+        return UserData;
     }
 
-    public GebruikerGegevens getByEmail(String email) {
+    public UserData getByEmail(String email) {
         return gebruikerGegevensRepository.findByEmail(email);
     }
 }

@@ -1,7 +1,6 @@
 package com.bruna.webshop.modules;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,41 +10,43 @@ import java.util.Set;
 public class Genre {
     @Id
     @GeneratedValue
-    private long genreId;
+    @Column(name="genre_id", columnDefinition = "TEXT")
+    private long genreID;
 
-    private String naam;
+    private String name;
 
     @ManyToMany(mappedBy = "genreList")
     @JsonBackReference
-    Set<Boek> boekenList;
+    @Column(name="product_list", columnDefinition = "TEXT")
+    private List<Product> productList;
+
+    public Genre(String name) {
+        this.name = name;
+    }
 
     public Genre() {}
 
-    public Genre(String naam) {
-        this.naam = naam;
+    public long getGenreID() {
+        return genreID;
     }
 
-    public long getGenreId() {
-        return genreId;
+    public void setGenreID(long genreID) {
+        this.genreID = genreID;
     }
 
-    public void setGenreId(long genreId) {
-        this.genreId = genreId;
+    public String getName() {
+        return name;
     }
 
-    public String getNaam() {
-        return naam;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public Set<Boek> getBoekenList() {
-        return boekenList;
-    }
-
-    public void setBoekenList(Set<Boek> boekenList) {
-        this.boekenList = boekenList;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }

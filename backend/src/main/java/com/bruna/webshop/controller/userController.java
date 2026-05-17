@@ -3,7 +3,7 @@ package com.bruna.webshop.controller;
 import com.bruna.webshop.dao.GebruikerGegevensDAO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import com.bruna.webshop.modules.GebruikerGegevens;
+import com.bruna.webshop.modules.UserData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +21,14 @@ public class userController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<GebruikerGegevens> authenticatedGebruiker() {
+    public ResponseEntity<UserData> authenticatedGebruiker() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         String currentUser = (String) authentication.getPrincipal();
 
-        GebruikerGegevens gebruikerGegevens = this.gebruikerGegevensDAO.getByEmail(currentUser);
+        UserData userData = this.gebruikerGegevensDAO.getByEmail(currentUser);
 
-        return ResponseEntity.ok(gebruikerGegevens);
+        return ResponseEntity.ok(userData);
     }
 
 }

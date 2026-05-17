@@ -1,6 +1,6 @@
 package com.bruna.webshop.dao;
 
-import com.bruna.webshop.modules.GebruikerGegevens;
+import com.bruna.webshop.modules.UserData;
 import com.bruna.webshop.modules.Order;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,7 @@ public class OrderDAO {
         return orders;
     }
 
-    public Order createOrder(GebruikerGegevens gebruikergevens) {
+    public Order createOrder(UserData gebruikergevens) {
         return new Order(gebruikergevens);
     }
 

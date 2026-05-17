@@ -5,10 +5,10 @@ import com.bruna.webshop.dao.GebruikerGegevensDAO;
 import com.bruna.webshop.dao.OrderDAO;
 import com.bruna.webshop.dao.OrderRegelDAO;
 import com.bruna.webshop.dto.OrderDTO;
-import com.bruna.webshop.modules.Boek;
-import com.bruna.webshop.modules.GebruikerGegevens;
+import com.bruna.webshop.modules.Product;
+import com.bruna.webshop.modules.UserData;
 import com.bruna.webshop.modules.Order;
-import com.bruna.webshop.modules.OrderRegel;
+import com.bruna.webshop.modules.OrderItem;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -40,25 +40,25 @@ public class OrderController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String gebruikerEmail = (String) authentication.getPrincipal();
 
-        GebruikerGegevens gebruikergevens = gebruikerGegevensDAO.getByEmail(gebruikerEmail);
+        UserData gebruikergevens = gebruikerGegevensDAO.getByEmail(gebruikerEmail);
 
         Order order = orderDAO.createOrder(gebruikergevens);
         orderDAO.save(order);
 
-        ArrayList<OrderRegel> besteldeBoeken = new ArrayList<OrderRegel>();
+        ArrayList<OrderItem> besteldeBoeken = new ArrayList<OrderItem>();
 
         for (OrderDTO orderRegelDTO : orderRegels) {
-            Optional<Boek> boekOpt = boekDAO.getBoekById(orderRegelDTO.getBoekID());
+            Optional<Product> boekOpt = boekDAO.getBoekById(orderRegelDTO.getBoekID());
             if (boekOpt.isPresent()) {
-                Boek boek = boekOpt.get();
-                OrderRegel orderRegel = orderRegelDAO.createOrderRegel(order, boek, orderRegelDTO.getHoeveelheid());
-                besteldeBoeken.add(orderRegel);
-                orderRegelDAO.save(orderRegel);
+                Product product = boekOpt.get();
+                OrderItem orderItem = orderRegelDAO.createOrderRegel(order, product, orderRegelDTO.getHoeveelheid());
+                besteldeBoeken.add(orderItem);
+                orderRegelDAO.save(orderItem);
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         }
-        order.setBesteldeBoeken(besteldeBoeken);
+        order.setOrderItemList(besteldeBoeken);
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
 }

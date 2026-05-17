@@ -3,11 +3,11 @@ package com.bruna.webshop.controller;
 
 import com.bruna.webshop.config.JWTUtil;
 import com.bruna.webshop.dao.RoleRepository;
-import com.bruna.webshop.dao.UserRepository;
+import com.bruna.webshop.dao.UserDataRepository;
 import com.bruna.webshop.dto.AuthenticationDTO;
 import com.bruna.webshop.dto.LoginResponse;
 import com.bruna.webshop.modules.ERole;
-import com.bruna.webshop.modules.GebruikerGegevens;
+import com.bruna.webshop.modules.UserData;
 import com.bruna.webshop.modules.Role;
 import com.bruna.webshop.services.CredentialValidator;
 import org.springframework.http.HttpStatus;
@@ -27,16 +27,16 @@ import java.util.Set;
 @RequestMapping("/auth")
 public class AuthController {
 
-    private final UserRepository userRepository;
+    private final UserDataRepository userDataRepository;
     private final JWTUtil jwtUtil;
     private final AuthenticationManager authManager;
     private final PasswordEncoder passwordEncoder;
     private CredentialValidator validator;
     private RoleRepository roleRepository;
 
-    public AuthController(UserRepository userRepository, JWTUtil jwtUtil, AuthenticationManager authManager,
+    public AuthController(UserDataRepository userDataRepository, JWTUtil jwtUtil, AuthenticationManager authManager,
                           PasswordEncoder passwordEncoder, CredentialValidator validator, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
+        this.userDataRepository = userDataRepository;
         this.jwtUtil = jwtUtil;
         this.authManager = authManager;
         this.passwordEncoder = passwordEncoder;
@@ -108,12 +108,12 @@ public class AuthController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No valid password provided");
         }
 
-        if (userRepository.findByEmail(authenticationDTO.email) != null) {
+        if (userDataRepository.findByEmail(authenticationDTO.email) != null) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email is already in use");
         }
 
         String encodedPassword = passwordEncoder.encode(authenticationDTO.wachtwoord);
-        GebruikerGegevens registeredUser  = new GebruikerGegevens(authenticationDTO.gebruikersnaam, encodedPassword, authenticationDTO.email, authenticationDTO.woonplaats, authenticationDTO.postcode, authenticationDTO.straatnaam, authenticationDTO.huisnummer);
+        UserData registeredUser  = new UserData(authenticationDTO.gebruikersnaam, encodedPassword, authenticationDTO.email, authenticationDTO.woonplaats, authenticationDTO.postcode, authenticationDTO.straatnaam, authenticationDTO.huisnummer);
 
         Set<Role> roles = new HashSet<>();
         if (authenticationDTO.role == null || authenticationDTO.role.isEmpty()) {
@@ -135,7 +135,7 @@ public class AuthController {
         }
 
         registeredUser .setRoles(roles);
-        userRepository.save(registeredUser );
+        userDataRepository.save(registeredUser );
 
         String token = jwtUtil.generateToken(registeredUser .getEmail());
         LoginResponse loginResponse = new LoginResponse(registeredUser .getEmail(), token);
@@ -152,7 +152,7 @@ public class AuthController {
 
             String token = jwtUtil.generateToken(body.email);
 
-            GebruikerGegevens customUser = userRepository.findByEmail(body.email);
+            UserData customUser = userDataRepository.findByEmail(body.email);
             LoginResponse loginResponse = new LoginResponse(customUser.getEmail(), token);
 
 

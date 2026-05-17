@@ -1,7 +1,6 @@
 package com.bruna.webshop.dao;
 
-import com.bruna.webshop.dao.NiveauRepository;
-import com.bruna.webshop.modules.Niveau;
+import com.bruna.webshop.modules.Difficulty;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -9,19 +8,19 @@ import java.util.Optional;
 
 @Component
 public class NiveauDAO {
-    private NiveauRepository niveauRepository;
+    private DifficultyRepository difficultyRepository;
 
-    public NiveauDAO(NiveauRepository niveauRepository) {
-        this.niveauRepository = niveauRepository;
+    public NiveauDAO(DifficultyRepository difficultyRepository) {
+        this.difficultyRepository = difficultyRepository;
     }
 
-    public List<Niveau> getAllNiveaus() {
-        List<Niveau> niveaus = niveauRepository.findAll();
-        return niveaus;
+    public List<Difficulty> getAllNiveaus() {
+        List<Difficulty> difficulties = difficultyRepository.findAll();
+        return difficulties;
     }
 
-    public Optional<Niveau> getNiveauById(long id) {
-        Optional<Niveau> niveaus = niveauRepository.findById(id);
+    public Optional<Difficulty> getNiveauById(long id) {
+        Optional<Difficulty> niveaus = difficultyRepository.findById(id);
         return niveaus;
     }
 }

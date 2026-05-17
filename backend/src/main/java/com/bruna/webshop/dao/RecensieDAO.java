@@ -1,6 +1,6 @@
 package com.bruna.webshop.dao;
 
-import com.bruna.webshop.modules.Recensie;
+import com.bruna.webshop.modules.Review;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,8 +13,8 @@ public class RecensieDAO {
         this.recensieRepository = recensieRepository;
     }
 
-    public List<Recensie> getRecensies() {
-        List<Recensie> recenties = recensieRepository.findAll();
+    public List<Review> getRecensies() {
+        List<Review> recenties = recensieRepository.findAll();
         return recenties;
     }
 }

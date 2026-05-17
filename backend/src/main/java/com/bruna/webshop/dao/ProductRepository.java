@@ -1,6 +1,6 @@
 package com.bruna.webshop.dao;
 
-import com.bruna.webshop.modules.Boek;
+import com.bruna.webshop.modules.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface BoekRepository extends JpaRepository<Boek, Long> {
-    Optional<List<Boek>> findByNaam(String naam);
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    Optional<List<Product>> findByNaam(String naam);
 }

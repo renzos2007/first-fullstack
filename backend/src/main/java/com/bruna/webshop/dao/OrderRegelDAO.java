@@ -1,30 +1,29 @@
 package com.bruna.webshop.dao;
 
-import com.bruna.webshop.modules.Boek;
+import com.bruna.webshop.modules.Product;
 import com.bruna.webshop.modules.Order;
-import com.bruna.webshop.modules.OrderRegel;
+import com.bruna.webshop.modules.OrderItem;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class OrderRegelDAO {
-    private OrderRegelRepository orderRegelRepository;
+    private OrderItemRepository orderItemRepository;
 
-    public OrderRegelDAO(OrderRegelRepository orderRegelRepository) {
-        this.orderRegelRepository = orderRegelRepository;
+    public OrderRegelDAO(OrderItemRepository orderItemRepository) {
+        this.orderItemRepository = orderItemRepository;
     }
 
-    public List<OrderRegel> getAllOrderRegels() {
-        List<OrderRegel> orderRegels = orderRegelRepository.findAll();
-        return orderRegels;
+    public List<OrderItem> getAllOrderRegels() {
+        List<OrderItem> orderItems = orderItemRepository.findAll();
+        return orderItems;
     }
-    public OrderRegel createOrderRegel(Order order, Boek boek, int hoeveelheid){
-        return new OrderRegel(order, boek, hoeveelheid);
+    public OrderItem createOrderRegel(Order order, Product product, int hoeveelheid){
+        return new OrderItem(order, product, hoeveelheid);
     }
 
-    public OrderRegel save(OrderRegel orderRegel) {
-        return orderRegelRepository.save(orderRegel);
+    public OrderItem save(OrderItem orderItem) {
+        return orderItemRepository.save(orderItem);
     }
 }

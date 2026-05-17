@@ -1,7 +1,7 @@
 package com.bruna.webshop.controller;
 
 import com.bruna.webshop.dao.BoekDAO;
-import com.bruna.webshop.modules.Boek;
+import com.bruna.webshop.modules.Product;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,15 +18,15 @@ public class BoekController {
     }
 
     @GetMapping
-    public List<Boek> GetAllBoek(){
+    public List<Product> GetAllBoek(){
         return this.boekDao.getAllBoeken();
     }
 
     @GetMapping("/{id}")
-    public Optional<Boek> GetBoekById(@PathVariable long id){
+    public Optional<Product> GetBoekById(@PathVariable long id){
         return boekDao.getBoekById(id);
     }
 
     @GetMapping("search/{naam}")
-    public Optional<List<Boek>> GetBookByName(@PathVariable String naam){return boekDao.getBookByName(naam);}
+    public Optional<List<Product>> GetBookByName(@PathVariable String naam){return boekDao.getBookByName(naam);}
 }

@@ -1,20 +1,20 @@
 package com.bruna.webshop.dao;
 
 
-import com.bruna.webshop.modules.Uitgever;
+import com.bruna.webshop.modules.Publisher;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class UitgeverDAO {
-    private UitgeverRepository uitgeverRepository;
+    private PublisherRepository publisherRepository;
 
-    public UitgeverDAO(UitgeverRepository uitgeverRepository) {this.uitgeverRepository = uitgeverRepository;}
+    public UitgeverDAO(PublisherRepository publisherRepository) {this.publisherRepository = publisherRepository;}
 
-    public List<Uitgever> getAllUitgevers() {
-        List<Uitgever> uitgevers = uitgeverRepository.findAll();
-        return uitgevers;
+    public List<Publisher> getAllUitgevers() {
+        List<Publisher> Publishers = publisherRepository.findAll();
+        return Publishers;
     }
 
 }

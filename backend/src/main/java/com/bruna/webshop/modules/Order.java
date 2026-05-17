@@ -7,73 +7,72 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue
-    private long orderNumber;
+    @Column(name="order_id", columnDefinition = "TEXT")
+    private long orderID;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<OrderRegel> besteldeBoeken = new ArrayList<>();
+    @Column(name="order_item", columnDefinition = "TEXT")
+    private List<OrderItem> orderItemList = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonBackReference
-    private GebruikerGegevens gebruikerGegevens;
+    @JoinColumn(name = "user_data", columnDefinition = "TEXT")
+    private UserData userData;
 
-    private LocalDate orderDatum = LocalDate.now();
+    @Column(name="order_date", columnDefinition = "TEXT")
+    private LocalDate orderDate = LocalDate.now();
 
-    private boolean afgehandeld = false;
+    private boolean finished = false;
 
-
-
-    public Order() {
+    public Order(UserData userData) {
+        this.userData = userData;
     }
 
-    public Order(GebruikerGegevens gebruikerGegevens) {
-        this.gebruikerGegevens = gebruikerGegevens;
+    public Order() {}
+
+    public long getOrderID() {
+        return orderID;
     }
 
-    public long getOrderNumber() {
-        return orderNumber;
+    public void setOrderID(long orderID) {
+        this.orderID = orderID;
     }
 
-    public void setOrderNumber(long orderNumber) {
-        this.orderNumber = orderNumber;
+    public List<OrderItem> getOrderItemList() {
+        return orderItemList;
     }
 
-    public List<OrderRegel> getBesteldeBoeken() {
-        return besteldeBoeken;
+    public void setOrderItemList(List<OrderItem> orderItemList) {
+        this.orderItemList = orderItemList;
     }
 
-    public void setBesteldeBoeken(List<OrderRegel> besteldeBoeken) {
-        this.besteldeBoeken = besteldeBoeken;
+    public UserData getUserData() {
+        return userData;
     }
 
-    public GebruikerGegevens getGebruikerGegevens() {
-        return gebruikerGegevens;
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 
-    public void setGebruikerGegevens(GebruikerGegevens gebruikerGegevens) {
-        this.gebruikerGegevens = gebruikerGegevens;
+    public LocalDate getOrderDate() {
+        return orderDate;
     }
 
-    public LocalDate getOrderDatum() {
-        return orderDatum;
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public void setOrderDatum(LocalDate orderDatum) {
-        this.orderDatum = orderDatum;
+    public boolean isFinished() {
+        return finished;
     }
 
-    public boolean isAfgehandeld() {
-        return afgehandeld;
-    }
-
-    public void setAfgehandeld(boolean afgehandeld) {
-        this.afgehandeld = afgehandeld;
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
 }
