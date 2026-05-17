@@ -13,12 +13,12 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue
-    @Column(name="order_id", columnDefinition = "TEXT")
+    @Column(name="order_id")
     private long orderID;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    @Column(name="order_item", columnDefinition = "TEXT")
+    @Column(name="order_item")
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     @ManyToOne

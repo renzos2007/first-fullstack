@@ -10,13 +10,13 @@ import java.util.List;
 public class Writer {
     @Id
     @GeneratedValue
-    @Column(name="writer_id", columnDefinition = "TEXT")
+    @Column(name="writer_id")
     private long writerID;
 
     @NotNull
     private String name;
 
-    @Column(name="middle_name", columnDefinition = "TEXT")
+    @Column(name="middle_name")
     private String middleName;
 
     @NotNull

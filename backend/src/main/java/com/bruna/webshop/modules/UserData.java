@@ -13,11 +13,11 @@ import java.util.Set;
 public class UserData {
     @Id
     @GeneratedValue
-    @Column(name="user_id", columnDefinition = "TEXT")
+    @Column(name="user_id", columnDefinition = "bigint")
     private long userID;
 
     @NotNull
-    @Column(name="user_name", columnDefinition = "TEXT")
+    @Column(name="user_name")
     private String userName;
 
     @NotNull
@@ -29,23 +29,23 @@ public class UserData {
 
     private String city;
 
-    @Column(name="postal_code", columnDefinition = "TEXT")
+    @Column(name="postal_code")
     private String postalCode;
 
-    @Column(name="street_name", columnDefinition = "TEXT")
+    @Column(name="street_name")
     private String streetName;
 
-    @Column(name="house_number", columnDefinition = "TEXT")
+    @Column(name="house_number")
     private String houseNumber;
 
     @OneToMany(mappedBy = "userData")
     @JsonManagedReference
-    @Column(name="order_date", columnDefinition = "TEXT")
+    @Column(name="order_date")
     private List<Order> orderData;
 
     @OneToMany (mappedBy = "userData")
     @JsonManagedReference
-    @Column(name="review_data", columnDefinition = "TEXT")
+    @Column(name="review_data")
     private List<Review> reviewData;
 
     @ManyToMany(fetch = FetchType.LAZY)

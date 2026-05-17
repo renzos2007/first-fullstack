@@ -11,7 +11,7 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue
-    @Column(name="product_id", columnDefinition = "TEXT")
+    @Column(name="product_id")
     private long productID;
 
     @NotNull
@@ -26,7 +26,7 @@ public class Product {
     @ManyToMany (cascade = CascadeType.MERGE)
     @JoinTable (name = "genre_join_table")
     @JsonManagedReference
-    @Column(name="genre_list", columnDefinition = "TEXT")
+    @Column(name="genre_list")
     private List<Genre> genreList;
 
     @NotNull
@@ -62,7 +62,7 @@ public class Product {
     @Column(name="image", columnDefinition = "TEXT")
     private String image;
 
-    @Column(name="best_seller", columnDefinition = "TEXT")
+    @Column(name="best_seller")
     private boolean bestSeller;
 
     @OneToMany(mappedBy = "product")

@@ -10,14 +10,14 @@ import java.util.Set;
 public class Genre {
     @Id
     @GeneratedValue
-    @Column(name="genre_id", columnDefinition = "TEXT")
+    @Column(name="genre_id")
     private long genreID;
 
     private String name;
 
     @ManyToMany(mappedBy = "genreList")
     @JsonBackReference
-    @Column(name="product_list", columnDefinition = "TEXT")
+    @Column(name="product_list")
     private List<Product> productList;
 
     public Genre(String name) {

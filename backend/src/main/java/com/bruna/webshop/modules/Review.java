@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Review {
     @Id
     @GeneratedValue
-    @Column(name="review_id", columnDefinition = "TEXT")
+    @Column(name="review_id")
     private long reviewID;
 
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -22,7 +22,7 @@ public class Review {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonBackReference
-    @JoinColumn(name = "user_data", columnDefinition = "TEXT")
+    @JoinColumn(name = "user_data")
     private UserData userData;
 
     public Review(Product product, int rating, String reviewText, UserData userData) {

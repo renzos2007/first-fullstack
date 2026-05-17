@@ -9,14 +9,14 @@ import java.util.List;
 public class Difficulty {
     @Id
     @GeneratedValue
-    @Column(name="difficulty_id", columnDefinition = "TEXT")
+    @Column(name="difficulty_id")
     private long difficultyID;
 
     private String difficulty;
 
     @OneToMany (mappedBy = "difficulty")
     @JsonManagedReference
-    @Column(name="difficulty_list", columnDefinition = "TEXT")
+    @Column(name="difficulty_list")
     private List<Product> difficultyList;
 
     public Difficulty(String difficulty) {

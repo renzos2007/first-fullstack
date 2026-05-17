@@ -10,19 +10,19 @@ import java.util.List;
 public class Publisher {
     @Id
     @GeneratedValue
-    @Column(name="publisher_id", columnDefinition = "TEXT")
+    @Column(name="publisher_id")
     private long publisherID;
 
     @NotNull
-    @Column(name="publisher_name", columnDefinition = "TEXT")
+    @Column(name="publisher_name")
     private String publisherName;
 
-    @Column(name="image", columnDefinition = "TEXT")
+    @Column(name="image")
     private String image;
 
     @OneToMany(mappedBy = "publisher")
     @JsonBackReference
-    @Column(name="product_list", columnDefinition = "TEXT")
+    @Column(name="product_list")
     private List<Product> ProductList;
 
     public Publisher(String publisherName, String image) {

@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class OrderItem {
     @Id
     @GeneratedValue()
-    @Column(name="order_item_id", columnDefinition = "TEXT")
+    @Column(name="order_item_id")
     private long orderItemID;
 
     @ManyToOne(cascade = CascadeType.MERGE)
