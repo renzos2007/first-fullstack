@@ -7,7 +7,9 @@
     import org.springframework.context.event.EventListener;
     import org.springframework.stereotype.Component;
 
+    import java.util.ArrayList;
     import java.util.HashSet;
+    import java.util.List;
     import java.util.Set;
 
     @Component
@@ -16,7 +18,7 @@
         private PublisherRepository publisherRepository;
         private WriterRepository writerRepository;
         private ReviewRepository reviewRepository;
-        private UserDataRepository gebruikerGegevensRepository;
+        private UserDataRepository userDataRepository;
         private OrderRepository orderRepository;
         private OrderController orderController;
         private OrderItemRepository orderItemRepository;
@@ -24,12 +26,12 @@
         private DifficultyRepository difficultyRepository;
         private RoleRepository roleRepository;
 
-        public Seeder(ProductRepository productRepository, PublisherRepository publisherRepository, WriterRepository writerRepository, ReviewRepository reviewRepository, UserDataRepository gebruikerGegevensRepository, OrderRepository orderRepository, OrderController orderController, OrderItemRepository orderItemRepository, GenreRepository genreRepository, DifficultyRepository difficultyRepository, RoleRepository roleRepository) {
+        public Seeder(ProductRepository productRepository, PublisherRepository publisherRepository, WriterRepository writerRepository, ReviewRepository reviewRepository, UserDataRepository userDataRepository, OrderRepository orderRepository, OrderController orderController, OrderItemRepository orderItemRepository, GenreRepository genreRepository, DifficultyRepository difficultyRepository, RoleRepository roleRepository) {
             this.productRepository = productRepository;
             this.publisherRepository = publisherRepository;
             this.writerRepository = writerRepository;
             this.reviewRepository = reviewRepository;
-            this.gebruikerGegevensRepository = gebruikerGegevensRepository;
+            this.userDataRepository = userDataRepository;
             this.orderRepository = orderRepository;
             this.orderController = orderController;
             this.orderItemRepository = orderItemRepository;
@@ -140,13 +142,13 @@
             //----
 
             Genre yaThriller = new Genre("YA-thriller");
-            Set<Genre> vierentwintigUurGenres = new HashSet<>();
+            List<Genre> vierentwintigUurGenres = new ArrayList<>();
             vierentwintigUurGenres.add(yaThriller);
             this.genreRepository.save(yaThriller);
 
             Genre probleemboek = new Genre("Probleemboek");
             Genre sportverhaal = new Genre("Sportverhaal");
-            Set<Genre> saltoGenres = new HashSet<>();
+            List<Genre> saltoGenres = new ArrayList<>();
             saltoGenres.add(probleemboek);
             saltoGenres.add(sportverhaal);
             this.genreRepository.save(probleemboek);
@@ -155,7 +157,7 @@
             Genre avontuur = new Genre("Avontuur");
             Genre humor = new Genre("Humor");
             Genre toekomstverhalen = new Genre("Toekomstverhalen");
-            Set<Genre> deGroteVloedGenres = new HashSet<>();
+            List<Genre> deGroteVloedGenres = new ArrayList<>();
             deGroteVloedGenres.add(avontuur);
             deGroteVloedGenres.add(humor);
             deGroteVloedGenres.add(toekomstverhalen);
@@ -164,14 +166,14 @@
             this.genreRepository.save(toekomstverhalen);
 
             Genre jeugdroman = new Genre("Jeugdroman");
-            Set<Genre> jonaGenres = new HashSet<>();
+            List<Genre> jonaGenres = new ArrayList<>();
             jonaGenres.add(jeugdroman);
             this.genreRepository.save(jeugdroman);
 
             Genre youngAdultRoman = new Genre("Young adult");
             Genre magischRealisme = new Genre("Magisch realisme");
             Genre romantiek = new Genre("Romantiek");
-            Set<Genre> alsDeWereldWankeltGenres = new HashSet<>();
+            List<Genre> alsDeWereldWankeltGenres = new ArrayList<>();
             alsDeWereldWankeltGenres.add(youngAdultRoman);
             alsDeWereldWankeltGenres.add(magischRealisme);
             alsDeWereldWankeltGenres.add(romantiek);
@@ -181,7 +183,7 @@
 
             Genre comingOfAge = new Genre("Coming-of-age");
             Genre lgbtq = new Genre("LGBTQ+");
-            Set<Genre> frambozenzomerGenres = new HashSet<>();
+            List<Genre> frambozenzomerGenres = new ArrayList<>();
             frambozenzomerGenres.add(youngAdultRoman);
             frambozenzomerGenres.add(comingOfAge);
             frambozenzomerGenres.add(lgbtq);
@@ -189,20 +191,20 @@
             this.genreRepository.save(lgbtq);
 
             Genre literaireFictie = new Genre("Literaire fictiel");
-            Set<Genre> liftenNaarDeHemelGenres = new HashSet<>();
+            List<Genre> liftenNaarDeHemelGenres = new ArrayList<>();
             liftenNaarDeHemelGenres.add(comingOfAge);
             liftenNaarDeHemelGenres.add(literaireFictie);
             this.genreRepository.save(literaireFictie);
 
-            Set<Genre> hetParadijsVanSlapenGenres = new HashSet<>();
+            List<Genre> hetParadijsVanSlapenGenres = new ArrayList<>();
             hetParadijsVanSlapenGenres.add(literaireFictie);
 
-            Set<Genre> lotgenotenGenres = new HashSet<>();
+            List<Genre> lotgenotenGenres = new ArrayList<>();
             lotgenotenGenres.add(comingOfAge);
             lotgenotenGenres.add(literaireFictie);
 
             Genre familieroman = new Genre("Familieroman");
-            Set<Genre> netEchtGenres = new HashSet<>();
+            List<Genre> netEchtGenres = new ArrayList<>();
             netEchtGenres.add(familieroman);
             netEchtGenres.add(literaireFictie);
             this.genreRepository.save(familieroman);
@@ -210,7 +212,7 @@
             Genre queerFictie = new Genre("Queer fictie");
             Genre genderstudies = new Genre("Genderstudies");
             Genre literatuurRoman = new Genre("Literatuur roman");
-            Set<Genre> wormmaanGenres = new HashSet<>();
+            List<Genre> wormmaanGenres = new ArrayList<>();
             wormmaanGenres.add(literatuurRoman);
             wormmaanGenres.add(genderstudies);
             wormmaanGenres.add(queerFictie);
@@ -219,19 +221,19 @@
             this.genreRepository.save(queerFictie);
 
             Genre schoolVerhaal = new Genre("Schoolverhaal");
-            Set<Genre> blootGenres = new HashSet<>();
+            List<Genre> blootGenres = new ArrayList<>();
             blootGenres.add(schoolVerhaal);
             this.genreRepository.save(schoolVerhaal);
 
             Genre spanning = new Genre("Spanning");
-            Set<Genre> slipjachtGenres = new HashSet<>();
+            List<Genre> slipjachtGenres = new ArrayList<>();
             slipjachtGenres.add(avontuur);
             slipjachtGenres.add(spanning);
             this.genreRepository.save(spanning);
 
             Genre graphicNovel = new Genre("Graphic Novel");
             Genre youngAdult = new Genre("Young Adult");
-            Set<Genre> smileGenres = new HashSet<>();
+            List<Genre> smileGenres = new ArrayList<>();
             smileGenres.add(graphicNovel);
             smileGenres.add(youngAdult);
             smileGenres.add(schoolVerhaal);
@@ -239,7 +241,7 @@
             this.genreRepository.save(youngAdult);
 
             Genre realistischeFictie = new Genre("Realistische Fictie");
-            Set<Genre> onderWaterGenres = new HashSet<>();
+            List<Genre> onderWaterGenres = new ArrayList<>();
             onderWaterGenres.add(comingOfAge);
             onderWaterGenres.add(schoolVerhaal);
             onderWaterGenres.add(realistischeFictie);
