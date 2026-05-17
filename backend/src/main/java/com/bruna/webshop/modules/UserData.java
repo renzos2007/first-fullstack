@@ -38,12 +38,12 @@ public class UserData {
     @Column(name="house_number", columnDefinition = "TEXT")
     private String houseNumber;
 
-    @OneToMany (mappedBy = "gebruikerGegevens")
+    @OneToMany(mappedBy = "userData")
     @JsonManagedReference
     @Column(name="order_date", columnDefinition = "TEXT")
     private List<Order> orderData;
 
-    @OneToMany (mappedBy = "gebruikerGegevens")
+    @OneToMany (mappedBy = "userData")
     @JsonManagedReference
     @Column(name="review_data", columnDefinition = "TEXT")
     private List<Review> reviewData;

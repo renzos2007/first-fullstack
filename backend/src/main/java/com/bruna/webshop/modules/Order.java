@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "order_tabel")
 public class Order {
     @Id
     @GeneratedValue
@@ -20,9 +21,9 @@ public class Order {
     @Column(name="order_item", columnDefinition = "TEXT")
     private List<OrderItem> orderItemList = new ArrayList<>();
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "user_data", columnDefinition = "TEXT")
+    @JoinColumn(name = "user_id")
     private UserData userData;
 
     @Column(name="order_date", columnDefinition = "TEXT")

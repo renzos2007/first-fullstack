@@ -12,6 +12,7 @@ public class Review {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonBackReference
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private int rating;

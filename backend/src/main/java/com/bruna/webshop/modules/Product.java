@@ -55,7 +55,7 @@ public class Product {
 
     private int stock;
 
-    @OneToMany(mappedBy = "productReview")
+    @OneToMany(mappedBy = "product")
     @JsonManagedReference
     private List<Review> review;
 
@@ -65,7 +65,7 @@ public class Product {
     @Column(name="best_seller", columnDefinition = "TEXT")
     private boolean bestSeller;
 
-    @OneToMany(mappedBy = "productOrders")
+    @OneToMany(mappedBy = "product")
     @JsonBackReference
     private List<OrderItem> orders;
 

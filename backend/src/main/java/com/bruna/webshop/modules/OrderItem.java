@@ -14,10 +14,12 @@ public class OrderItem {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonBackReference
+    @JoinColumn(name = "order_id")
     private Order order;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonManagedReference
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private int amount;
