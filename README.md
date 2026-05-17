@@ -1,5 +1,5 @@
 # first-fullstack
-schoolproject for the subject first fullstack. This is the code for year 1. The packages are outdated and will not be updated till year two. Follow the instructions under here to setup the project.
+schoolproject for the subject first fullstack. This is the code for year two. The packages are outdated and will not be updated till year three. Follow the instructions under here to setup the project.
 
 requirements:
 - node.js
