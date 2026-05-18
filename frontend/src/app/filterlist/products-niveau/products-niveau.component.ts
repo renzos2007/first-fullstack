@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Difficulty} from '../../models/Difficulty';
-import {FilterService} from '../../services/filter.service';
+import {DifficultyService} from '../../services/difficulty.service';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {NgIf} from '@angular/common';
 import {ProductItemsComponent} from '../product-items/product-items.component';
@@ -25,7 +25,7 @@ export class ProductsNiveauComponent implements OnInit {
   protected currentPage: number = 1;
   protected itemsPerPage: number = 10;
 
-  constructor(private route: ActivatedRoute, private filterService: FilterService) {}
+  constructor(private route: ActivatedRoute, private difficultyService: DifficultyService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -35,7 +35,7 @@ export class ProductsNiveauComponent implements OnInit {
   }
 
   public loadFilterData(id: number): void {
-    this.filterService.getProductsByNiveau(id).subscribe(difficulty => {
+    this.difficultyService.getProductsByDifficulty(id).subscribe(difficulty => {
       this.filter = difficulty;
     });
   }

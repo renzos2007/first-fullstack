@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {UserData} from '../models/UserData';
-import {GebruikersGegevensService} from '../services/gebruikers-gegevens.service';
+import {UserDataService} from '../services/userData';
 import {of} from 'rxjs';
 import {CurrencyPipe, DatePipe, NgForOf, NgIf, ViewportScroller} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
-import {OrderData} from '../models/OrderGegevens';
+import {OrderData} from '../models/OrderData';
 
 @Component({
   selector: 'app-gebruikergegevens',
@@ -23,7 +23,7 @@ export class GebruikergegevensComponent implements OnInit {
   protected currentPage: number = 1;
   protected itemsPerPage: number = 10;
 
-  constructor(private gebruikersGegevensService: GebruikersGegevensService, protected loginService: LoginService, private viewportScroller: ViewportScroller, private router: Router) {
+  constructor(private userDataService: UserDataService, protected loginService: LoginService, private viewportScroller: ViewportScroller, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class GebruikergegevensComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    this.gebruikersGegevensService.getGebruikersGegevens().subscribe(gebruikersGegevens => {
+    this.userDataService.getUserData().subscribe(gebruikersGegevens => {
       this.gebruikersGegevens = gebruikersGegevens;
     })
   }

@@ -1,9 +1,9 @@
 import {Component, inject, Input} from '@angular/core';
-import {WinkelmandService} from '../services/winkelmand.service';
-import {WinkelmandProduct} from '../models/WinkelmandProduct';
+import {CartService} from '../services/cart.service';
+import {CartProduct} from '../models/CartProduct';
 import {NgFor} from '@angular/common';
 import {UserData} from '../models/UserData';
-import {GebruikersGegevensService} from '../services/gebruikers-gegevens.service';
+import {UserDataService} from '../services/userData';
 import {catchError, throwError} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
@@ -22,18 +22,18 @@ import {AuthenticatieService} from '../services/authenticatie.service';
   styleUrl: './winkelmand.component.scss'
 })
 export class WinkelmandComponent {
-  protected boekenBestelList: WinkelmandProduct[];
+  protected boekenBestelList: CartProduct[];
   private router = inject(Router);
   private authenticatieService =  inject(AuthenticatieService);
   protected isBetaald: boolean = false;
 
-  constructor(private winkelmandService: WinkelmandService, private gebruikersGegevensService: GebruikersGegevensService, private http: HttpClient, private cdr: ChangeDetectorRef, private route: ActivatedRoute
+  constructor(private cartService: CartService, private userDataService: UserDataService, private http: HttpClient, private cdr: ChangeDetectorRef, private route: ActivatedRoute
   ) {
-    this.boekenBestelList = this.winkelmandService.getBoeken();
+    this.boekenBestelList = this.cartService.getProducts();
 
-    const savedWinkelmand = localStorage.getItem('winkelmand_producten');
-    if (savedWinkelmand) {
-      this.boekenBestelList = JSON.parse(savedWinkelmand);
+    const savedCart = localStorage.getItem('cart_products');
+    if (savedCart) {
+      this.boekenBestelList = JSON.parse(savedCart);
     } else {
       this.boekenBestelList = []
     }
@@ -43,14 +43,14 @@ export class WinkelmandComponent {
     });
   }
 
-  public getBestelList(): WinkelmandProduct[] {
+  public getBestelList(): CartProduct[] {
     return this.boekenBestelList;
   }
 
   public clearBestelList(): void {
     this.boekenBestelList = [];
-    this.winkelmandService.setBoeken(this.boekenBestelList);
-    this.winkelmandService.updateLocalStorage();
+    this.cartService.setProducts(this.boekenBestelList);
+    this.cartService.updateLocalStorage();
     this.cdr.detectChanges();
   }
 
@@ -64,7 +64,7 @@ export class WinkelmandComponent {
   }
 
   public betaalPage(): void {
-    this.gebruikersGegevensService.getGebruikersGegevens().pipe(
+    this.userDataService.getUserData().pipe(
       catchError(error => {
         if (error.status === 401) {
           this.authenticatieService.setErrorType(error.status);

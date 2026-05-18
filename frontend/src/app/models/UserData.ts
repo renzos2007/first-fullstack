@@ -1,4 +1,4 @@
-import {OrderData} from './OrderGegevens';
+import {OrderData} from './OrderData';
 
 export interface UserData  {
   userID: number;

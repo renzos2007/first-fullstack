@@ -1,4 +1,4 @@
-export interface WinkelmandProduct {
+export interface CartProduct {
   productID: number;
   name: string;
   image: string;

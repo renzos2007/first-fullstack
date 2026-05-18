@@ -1,6 +1,6 @@
 import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
-import {WinkelmandProduct} from '../../models/WinkelmandProduct';
-import {WinkelmandService} from '../../services/winkelmand.service';
+import {CartProduct} from '../../models/CartProduct';
+import {CartService} from '../../services/cart.service';
 import {FormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
 import {Router} from '@angular/router';
@@ -19,28 +19,28 @@ import {LoginService} from '../../services/login.service';
 })
 export class BetalenComponent implements OnInit {
   private router = inject(Router);
-  protected boekenBestelList: WinkelmandProduct[] = [];
+  protected boekenBestelList: CartProduct[] = [];
   protected gekozenBetaalmethode: string = '';
   protected betaalmethodeGekozen: boolean = false;
   protected isBetaald: boolean = false;
 
 
-  constructor(private winkelmandService: WinkelmandService, private loginService: LoginService) {}
+  constructor(private cartService: CartService, private loginService: LoginService) {}
 
   ngOnInit(): void {
     if (!this.loginService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
 
-    this.boekenBestelList = this.winkelmandService.getBoeken();
+    this.boekenBestelList = this.cartService.getProducts();
 
     if (this.boekenBestelList.length <= 0) {
       this.router.navigate(['/winkelmand']);
     }
 
-    const savedWinkelmand = localStorage.getItem('winkelmand_producten');
-    if (savedWinkelmand) {
-      this.boekenBestelList = JSON.parse(savedWinkelmand);
+    const savedCart = localStorage.getItem('cart_products');
+    if (savedCart) {
+      this.boekenBestelList = JSON.parse(savedCart);
     } else {
       this.boekenBestelList = [];
     }

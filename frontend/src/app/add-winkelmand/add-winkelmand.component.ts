@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {WinkelmandService} from '../services/winkelmand.service';
+import {CartService} from '../services/cart.service';
 import {Product} from '../models/Product';
 import {FormsModule} from '@angular/forms';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -20,7 +20,7 @@ export class AddWinkelmandComponent {
   protected hoeveelheidItem: number = 1;
 
 
-  constructor(private winkelmandService: WinkelmandService) {
+  constructor(private cartService: CartService) {
   }
 
   public onAdd(): void {
@@ -40,7 +40,7 @@ export class AddWinkelmandComponent {
 
   public onSubmit(event: Event): void {
     event.preventDefault();
-    this.winkelmandService.addProduct(this.product, this.hoeveelheidItem);
+    this.cartService.addProduct(this.product, this.hoeveelheidItem);
     this.cancel.emit();
   }
 }

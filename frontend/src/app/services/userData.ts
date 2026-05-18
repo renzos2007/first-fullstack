@@ -7,12 +7,12 @@ import {UserData} from '../models/UserData';
 @Injectable({
   providedIn: 'root'
 })
-export class GebruikersGegevensService {
+export class UserDataService {
   protected httpClient = inject(HttpClient);
 
-  private apiUrlGetGebruikersGegevens = environment.apiUrl+"/gebruiker/me";
+  private apiUrlGetUserData = environment.apiUrl+"/user/me";
 
-  public getGebruikersGegevens(): Observable<UserData>{
-    return this.httpClient.get<UserData>(this.apiUrlGetGebruikersGegevens);
+  public getUserData(): Observable<UserData>{
+    return this.httpClient.get<UserData>(this.apiUrlGetUserData);
   }
 }
