@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Filter} from '../models/Difficulty';
+import {Difficulty} from '../models/Difficulty';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 
@@ -13,12 +13,12 @@ export class FilterService {
   private apiUrlGetAllNiveau = environment.apiUrl+"/niveau";
   private apiUrlGetNiveauByID = environment.apiUrl+"/niveau/";
 
-  public getNiveaus(): Observable<Filter[]> {
-    return this.httpClient.get<Filter[]>(this.apiUrlGetAllNiveau);
+  public getNiveaus(): Observable<Difficulty[]> {
+    return this.httpClient.get<Difficulty[]>(this.apiUrlGetAllNiveau);
   }
 
-  public getProductsByNiveau(id: number): Observable<Filter> {
-    return this.httpClient.get<Filter>(`${this.apiUrlGetNiveauByID}${id}`);
+  public getProductsByNiveau(id: number): Observable<Difficulty> {
+    return this.httpClient.get<Difficulty>(`${this.apiUrlGetNiveauByID}${id}`);
   }
 
 

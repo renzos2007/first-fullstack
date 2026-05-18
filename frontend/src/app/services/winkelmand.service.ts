@@ -10,21 +10,21 @@ import {WinkelmandProduct} from '../models/WinkelmandProduct';
 export class WinkelmandService {
   private boeken: WinkelmandProduct[] = [];
 
-  addProduct(product: Product, hoeveelheid: number): void {
+  addProduct(product: Product, amount: number): void {
     console.log(product);
 
     const winkelmandProduct: WinkelmandProduct = {
-      BoekID: product.boekID,
-      plaatje: product.plaatje,
-      naam: product.naam,
-      prijs: product.prijs,
-      hoeveelheid: hoeveelheid,
+      productID: product.productID,
+      image: product.image,
+      name: product.name,
+      price: product.price,
+      amount: amount,
     };
 
-    const index = this.boeken.findIndex((e) => e.BoekID === winkelmandProduct.BoekID);
+    const index = this.boeken.findIndex((e) => e.productID === winkelmandProduct.productID);
 
     if (index != -1){
-      this.boeken[index].hoeveelheid += hoeveelheid;
+      this.boeken[index].amount += amount;
       console.log ("product is geupdate");
     } else {
       this.boeken.push(winkelmandProduct);

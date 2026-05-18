@@ -2,7 +2,7 @@ import {Component, inject, Input} from '@angular/core';
 import {WinkelmandService} from '../services/winkelmand.service';
 import {WinkelmandProduct} from '../models/WinkelmandProduct';
 import {NgFor} from '@angular/common';
-import {GebruikersGegevens} from '../models/UserData';
+import {UserData} from '../models/UserData';
 import {GebruikersGegevensService} from '../services/gebruikers-gegevens.service';
 import {catchError, throwError} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -57,7 +57,7 @@ export class WinkelmandComponent {
   public getTotalePrijs(): number {
     let totaalPrijsWinkelwagen = 0
     for (let i = 0; i < this.boekenBestelList.length; i++) {
-      let totaalPrijsProduct = this.boekenBestelList[i].prijs * this.boekenBestelList[i].hoeveelheid;
+      let totaalPrijsProduct = this.boekenBestelList[i].price * this.boekenBestelList[i].amount;
       totaalPrijsWinkelwagen += totaalPrijsProduct
     }
     return parseFloat(totaalPrijsWinkelwagen.toFixed(2));
@@ -78,8 +78,8 @@ export class WinkelmandComponent {
 
   public createOrder(): void {
     let nodigeInfo = this.boekenBestelList.map(boek => ({
-      boekID: boek.BoekID,
-      hoeveelheid: boek.hoeveelheid < 1 ? 1 : boek.hoeveelheid
+      boekID: boek.productID,
+      hoeveelheid: boek.amount < 1 ? 1 : boek.amount
     }));
 
     this.http.post(environment.apiUrl + "/order", nodigeInfo).pipe(

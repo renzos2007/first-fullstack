@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Filter} from '../models/Difficulty';
+import {Difficulty} from '../models/Difficulty';
 import {FilterService} from '../services/filter.service';
 import {RouterLink} from '@angular/router';
 import {TranslatePipe} from "@ngx-translate/core";
@@ -14,7 +14,7 @@ import {TranslatePipe} from "@ngx-translate/core";
   styleUrl: './filterlist.component.scss'
 })
 export class FilterlistComponent implements OnInit {
-  protected filterlist: Filter[] = [];
+  protected filterlist: Difficulty[] = [];
 
   constructor(private filterService: FilterService) {}
 
@@ -22,8 +22,8 @@ export class FilterlistComponent implements OnInit {
     this.filterService.getNiveaus().subscribe(filters => {this.filterlist = filters})
   }
 
-  public getFilterByID(filter: Filter): number {
-    return filter.niveauID
+  public getFilterByID(difficulty: Difficulty): number {
+    return difficulty.difficultyID;
   }
 
 }

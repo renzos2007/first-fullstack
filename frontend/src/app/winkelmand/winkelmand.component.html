@@ -8,11 +8,11 @@
     <section>
       <ul>
         <li *ngFor="let boek of getBestelList()">
-          <img src="{{boek.plaatje}}">
+          <img src="{{boek.image}}">
           <div>
-            <p>{{ 'titel' | translate }} {{ boek.naam }} </p>
-            <p>{{ 'prijs.per.stuk' | translate }} €{{ boek.prijs }}</p>
-            <p>{{ 'hoeveelheid' | translate }} {{ boek.hoeveelheid }}</p>
+            <p>{{ 'titel' | translate }} {{ boek.name }} </p>
+            <p>{{ 'prijs.per.stuk' | translate }} €{{ boek.price }}</p>
+            <p>{{ 'hoeveelheid' | translate }} {{ boek.amount }}</p>
           </div>
         </li>
       </ul>

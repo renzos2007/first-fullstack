@@ -1,7 +1,7 @@
 <main>
   <section>
     <h1>{{ 'gebruikerspagina' | translate }}</h1>
-    <p>{{ 'welkom' | translate }} {{gebruikersGegevens?.gebruikerNaam}}</p>
+    <p>{{ 'welkom' | translate }} {{gebruikersGegevens?.userName}}</p>
   </section>
   <section>
     <button (click)="loginService.logout()">{{ 'uitloggen' | translate }}</button>
@@ -11,16 +11,16 @@
     <ul class="orderlist">
       <li class = "orders" *ngFor="let orders of paginatedOrders">
         <div class="orderdetails">
-          <p><b>{{ 'bestelnummer' | translate }} {{ orders.orderNumber }}</b></p>
-          <p>{{ 'datum' | translate }} {{ orders.orderDatum | date:'dd-MM-yyyy' }}</p>
+          <p><b>{{ 'bestelnummer' | translate }} {{ orders.orderID }}</b></p>
+          <p>{{ 'datum' | translate }} {{ orders.orderDate | date:'dd-MM-yyyy' }}</p>
           <p>{{ 'totale.prijs' | translate }} €{{berekenTotalePrijs(orders)}}</p>
           <p> {{ 'bestelde.boeken' | translate }}:</p>
         </div>
 
         <ul class="orderitem">
-          <li class = "product" *ngFor="let boek of orders.besteldeBoeken">
-            <img src="{{boek.boek.plaatje}}" alt="{{ 'afbeelding.van' | translate }} {{boek.boek.naam}}">
-            {{ 'titel' | translate }} {{ boek.boek.naam }}, {{ 'hoeveelheid' | translate }} {{ boek.hoeveelheid }}
+          <li class = "product" *ngFor="let product of orders.orderItemList">
+            <img src="{{product.product.image}}" alt="{{ 'afbeelding.van' | translate }} {{product.product.name}}">
+            {{ 'titel' | translate }} {{ product.product.name }}, {{ 'hoeveelheid' | translate }} {{ product.amount }}
           </li>
         </ul>
       </li>

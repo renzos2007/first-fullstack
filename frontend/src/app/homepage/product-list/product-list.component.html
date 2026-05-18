@@ -1,7 +1,7 @@
 
 
 <ul class="homepage-products">
-  @for ( product of limitedProducts ; track product.boekID) {
+  @for ( product of limitedProducts ; track product.productID) {
     <li><app-product [product]="product" /></li>
   }
 </ul>

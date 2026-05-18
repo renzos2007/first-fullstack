@@ -29,6 +29,6 @@ export class ProductItemsComponent {
   }
 
   public getProductID(): number {
-    return this.product.boekID;
+    return this.product.productID;
   }
 }

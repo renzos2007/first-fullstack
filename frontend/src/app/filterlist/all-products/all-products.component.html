@@ -2,7 +2,7 @@
   <h1>{{ 'alle.boeken' | translate }}</h1>
   <button id="filter" [routerLink]="['/niveau']">{{ 'terug.naar.filter' | translate }}</button>
   <ul>
-    @for (product of paginatedProducts ; track product.boekID){
+    @for (product of paginatedProducts ; track product.productID){
       <app-product-items [product]="product" />
     }
   </ul>

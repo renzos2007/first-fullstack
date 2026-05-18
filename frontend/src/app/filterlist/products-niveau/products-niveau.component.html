@@ -1,8 +1,8 @@
 <main *ngIf="filter">
-  <h1>{{ 'selecteerde.filter' | translate }} {{ 'niveau.' + filter.niveau | translate }}</h1>
+  <h1>{{ 'selecteerde.filter' | translate }} {{ 'niveau.' + filter.difficulty | translate }}</h1>
   <button id="filter" [routerLink]="['/niveau']">{{ 'terug.naar.filter' | translate }}</button>
   <ul>
-    @for (product of paginatedProducts ; track product.boekID){
+    @for (product of paginatedProducts ; track product.productID){
       <app-product-items [product]="product" />
     }
   </ul>

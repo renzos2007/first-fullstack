@@ -4,13 +4,13 @@
 
 <article [routerLink]="['/product/'+ getProductID()]">
   <a class="product-image">
-    <img src="{{product.plaatje}}" alt="{{ 'afbeelding.van' | translate }} {{product.naam}}">
+    <img src="{{product.image}}" alt="{{ 'afbeelding.van' | translate }} {{product.name}}">
   </a>
 
   <a class="product-info">
-    <h2 class="product-title">{{ product.naam }}</h2>
-    <p class="product-author">{{ product.schrijver.voornaam }} {{ product.schrijver.tussenvoegsel }} {{ product.schrijver.achternaam }}</p>
-    <p class="product-price">€{{ product.prijs }}</p>
+    <h2 class="product-title">{{ product.name }}</h2>
+    <p class="product-author">{{ product.writer.name}} {{ product.writer.middleName }} {{ product.writer.surName }}</p>
+    <p class="product-price">€{{ product.price }}</p>
     <a class="btn-buy" (click)="onStartAddItem($event)">{{ 'winkelwagen.toevoegen' | translate }}</a>
   </a>
 </article>

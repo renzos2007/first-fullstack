@@ -2,7 +2,7 @@
   <h1>{{ 'filterlijst' | translate }}</h1>
 
   <ul class="filter-list">
-    @for (filter of filterlist ; track filter.niveauID){
+    @for (filter of filterlist ; track filter.difficultyID){
       <li class="filter-item">
         <button [routerLink]="['/difficulty/'+getFilterByID(filter)]">{{ 'difficulty.' + filter.difficulty | translate }}</button>
       </li>

@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {GebruikersGegevens} from '../models/UserData';
+import {UserData} from '../models/UserData';
 import {GebruikersGegevensService} from '../services/gebruikers-gegevens.service';
 import {of} from 'rxjs';
 import {CurrencyPipe, DatePipe, NgForOf, NgIf, ViewportScroller} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
-import {OrderGegevens} from '../models/OrderGegevens';
+import {OrderData} from '../models/OrderGegevens';
 
 @Component({
   selector: 'app-gebruikergegevens',
@@ -19,7 +19,7 @@ import {OrderGegevens} from '../models/OrderGegevens';
   styleUrl: './gebruikergegevens.component.scss'
 })
 export class GebruikergegevensComponent implements OnInit {
-  protected gebruikersGegevens?: GebruikersGegevens;
+  protected gebruikersGegevens?: UserData;
   protected currentPage: number = 1;
   protected itemsPerPage: number = 10;
 
@@ -35,14 +35,14 @@ export class GebruikergegevensComponent implements OnInit {
       this.gebruikersGegevens = gebruikersGegevens;
     })
   }
-  public get paginatedOrders(): OrderGegevens[] {
+  public get paginatedOrders(): OrderData[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    return this.gebruikersGegevens?.orderGegevens.slice(startIndex, startIndex + this.itemsPerPage) || [];
+    return this.gebruikersGegevens?.orderData.slice(startIndex, startIndex + this.itemsPerPage) || [];
   }
 
   public nextPage(): void {
-    if (this.gebruikersGegevens && this.gebruikersGegevens.orderGegevens &&
-      (this.currentPage * this.itemsPerPage < this.gebruikersGegevens.orderGegevens.length)) {
+    if (this.gebruikersGegevens && this.gebruikersGegevens.orderData &&
+      (this.currentPage * this.itemsPerPage < this.gebruikersGegevens.orderData.length)) {
       this.currentPage++;
       this.viewportScroller.scrollToPosition([0, 0]);
     }
@@ -57,8 +57,8 @@ export class GebruikergegevensComponent implements OnInit {
 
 
   public get totalPages(): number {
-    const orderGegevensLength = this.gebruikersGegevens?.orderGegevens?.length || 0;
-    return Math.ceil(orderGegevensLength / this.itemsPerPage);
+    const orderDataLength = this.gebruikersGegevens?.orderData?.length || 0;
+    return Math.ceil(orderDataLength / this.itemsPerPage);
   }
 
   public berekenTotalePrijs(order: any): number {

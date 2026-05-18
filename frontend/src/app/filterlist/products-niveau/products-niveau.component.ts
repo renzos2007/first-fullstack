@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Filter} from '../../models/Difficulty';
+import {Difficulty} from '../../models/Difficulty';
 import {FilterService} from '../../services/filter.service';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {NgIf} from '@angular/common';
@@ -20,7 +20,7 @@ import {Product} from '../../models/Product';
 })
 export class ProductsNiveauComponent implements OnInit {
   private filterId!: number;
-  protected filter!: Filter;
+  protected filter!: Difficulty;
 
   protected currentPage: number = 1;
   protected itemsPerPage: number = 10;
@@ -35,21 +35,21 @@ export class ProductsNiveauComponent implements OnInit {
   }
 
   public loadFilterData(id: number): void {
-    this.filterService.getProductsByNiveau(id).subscribe(filter => {
-      this.filter = filter;
+    this.filterService.getProductsByNiveau(id).subscribe(difficulty => {
+      this.filter = difficulty;
     });
   }
 
   public get paginatedProducts(): Product[] {
-    if (!this.filter || !this.filter.niveaus) {
+    if (!this.filter || !this.filter.difficulty) {
       return [];
     }
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    return this.filter.niveaus.slice(startIndex, startIndex + this.itemsPerPage);
+    return this.filter.productList.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
   public nextPage(): void {
-    if (this.currentPage * this.itemsPerPage < this.filter.niveaus.length) {
+    if (this.currentPage * this.itemsPerPage < this.filter.difficulty.length) {
       this.currentPage++;
     }
   }
@@ -61,6 +61,6 @@ export class ProductsNiveauComponent implements OnInit {
   }
 
   public get totalPages(): number {
-    return Math.ceil(this.filter?.niveaus.length / this.itemsPerPage);
+    return Math.ceil(this.filter?.difficulty.length / this.itemsPerPage);
   }
 }

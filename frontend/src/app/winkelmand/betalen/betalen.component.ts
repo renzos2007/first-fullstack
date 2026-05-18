@@ -49,7 +49,7 @@ export class BetalenComponent implements OnInit {
   public getTotalePrijs(): number {
     let totaalPrijsWinkelwagen = 0;
     for (let i = 0; i < this.boekenBestelList.length; i++) {
-      let totaalPrijsProduct = this.boekenBestelList[i].prijs * this.boekenBestelList[i].hoeveelheid;
+      let totaalPrijsProduct = this.boekenBestelList[i].price * this.boekenBestelList[i].amount;
       totaalPrijsWinkelwagen += totaalPrijsProduct;
     }
     return parseFloat(totaalPrijsWinkelwagen.toFixed(2));

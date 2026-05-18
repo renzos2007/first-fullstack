@@ -17,7 +17,7 @@ import {AuthenticatieService} from '../services/authenticatie.service';
 })
 export class LoginComponent implements OnInit {
   protected email: string = "";
-  protected wachtwoord: string = "";
+  protected password: string = "";
   protected errorType: number | null = null;
 
   private loginService = inject(LoginService);
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   protected login(): void{
-    const loginData = {email: this.email, wachtwoord: this.wachtwoord}
+    const loginData = {email: this.email, password: this.password}
 
     this.loginService.login(loginData).subscribe({
       next: (responseData) => {
