@@ -1,4 +1,4 @@
-@if (isBetaald === true) {
+@if (ispayed === true) {
   {{createOrder()}}
 }
 
@@ -7,7 +7,7 @@
   <article>
     <section>
       <ul>
-        <li *ngFor="let boek of getBestelList()">
+        <li *ngFor="let boek of getOrderList()">
           <img src="{{boek.image}}">
           <div>
             <p>{{ 'titel' | translate }} {{ boek.name }} </p>
@@ -19,9 +19,9 @@
     </section>
 
     <section>
-      <p id="totaleprijs">{{ 'totale.prijs' | translate }} €{{getTotalePrijs()}}</p>
-      <button (click)="clearBestelList()">{{ 'leeg.winkelmand' | translate }}</button>
-      <button (click)="betaalPage()" [disabled]="boekenBestelList.length === 0">{{ 'bestel' | translate }}</button>
+      <p id="totaleprijs">{{ 'totale.prijs' | translate }} €{{getTotalPrice()}}</p>
+      <button (click)="clearOrderList()">{{ 'leeg.winkelmand' | translate }}</button>
+      <button (click)="paymentPage()" [disabled]="ProductOrderList.length === 0">{{ 'bestel' | translate }}</button>
     </section>
   </article>
 </main>

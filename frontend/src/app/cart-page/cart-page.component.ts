@@ -13,57 +13,57 @@ import {TranslatePipe} from '@ngx-translate/core';
 import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
-  selector: 'app-winkelmand',
+  selector: 'app-cart-page',
   imports: [
     NgFor,
     TranslatePipe
   ],
-  templateUrl: './winkelmand.component.html',
-  styleUrl: './winkelmand.component.scss'
+  templateUrl: './cart-page.component.html',
+  styleUrl: './cart-page.component.scss'
 })
-export class WinkelmandComponent {
-  protected boekenBestelList: CartProduct[];
+export class CartPageComponent {
+  protected ProductOrderList: CartProduct[];
   private router = inject(Router);
   private authenticationService =  inject(AuthenticationService);
-  protected isBetaald: boolean = false;
+  protected ispayed: boolean = false;
 
   constructor(private cartService: CartService, private userDataService: UserDataService, private http: HttpClient, private cdr: ChangeDetectorRef, private route: ActivatedRoute
   ) {
-    this.boekenBestelList = this.cartService.getProducts();
+    this.ProductOrderList = this.cartService.getProducts();
 
     const savedCart = localStorage.getItem('cart_products');
     if (savedCart) {
-      this.boekenBestelList = JSON.parse(savedCart);
+      this.ProductOrderList = JSON.parse(savedCart);
     } else {
-      this.boekenBestelList = []
+      this.ProductOrderList = []
     }
 
     this.route.queryParams.subscribe(params => {
-      this.isBetaald = params['isBetaald'] === 'true';
+      this.ispayed = params['ispayed'] === 'true';
     });
   }
 
-  public getBestelList(): CartProduct[] {
-    return this.boekenBestelList;
+  public getOrderList(): CartProduct[] {
+    return this.ProductOrderList;
   }
 
-  public clearBestelList(): void {
-    this.boekenBestelList = [];
-    this.cartService.setProducts(this.boekenBestelList);
+  public clearOrderList(): void {
+    this.ProductOrderList = [];
+    this.cartService.setProducts(this.ProductOrderList);
     this.cartService.updateLocalStorage();
     this.cdr.detectChanges();
   }
 
-  public getTotalePrijs(): number {
-    let totaalPrijsWinkelwagen = 0
-    for (let i = 0; i < this.boekenBestelList.length; i++) {
-      let totaalPrijsProduct = this.boekenBestelList[i].price * this.boekenBestelList[i].amount;
-      totaalPrijsWinkelwagen += totaalPrijsProduct
+  public getTotalPrice(): number {
+    let totalPriceCart = 0;
+    for (let i = 0; i < this.ProductOrderList.length; i++) {
+      let totalPriceProduct = this.ProductOrderList[i].price * this.ProductOrderList[i].amount;
+      totalPriceCart += totalPriceProduct;
     }
-    return parseFloat(totaalPrijsWinkelwagen.toFixed(2));
+    return parseFloat(totalPriceCart.toFixed(2));
   }
 
-  public betaalPage(): void {
+  public paymentPage(): void {
     this.userDataService.getUserData().pipe(
       catchError(error => {
         if (error.status === 401) {
@@ -73,16 +73,16 @@ export class WinkelmandComponent {
         return throwError(error);
       })
     ).subscribe()
-    this.router.navigate(['/betalen']);
+    this.router.navigate(['/payment']);
   }
 
   public createOrder(): void {
-    let nodigeInfo = this.boekenBestelList.map(boek => ({
-      boekID: boek.productID,
-      hoeveelheid: boek.amount < 1 ? 1 : boek.amount
+    let productData = this.ProductOrderList.map(product => ({
+      boekID: product.productID,
+      hoeveelheid: product.amount < 1 ? 1 : product.amount
     }));
 
-    this.http.post(environment.apiUrl + "/order", nodigeInfo).pipe(
+    this.http.post(environment.apiUrl + "/order", productData).pipe(
       catchError(error => {
         console.error('Er is een fout opgetreden bij het verzenden van de order:', error);
         return throwError(error);
@@ -90,8 +90,8 @@ export class WinkelmandComponent {
     ).subscribe(response => {
       console.log('Order succesvol verzonden:', response);
     });
-    this.isBetaald = false;
-    this.clearBestelList()
+    this.ispayed = false;
+    this.clearOrderList()
     this.router.navigate(['/']);
     alert("Bestelling is geplaatst")
   };

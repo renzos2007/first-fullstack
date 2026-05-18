@@ -4,7 +4,7 @@
       <h1>
         {{ 'Betalen' | translate }}
       </h1>
-      <p> {{ 'je.moet.betalen.1' | translate }} €{{ getTotalePrijs() }} {{ 'je.moet.betalen.2' | translate }}</p>
+      <p> {{ 'je.moet.betalen.1' | translate }} €{{ getTotalPrice() }} {{ 'je.moet.betalen.2' | translate }}</p>
     </section>
 
     <section>
@@ -12,35 +12,35 @@
       <form (ngSubmit)="verwerkBetaling()">
         <div>
           <label>
-            <input type="radio" name="betalmethode" value="creditcard" [(ngModel)]="gekozenBetaalmethode" required>
+            <input type="radio" name="betalmethode" value="creditcard" [(ngModel)]="chosenPaymentMethod" required>
             Visa
           </label>
         </div>
         <div>
           <label>
-            <input type="radio" name="betalmethode" value="ideal" [(ngModel)]="gekozenBetaalmethode" required>
+            <input type="radio" name="betalmethode" value="ideal" [(ngModel)]="chosenPaymentMethod" required>
             iDEAL
           </label>
         </div>
         <div>
           <label>
-            <input type="radio" name="betalmethode" value="paypal" [(ngModel)]="gekozenBetaalmethode" required>
+            <input type="radio" name="betalmethode" value="paypal" [(ngModel)]="chosenPaymentMethod" required>
             PayPal
           </label>
         </div>
         <div>
           <label>
-            <input type="radio" name="betalmethode" value="bankoverschrijving" [(ngModel)]="gekozenBetaalmethode" required>
+            <input type="radio" name="betalmethode" value="bankoverschrijving" [(ngModel)]="chosenPaymentMethod" required>
             Mastercard
           </label>
         </div>
         <button type="submit">{{ 'betaal.bevestigen' | translate }}</button>
-        <button type="button" (click)="annuleren()">{{ 'annuleren' | translate }}</button>
+        <button type="button" (click)="cancelPayment()">{{ 'annuleren' | translate }}</button>
       </form>
     </section>
 
     <section id="error">
-      <div *ngIf="!betaalmethodeGekozen && !gekozenBetaalmethode">
+      <div *ngIf="!paymentMethodChosen && !chosenPaymentMethod">
         <p>{{ 'betaal.error' | translate }}</p>
       </div>
     </section>

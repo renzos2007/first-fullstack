@@ -8,14 +8,14 @@
   <section>
     <a id="profile">
       @if (this.loginService.isLoggedIn()){
-        <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.gebruikerspagina' | translate }}" [routerLink]="['/gebruiker']">
+        <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.gebruikerspagina' | translate }}" [routerLink]="['/user']">
       } @else {
         <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.inlogpagina' | translate }}" [routerLink]="['/login']">
       }
     </a>
 
     <a id="winkelmand">
-      <img src="/images/thumbnail_winkelMandButton_wit.png" alt="{{ 'naar.winkelmand' | translate }}" [routerLink]="['/winkelmand']">
+      <img src="/images/thumbnail_winkelMandButton_wit.png" alt="{{ 'naar.winkelmand' | translate }}" [routerLink]="['/cart']">
     </a>
   </section>
 
