@@ -1,20 +1,20 @@
 import {Component, Input} from '@angular/core';
 import {Product} from '../../models/Product';
-import {AddWinkelmandComponent} from '../../add-winkelmand/add-winkelmand.component';
+import {AddCartComponent} from '../../add-cart/add-cart.component';
 import {RouterLink} from '@angular/router';
 import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-product-items',
+  selector: 'app-product-difficulty-item',
     imports: [
-        AddWinkelmandComponent,
+        AddCartComponent,
         RouterLink,
         TranslatePipe
     ],
-  templateUrl: './product-items.component.html',
-  styleUrl: './product-items.component.scss'
+  templateUrl: './product-difficulty-item.component.html',
+  styleUrl: './product-difficulty-item.component.scss'
 })
-export class ProductItemsComponent {
+export class ProductDifficultyItemComponent {
   @Input({required: true}) product!: Product;
   protected isAddingItem = false;
 

@@ -5,24 +5,24 @@ import {RouterLink} from '@angular/router';
 import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-filterlist',
+  selector: 'app-difficulty-list',
     imports: [
         RouterLink,
         TranslatePipe
     ],
-  templateUrl: './filterlist.component.html',
-  styleUrl: './filterlist.component.scss'
+  templateUrl: './difficulty-list.component.html',
+  styleUrl: './difficulty-list.component.scss'
 })
-export class FilterlistComponent implements OnInit {
-  protected filterlist: Difficulty[] = [];
+export class DifficultyListComponent implements OnInit {
+  protected difficultylist: Difficulty[] = [];
 
   constructor(private difficultyService: DifficultyService) {}
 
   ngOnInit():void {
-    this.difficultyService.getDifficultiyList().subscribe(filters => {this.filterlist = filters})
+    this.difficultyService.getDifficultiyList().subscribe(filters => {this.difficultylist = filters})
   }
 
-  public getFilterByID(difficulty: Difficulty): number {
+  public getDifficultyByID(difficulty: Difficulty): number {
     return difficulty.difficultyID;
   }
 

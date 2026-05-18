@@ -1,8 +1,8 @@
 @if (isAddingItem) {
-  <app-add-winkelmand [product]="product" (cancel)="onCancelAddItem()"/>
+  <app-add-cart [product]="product" (cancel)="onCancelAddItem()"/>
 }
 
-<article [routerLink]="['/product/'+ getProductID()]">
+<article [routerLink]="['/difficulty/'+ getProductID()]">
   <a class="product-image">
     <img src="{{product.image}}" alt="{{ 'afbeelding.van' | translate }} {{product.name}}">
   </a>

@@ -1,0 +1,16 @@
+<main>
+  <h1>{{ 'filterlijst' | translate }}</h1>
+
+  <ul class="filter-list">
+    @for (difficulty of difficultylist ; track difficulty.difficultyID){
+      <li class="filter-item">
+        <button [routerLink]="['/difficulty/'+getDifficultyByID(difficulty)]">{{ 'difficulty.' + difficulty.difficulty | translate }}</button>
+      </li>
+    }
+
+    <li class="filter-item">
+      <button routerLink="/difficulty/product/all">{{ 'alle.boeken' | translate }}</button>
+    </li>
+  </ul>
+</main>
+

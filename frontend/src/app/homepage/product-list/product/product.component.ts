@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {AddWinkelmandComponent} from '../../../add-winkelmand/add-winkelmand.component';
+import {AddCartComponent} from '../../../add-cart/add-cart.component';
 
 import { Product } from '../../../models/Product';
 import {RouterLink} from '@angular/router';
@@ -9,7 +9,7 @@ import {filter} from 'rxjs';
 @Component({
   selector: 'app-product',
     imports: [
-        AddWinkelmandComponent,
+        AddCartComponent,
         RouterLink,
         TranslatePipe
     ],

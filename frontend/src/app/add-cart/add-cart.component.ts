@@ -5,15 +5,15 @@ import {FormsModule} from '@angular/forms';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-add-winkelmand',
+  selector: 'app-add-cart',
   imports: [
     FormsModule,
     TranslatePipe
   ],
-  templateUrl: './add-winkelmand.component.html',
-  styleUrl: './add-winkelmand.component.scss'
+  templateUrl: './add-cart.component.html',
+  styleUrl: './add-cart.component.scss'
 })
-export class AddWinkelmandComponent {
+export class AddCartComponent {
   @Output() cancel = new EventEmitter<void>();
   @Input() product!: Product;
 

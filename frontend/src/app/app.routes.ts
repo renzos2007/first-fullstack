@@ -2,14 +2,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {WinkelmandComponent} from './winkelmand/winkelmand.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
-import {FilterlistComponent} from './filterlist/filterlist.component';
-import {ProductsNiveauComponent} from './filterlist/products-niveau/products-niveau.component';
-import {AllProductsComponent} from './filterlist/all-products/all-products.component';
 import {NgModule} from '@angular/core';
 import {GebruikergegevensComponent} from './gebruikergegevens/gebruikergegevens.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './login/register/register.component';
 import {BetalenComponent} from './winkelmand/betalen/betalen.component';
+import { DifficultyListComponent } from './difficulty-list/difficulty-list.component';
+import { ProductAllDifficultyListComponent } from './difficulty-list/product-all-difficulty-list/product-all-difficulty-list';
+import { ProductsDifficultyListComponent } from './difficulty-list/product-difficulty-list/product-difficulty-list.component';
 
 export const routes: Routes = [
   {
@@ -25,16 +25,16 @@ export const routes: Routes = [
     component: ProductDetailsComponent,
   },
   {
-    path:'niveau',
-    component: FilterlistComponent,
+    path:'difficulty',
+    component: DifficultyListComponent,
   },
   {
-    path:'niveau/:id',
-    component: ProductsNiveauComponent,
+    path:'difficulty/:id',
+    component: ProductsDifficultyListComponent,
   },
   {
-    path:'niveau/boeken/alles',
-    component: AllProductsComponent,
+    path:'difficulty/product/all',
+    component: ProductAllDifficultyListComponent,
   },
   {
     path:'gebruiker',

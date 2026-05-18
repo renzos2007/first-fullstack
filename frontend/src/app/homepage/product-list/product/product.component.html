@@ -1,5 +1,5 @@
 @if (isAddingItem) {
-  <app-add-winkelmand [product]="product" (cancel)="onCancelAddItem()"/>
+  <app-add-cart [product]="product" (cancel)="onCancelAddItem()"/>
 }
 
 <article class="product-card" [routerLink]="['/product/'+ getProductID()]">

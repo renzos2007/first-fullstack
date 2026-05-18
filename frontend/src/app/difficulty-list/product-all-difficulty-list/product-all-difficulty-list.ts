@@ -1,21 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../../models/Product';
 import {ProductService} from '../../services/product.service';
-import {ProductItemsComponent} from '../product-items/product-items.component';
 import {TranslatePipe} from '@ngx-translate/core';
 import {RouterLink} from '@angular/router';
+import { ProductDifficultyItemComponent } from '../product-difficulty-item/product-difficulty-item.component';
 
 @Component({
   selector: 'app-all-products',
   imports: [
-    ProductItemsComponent,
+    ProductDifficultyItemComponent,
     TranslatePipe,
     RouterLink
   ],
-  templateUrl: './all-products.component.html',
-  styleUrl: './all-products.component.scss'
+  templateUrl: './product-all-difficulty-list.component.html',
+  styleUrl: './product-all-difficulty-list.component.scss'
 })
-export class AllProductsComponent implements OnInit {
+export class ProductAllDifficultyListComponent implements OnInit {
   protected products: Product[] = []
 
   protected currentPage: number = 1;

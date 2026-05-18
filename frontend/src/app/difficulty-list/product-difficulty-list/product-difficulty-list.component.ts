@@ -3,22 +3,22 @@ import {Difficulty} from '../../models/Difficulty';
 import {DifficultyService} from '../../services/difficulty.service';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {NgIf} from '@angular/common';
-import {ProductItemsComponent} from '../product-items/product-items.component';
 import {TranslatePipe} from "@ngx-translate/core";
 import {Product} from '../../models/Product';
+import { ProductDifficultyItemComponent } from '../product-difficulty-item/product-difficulty-item.component';
 
 @Component({
-  selector: 'app-products-niveau',
+  selector: 'app-products-difficulty',
   imports: [
     NgIf,
-    ProductItemsComponent,
+    ProductDifficultyItemComponent,
     TranslatePipe,
     RouterLink
   ],
-  templateUrl: './products-niveau.component.html',
-  styleUrl: './products-niveau.component.scss'
+  templateUrl: './product-difficulty-list.component.html',
+  styleUrl: './product-difficulty-list.component.scss'
 })
-export class ProductsNiveauComponent implements OnInit {
+export class ProductsDifficultyListComponent implements OnInit {
   private filterId!: number;
   protected filter!: Difficulty;
 

@@ -3,7 +3,7 @@ import  {ActivatedRoute} from '@angular/router';
 import {Product} from '../models/Product';
 import {ProductService} from '../services/product.service';
 import {catchError, of} from 'rxjs';
-import {AddWinkelmandComponent} from '../add-winkelmand/add-winkelmand.component';
+import {AddCartComponent} from '../add-cart/add-cart.component';
 import {NgForOf, NgIf} from '@angular/common';
 import {TranslatePipe} from "@ngx-translate/core";
 
@@ -11,7 +11,7 @@ import {TranslatePipe} from "@ngx-translate/core";
 @Component({
   selector: 'app-product-details',
     imports: [
-        AddWinkelmandComponent,
+        AddCartComponent,
         NgForOf,
         NgIf,
         TranslatePipe
