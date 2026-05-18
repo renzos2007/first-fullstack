@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Filter} from '../models/Filter';
+import {Filter} from '../models/Difficulty';
 import {FilterService} from '../services/filter.service';
 import {RouterLink} from '@angular/router';
 import {TranslatePipe} from "@ngx-translate/core";

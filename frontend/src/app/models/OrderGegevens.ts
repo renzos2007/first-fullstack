@@ -1,11 +1,11 @@
 import {Product} from './Product';
 
-export interface OrderGegevens {
-  orderNumber: number;
-  besteldeBoeken: [{
-    boek: Product;
-    hoeveelheid:number;
+export interface OrderData {
+  orderID: number;
+  orderItemList: [{
+    product: Product;
+    amount: number;
   }];
-  orderDatum: Date;
-  afgehandeld: boolean;
+  orderDate: Date;
+  finished: boolean;
 }

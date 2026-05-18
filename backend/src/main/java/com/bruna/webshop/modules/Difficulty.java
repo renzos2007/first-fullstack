@@ -16,8 +16,8 @@ public class Difficulty {
 
     @OneToMany (mappedBy = "difficulty")
     @JsonManagedReference
-    @Column(name="difficulty_list")
-    private List<Product> difficultyList;
+    @Column(name="product_list")
+    private List<Product> productList;
 
     public Difficulty(String difficulty) {
         this.difficulty = difficulty;
@@ -41,11 +41,11 @@ public class Difficulty {
         this.difficulty = difficulty;
     }
 
-    public List<Product> getDifficultyList() {
-        return difficultyList;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setDifficultyList(List<Product> difficultyList) {
-        this.difficultyList = difficultyList;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }

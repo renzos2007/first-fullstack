@@ -39,6 +39,7 @@ public class SecurityConfig {
                     .requestMatchers("/auth/**").permitAll()
                     .requestMatchers("/niveau/**").permitAll()
                     .requestMatchers("/product/**").permitAll()
+                    .requestMatchers("/difficulty/**").permitAll()
                     .requestMatchers("/error").anonymous()
                     .anyRequest().authenticated()
                 )

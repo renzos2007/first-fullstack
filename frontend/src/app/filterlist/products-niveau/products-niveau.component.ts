@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Filter} from '../../models/Filter';
+import {Filter} from '../../models/Difficulty';
 import {FilterService} from '../../services/filter.service';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {NgIf} from '@angular/common';

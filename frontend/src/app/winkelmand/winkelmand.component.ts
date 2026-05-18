@@ -2,7 +2,7 @@ import {Component, inject, Input} from '@angular/core';
 import {WinkelmandService} from '../services/winkelmand.service';
 import {WinkelmandProduct} from '../models/WinkelmandProduct';
 import {NgFor} from '@angular/common';
-import {GebruikersGegevens} from '../models/GebruikersGegevens';
+import {GebruikersGegevens} from '../models/UserData';
 import {GebruikersGegevensService} from '../services/gebruikers-gegevens.service';
 import {catchError, throwError} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';

@@ -1,16 +1,16 @@
 package com.bruna.webshop.dto;
 
 public class OrderDTO {
-    private long ProductID;
+    private long productID;
     private int amount;
 
-    public OrderDTO(long ProductID, int amount) {
-        this.ProductID = ProductID;
+    public OrderDTO(long productID, int amount) {
+        this.productID = productID;
         this.amount = amount;
     }
 
     public long getProductID() {
-        return ProductID;
+        return productID;
     }
 
     public int getAmount() {

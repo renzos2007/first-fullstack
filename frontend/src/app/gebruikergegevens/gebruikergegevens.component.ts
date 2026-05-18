@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GebruikersGegevens} from '../models/GebruikersGegevens';
+import {GebruikersGegevens} from '../models/UserData';
 import {GebruikersGegevensService} from '../services/gebruikers-gegevens.service';
 import {of} from 'rxjs';
 import {CurrencyPipe, DatePipe, NgForOf, NgIf, ViewportScroller} from '@angular/common';

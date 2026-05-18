@@ -1,33 +1,22 @@
+import { Genre } from "./Genre";
+import { Publisher } from "./Publisher";
+import { Review } from "./Review";
+import { Writer } from "./Writer";
+
 export interface Product {
-  boekID: number;
-  naam: string;
-  soort: string;
-  prijs: number;
-  genreList: [{
-    genreId: number;
-    naam: string;
-  }]
-  samenvatting: string;
-  taal: string;
-  hoeveelheidPaginas: number;
-  schrijver: {
-    id: number;
-    voornaam: string;
-    tussenvoegsel: string;
-    achternaam: string;
-  };
-  uitgever: {
-    uitgeverID: number;
-    uitgeverNaam: string;
-    plaatje: string;
-  }
+  productID: number;
+  name: string;
+  type: string;
+  price: number;
+  genreList: Genre[];
+  summary: string;
+  language: string;
+  pages: number;
+  writer: Writer;
+  publisher: Publisher;
   cover: string;
-  voorraad: number;
-  recensie:[{
-    recensieID: number;
-    rating: number;
-    recentie: string;
-  }]
-  plaatje: string;
-  "bestSeller": boolean;
+  stock: number;
+  review: Review[];
+  image: string;
+  bestSeller: boolean;
 }
