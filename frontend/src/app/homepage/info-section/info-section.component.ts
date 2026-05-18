@@ -6,12 +6,12 @@ import {NgIf} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-info-homepage',
+  selector: 'app-info-section',
   imports: [RouterLink, NgIf, TranslatePipe],
-  templateUrl: './info-homepage.html',
-  styleUrl: './info-homepage.scss'
+  templateUrl: './info-section.component.html',
+  styleUrl: './info-section.component.scss'
 })
-export class InfoHomepage implements OnInit {
+export class InfoSectionComponent implements OnInit {
 
   private products: Product[] = [];
   protected bestSellers: Product[] = [];

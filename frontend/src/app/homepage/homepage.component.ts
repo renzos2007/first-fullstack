@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {ProductListComponent} from './product-list/product-list.component';
-import {InfoHomepage} from './info-homepage/info-homepage';
+import {InfoSectionComponent} from './info-section/info-section.component';
+import { ProductListSectionComponent } from './product-list-section/product-list-section.component';
 
 @Component({
   selector: 'app-homepage',
   imports: [
-    ProductListComponent,
-    InfoHomepage
-  ],
+    InfoSectionComponent,
+    ProductListSectionComponent
+],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
 })

@@ -7,16 +7,16 @@ import {TranslatePipe} from "@ngx-translate/core";
 import {filter} from 'rxjs';
 
 @Component({
-  selector: 'app-product',
+  selector: 'app-product-item-section',
     imports: [
         AddCartComponent,
         RouterLink,
         TranslatePipe
     ],
-  templateUrl: './product.component.html',
-  styleUrl: './product.component.scss'
+  templateUrl: './product-item-section.component.html',
+  styleUrl: './product-item-section.component.scss'
 })
-export class ProductComponent {
+export class ProductItemSectionComponent {
   @Input({required:true}) product!: Product;
   protected isAddingItem = false;
 
