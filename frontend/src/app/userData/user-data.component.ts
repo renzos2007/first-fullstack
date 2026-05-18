@@ -9,17 +9,17 @@ import {Router} from '@angular/router';
 import {OrderData} from '../models/OrderData';
 
 @Component({
-  selector: 'app-gebruikergegevens',
+  selector: 'app-user-data',
   imports: [
     NgForOf,
     DatePipe,
     TranslatePipe,
   ],
-  templateUrl: './gebruikergegevens.component.html',
-  styleUrl: './gebruikergegevens.component.scss'
+  templateUrl: './user-data.component.html',
+  styleUrl: './user-data.component.scss'
 })
-export class GebruikergegevensComponent implements OnInit {
-  protected gebruikersGegevens?: UserData;
+export class UserDataComponent implements OnInit {
+  protected userData?: UserData;
   protected currentPage: number = 1;
   protected itemsPerPage: number = 10;
 
@@ -31,18 +31,18 @@ export class GebruikergegevensComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    this.userDataService.getUserData().subscribe(gebruikersGegevens => {
-      this.gebruikersGegevens = gebruikersGegevens;
+    this.userDataService.getUserData().subscribe(userData => {
+      this.userData = userData;
     })
   }
   public get paginatedOrders(): OrderData[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    return this.gebruikersGegevens?.orderData.slice(startIndex, startIndex + this.itemsPerPage) || [];
+    return this.userData?.orderData.slice(startIndex, startIndex + this.itemsPerPage) || [];
   }
 
   public nextPage(): void {
-    if (this.gebruikersGegevens && this.gebruikersGegevens.orderData &&
-      (this.currentPage * this.itemsPerPage < this.gebruikersGegevens.orderData.length)) {
+    if (this.userData && this.userData.orderData &&
+      (this.currentPage * this.itemsPerPage < this.userData.orderData.length)) {
       this.currentPage++;
       this.viewportScroller.scrollToPosition([0, 0]);
     }
@@ -57,16 +57,16 @@ export class GebruikergegevensComponent implements OnInit {
 
 
   public get totalPages(): number {
-    const orderDataLength = this.gebruikersGegevens?.orderData?.length || 0;
+    const orderDataLength = this.userData?.orderData?.length || 0;
     return Math.ceil(orderDataLength / this.itemsPerPage);
   }
 
-  public berekenTotalePrijs(order: any): number {
-    let totalePrijs = 0;
-    for (const boek of order.besteldeBoeken) {
-      totalePrijs += boek.boek.prijs * boek.hoeveelheid;
+  public calculateTotalPrice(order: any): number {
+    let totalPrice = 0;
+    for (const product of order.orderItemList) {
+      totalPrice += product.product.price * product.amount;
     }
-    return parseFloat(totalePrijs.toFixed(2));
+    return parseFloat(totalPrice.toFixed(2));
   }
 }
 

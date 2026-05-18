@@ -1,7 +1,7 @@
 <main>
   <section>
     <h1>{{ 'gebruikerspagina' | translate }}</h1>
-    <p>{{ 'welkom' | translate }} {{gebruikersGegevens?.userName}}</p>
+    <p>{{ 'welkom' | translate }} {{userData?.userName}}</p>
   </section>
   <section>
     <button (click)="loginService.logout()">{{ 'uitloggen' | translate }}</button>
@@ -13,7 +13,7 @@
         <div class="orderdetails">
           <p><b>{{ 'bestelnummer' | translate }} {{ orders.orderID }}</b></p>
           <p>{{ 'datum' | translate }} {{ orders.orderDate | date:'dd-MM-yyyy' }}</p>
-          <p>{{ 'totale.prijs' | translate }} €{{berekenTotalePrijs(orders)}}</p>
+          <p>{{ 'totale.prijs' | translate }} €{{calculateTotalPrice(orders)}}</p>
           <p> {{ 'bestelde.boeken' | translate }}:</p>
         </div>
 

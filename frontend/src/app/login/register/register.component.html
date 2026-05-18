@@ -3,9 +3,9 @@
 
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <section>
-      <label for="gebruikersnaam">{{ 'gebruikersnaam' | translate }}</label>
-      <input type="text" formControlName="gebruikersnaam" id="gebruikersnaam">
-      @if (registerForm.get('gebruikersnaam')?.touched && registerForm.get('gebruikersnaam')?.invalid){
+      <label for="userName">{{ 'gebruikersnaam' | translate }}</label>
+      <input type="text" formControlName="userName" id="userName">
+      @if (registerForm.get('userName')?.touched && registerForm.get('userName')?.invalid){
         <span>{{ 'moet.je.invullen' | translate }}</span>
       }
     </section>
@@ -53,9 +53,9 @@
     </section>
 
     <section>
-      <label for="staatnaam">{{ 'straatnaam' | translate }}</label>
-      <input type="text" formControlName="staatnaam" id="staatnaam">
-      @if (registerForm.get('staatnaam')?.touched && registerForm.get('staatnaam')?.invalid){
+      <label for="streetName">{{ 'straatnaam' | translate }}</label>
+      <input type="text" formControlName="streetName" id="streetName">
+      @if (registerForm.get('streetName')?.touched && registerForm.get('streetName')?.invalid){
         <span>{{ 'moet.je.invullen' | translate }}</span>
       }
     </section>

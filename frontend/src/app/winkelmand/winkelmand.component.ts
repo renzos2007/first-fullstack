@@ -10,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import { ChangeDetectorRef } from '@angular/core';
 import {TranslatePipe} from '@ngx-translate/core';
-import {AuthenticatieService} from '../services/authenticatie.service';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-winkelmand',
@@ -24,7 +24,7 @@ import {AuthenticatieService} from '../services/authenticatie.service';
 export class WinkelmandComponent {
   protected boekenBestelList: CartProduct[];
   private router = inject(Router);
-  private authenticatieService =  inject(AuthenticatieService);
+  private authenticationService =  inject(AuthenticationService);
   protected isBetaald: boolean = false;
 
   constructor(private cartService: CartService, private userDataService: UserDataService, private http: HttpClient, private cdr: ChangeDetectorRef, private route: ActivatedRoute
@@ -67,7 +67,7 @@ export class WinkelmandComponent {
     this.userDataService.getUserData().pipe(
       catchError(error => {
         if (error.status === 401) {
-          this.authenticatieService.setErrorType(error.status);
+          this.authenticationService.setErrorType(error.status);
           this.router.navigate(['/login']);
         }
         return throwError(error);

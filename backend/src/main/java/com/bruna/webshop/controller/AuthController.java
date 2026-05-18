@@ -116,26 +116,11 @@ public class AuthController {
         UserData registeredUser  = new UserData(authenticationDTO.userName, encodedPassword, authenticationDTO.email, authenticationDTO.city, authenticationDTO.postalCode, authenticationDTO.streetName, authenticationDTO.houseNumber);
 
         Set<Role> roles = new HashSet<>();
-        if (authenticationDTO.role == null || authenticationDTO.role.isEmpty()) {
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-            roles.add(userRole);
-        } else {
-            for (Role role : authenticationDTO.role) {
-                if (role.getName().equals(ERole.ROLE_ADMIN)) {
-                    Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                    roles.add(adminRole);
-                } else {
-                    Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                    roles.add(userRole);
-                }
-            }
-        }
+        Role userRole = roleRepository.findByName(ERole.ROLE_USER).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        roles.add(userRole);
 
         registeredUser .setRoles(roles);
-        userDataRepository.save(registeredUser );
+        userDataRepository.save(registeredUser);
 
         String token = jwtUtil.generateToken(registeredUser .getEmail());
         LoginResponse loginResponse = new LoginResponse(registeredUser .getEmail(), token);

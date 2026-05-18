@@ -1,9 +1,9 @@
 export interface Register {
   email: string;
-  gebruikersnaam: string;
-  wachtwoord: string;
-  woonplaats: string;
-  postcode: string;
-  straatnaam: string;
-  huisnummer: string;
+  userName: string;
+  password: string;
+  city: string;
+  postalCode: string;
+  streetName: string;
+  houseNumber: string;
 }

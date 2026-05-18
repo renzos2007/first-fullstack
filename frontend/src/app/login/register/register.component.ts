@@ -16,17 +16,17 @@ import {TranslatePipe} from "@ngx-translate/core";
 export class RegisterComponent {
   protected error: number|null = null;
   protected registerForm = new FormGroup({
-    "gebruikersnaam": new FormControl("", [Validators.required]),
+    "userName": new FormControl("", [Validators.required]),
     "email": new FormControl("", [Validators.required, Validators.email]),
-    "wachtwoord": new FormControl("", [Validators.required, Validators.minLength(8),
+    "password": new FormControl("", [Validators.required, Validators.minLength(8),
       Validators.pattern(/[A-Z]/),
       Validators.pattern(/[0-9]/),
       Validators.pattern(/[!@#$%^&*(),.?":{}|<>]/),
       Validators.pattern(/^\S*$/)]),
-    "woonplaats": new FormControl("", [Validators.required]),
-    "postcode": new FormControl("", [Validators.required]),
-    "staatnaam": new FormControl("", [Validators.required]),
-    "huisnummer": new FormControl("", [Validators.required]),
+    "city": new FormControl("", [Validators.required]),
+    "postalCode": new FormControl("", [Validators.required]),
+    "streetName": new FormControl("", [Validators.required]),
+    "houseNumber": new FormControl("", [Validators.required]),
   })
 
   private loginService = inject(LoginService);
@@ -34,18 +34,18 @@ export class RegisterComponent {
 
   protected register(): void {
     const registerData = {
-      gebruikersnaam: this.registerForm.get('gebruikersnaam')!.value!,
+      userName: this.registerForm.get('userName')!.value!,
       email: this.registerForm.get('email')!.value!,
-      wachtwoord: this.registerForm.get('wachtwoord')!.value!,
-      woonplaats: this.registerForm.get('woonplaats')!.value!,
-      postcode: this.registerForm.get('postcode')!.value!,
-      straatnaam: this.registerForm.get('staatnaam')!.value!,
-      huisnummer: this.registerForm.get('huisnummer')!.value!
+      password: this.registerForm.get('password')!.value!,
+      city: this.registerForm.get('city')!.value!,
+      postalCode: this.registerForm.get('postalCode')!.value!,
+      streetName: this.registerForm.get('streetName')!.value!,
+      houseNumber: this.registerForm.get('houseNumber')!.value!,
     }
 
     this.loginService.registerAccount(registerData).subscribe({
       next: (responseData) => {
-        this.router.navigate(['/gebruiker']);
+        this.router.navigate(['/user']);
       },
       error: (error) => {
         console.log(error)

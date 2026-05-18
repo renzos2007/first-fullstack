@@ -3,7 +3,7 @@ import {Router, RouterLink} from '@angular/router';
 import {LoginService} from '../services/login.service';
 import {FormsModule} from '@angular/forms';
 import {TranslatePipe} from "@ngx-translate/core";
-import {AuthenticatieService} from '../services/authenticatie.service';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -22,13 +22,13 @@ export class LoginComponent implements OnInit {
 
   private loginService = inject(LoginService);
   private router = inject(Router);
-  private authenticatieService =  inject(AuthenticatieService);
+  private authenticationService =  inject(AuthenticationService);
 
   ngOnInit(): void {
     console.log("ngOnInit is aangeroepen");
-    this.errorType = this.authenticatieService.getErrorType();
+    this.errorType = this.authenticationService.getErrorType();
     console.log("ErrorType in ngOnInit:", this.errorType);
-    this.authenticatieService.clearErrorType();
+    this.authenticationService.clearErrorType();
   }
 
   protected login(): void{
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(loginData).subscribe({
       next: (responseData) => {
-        this.router.navigate(['/gebruiker']);
+        this.router.navigate(['/user']);
       },
       error: (error) => {
         this.errorType = error.error;

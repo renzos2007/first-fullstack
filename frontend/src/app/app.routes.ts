@@ -3,13 +3,13 @@ import {HomepageComponent} from './homepage/homepage.component';
 import {WinkelmandComponent} from './winkelmand/winkelmand.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import {NgModule} from '@angular/core';
-import {GebruikergegevensComponent} from './gebruikergegevens/gebruikergegevens.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './login/register/register.component';
 import {BetalenComponent} from './winkelmand/betalen/betalen.component';
 import { DifficultyListComponent } from './difficulty-list/difficulty-list.component';
 import { ProductAllDifficultyListComponent } from './difficulty-list/product-all-difficulty-list/product-all-difficulty-list';
 import { ProductsDifficultyListComponent } from './difficulty-list/product-difficulty-list/product-difficulty-list.component';
+import { UserDataComponent } from './userData/user-data.component';
 
 export const routes: Routes = [
   {
@@ -37,8 +37,8 @@ export const routes: Routes = [
     component: ProductAllDifficultyListComponent,
   },
   {
-    path:'gebruiker',
-    component: GebruikergegevensComponent,
+    path:'user',
+    component: UserDataComponent,
   },
   {
     path:'login',

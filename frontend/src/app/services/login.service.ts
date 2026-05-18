@@ -53,6 +53,7 @@ export class LoginService {
   }
 
   public registerAccount(register: Register): Observable<ResponseLoginData> {
+
     const subscription = this.httpClient.post<ResponseLoginData>(
       environment.apiUrl+'/auth/register',
       register

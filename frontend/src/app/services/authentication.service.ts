@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticatieService {
+export class AuthenticationService {
   private errorType: number | null = null;
 
   public setErrorType(errorType: number): void {

@@ -16,6 +16,9 @@ export function authInterceptor(req:HttpRequest<unknown>, next: HttpHandlerFn){
         if (error.status === 401) {
           loginService.resetToken();
           loginService.setLoggedIn(false);
+        } else if (error.status === 500) {
+          loginService.resetToken();
+          loginService.setLoggedIn(false);
         }
         return throwError(error);
       })
