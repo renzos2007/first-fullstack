@@ -5,7 +5,7 @@ nav {
   justify-content: space-evenly;
   width: 100%;
 
-  #homepageButton, #profile, #winkelmand {
+  #homepageButton, #profile, #cart {
     :hover {
       cursor: pointer;
     }
@@ -19,7 +19,7 @@ nav {
     }
   }
 
-  .taal{
+  .language {
     a{
       padding: 0 5px;
     }

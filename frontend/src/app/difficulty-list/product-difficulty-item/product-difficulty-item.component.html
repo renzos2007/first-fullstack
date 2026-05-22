@@ -2,7 +2,7 @@
   <app-add-cart [product]="product" (cancel)="onCancelAddItem()"/>
 }
 
-<article [routerLink]="['/difficulty/'+ getProductID()]">
+<article [routerLink]="['/product/'+ getProductID()]">
   <a class="product-image">
     <img src="{{product.image}}" alt="{{ 'afbeelding.van' | translate }} {{product.name}}">
   </a>
