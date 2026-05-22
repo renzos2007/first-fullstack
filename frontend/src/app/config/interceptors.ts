@@ -20,7 +20,7 @@ export function authInterceptor(req:HttpRequest<unknown>, next: HttpHandlerFn){
           loginService.resetToken();
           loginService.setLoggedIn(false);
         }
-        return throwError(error);
+        return throwError(() => error);
       })
     );
   } else {
