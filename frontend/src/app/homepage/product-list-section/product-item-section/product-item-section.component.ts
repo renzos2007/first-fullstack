@@ -20,8 +20,6 @@ export class ProductItemSectionComponent {
   @Input({required:true}) product!: Product;
   protected isAddingItem = false;
 
-  constructor() {}
-
   public onStartAddItem($event: MouseEvent): void{
     $event.preventDefault();
     $event.stopPropagation();

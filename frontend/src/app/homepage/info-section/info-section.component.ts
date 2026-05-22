@@ -1,25 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ProductService} from '../../services/product.service';
 import {Product} from '../../models/Product';
-import {NgIf} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-info-section',
-  imports: [RouterLink, NgIf, TranslatePipe],
+  imports: [
+    RouterLink,
+    TranslatePipe
+  ],
   templateUrl: './info-section.component.html',
   styleUrl: './info-section.component.scss'
 })
 export class InfoSectionComponent implements OnInit {
+  private productService = inject(ProductService);
 
   private products: Product[] = [];
   protected bestSellers: Product[] = [];
   protected index: number = 0;
-
-
-  constructor(private productService: ProductService) {
-  }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {

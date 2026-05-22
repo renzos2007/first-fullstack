@@ -1,14 +1,15 @@
 
 <main>
-  <section class="bestseller">
+  <section class="bestSeller">
     <button class="direction-left" (click)="previousBestSeller()"> < </button>
-    <div class = "title-afbeelding">
+    <div class = "title-img">
       <h2 class="title">BESTSELLERS</h2>
-      <div *ngIf="bestSellers.length > 0">
+
+      @if(bestSellers.length > 0){
         <a [routerLink]="['/product', bestSellers[index].productID]">
           <img [src]="bestSellers[index].image" alt="{{ 'afbeelding.van.bestseller' | translate }} {{bestSellers[index].name}}">
         </a>
-      </div>
+      }
     </div>
     <button class="direction-right" (click)="nextBestSeller()"> > </button>
   </section>

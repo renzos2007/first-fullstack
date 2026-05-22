@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {ProductItemSectionComponent} from './product-item-section/product-item-section.component';
 import {ProductService} from '../../services/product.service';
 import {Product} from '../../models/Product';
@@ -14,9 +14,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-list-section.component.scss'
 })
 export class ProductListSectionComponent implements OnInit {
-  protected products: Product[] = [];
+  private productService = inject(ProductService);
 
-  constructor(private productService: ProductService) { }
+  protected products: Product[] = [];
 
   public get limitedProducts(): Product[] {
     return this.products.slice(0, 6);
@@ -25,7 +25,5 @@ export class ProductListSectionComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {this.products = products})
   }
-
-
 }
 

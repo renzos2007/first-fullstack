@@ -12,5 +12,4 @@ import { ProductListSectionComponent } from './product-list-section/product-list
   styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent {
-
 }
