@@ -1,6 +1,9 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {Product} from '../models/Product';
 import {CartProduct} from '../models/CartProduct';
+import { environment } from '../../environments/environment';
+import { catchError, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -8,12 +11,14 @@ import {CartProduct} from '../models/CartProduct';
   providedIn: 'root'
 })
 export class CartService {
-  private products: CartProduct[] = [];
+  private http = inject(HttpClient);
+
+  private cartProductList: CartProduct[] = [];
 
   addProduct(product: Product, amount: number): void {
     console.log(product);
 
-    const winkelmandProduct: CartProduct = {
+    const CartProduct: CartProduct = {
       productID: product.productID,
       image: product.image,
       name: product.name,
@@ -21,27 +26,38 @@ export class CartService {
       amount: amount,
     };
 
-    const index = this.products.findIndex((e) => e.productID === winkelmandProduct.productID);
+    const index = this.cartProductList.findIndex((e) => e.productID === CartProduct.productID);
 
     if (index != -1){
-      this.products[index].amount += amount;
+      this.cartProductList[index].amount += amount;
     } else {
-      this.products.push(winkelmandProduct);
+      this.cartProductList.push(CartProduct);
     }
 
     this.updateLocalStorage();
   }
 
   public updateLocalStorage(): void {
-    localStorage.setItem('cart_products',JSON.stringify(this.products));
+    localStorage.setItem('cart_products',JSON.stringify(this.cartProductList));
   }
 
   public getProducts(): CartProduct[] {
-    return this.products;
+    return this.cartProductList;
   }
 
-  public setProducts(products: CartProduct[]) {
-    this.products = products;
+  public setProducts(cartProductList: CartProduct[]) {
+    this.cartProductList = cartProductList;
+  }
+
+  public createOrder(productData: any) {
+    this.http.post(environment.apiUrl + "/order", productData).pipe(
+      catchError(error => {
+        console.error('Er is een fout opgetreden bij het verzenden van de order:', error);
+        return throwError(() => error);
+      })
+    ).subscribe(response => {
+      console.log('Order succesvol verzonden:', response);
+    });
   }
 }
 

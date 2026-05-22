@@ -1,13 +1,9 @@
 import {Component, inject, Input} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {CartProduct} from '../models/CartProduct';
-import {NgFor} from '@angular/common';
-import {UserData} from '../models/UserData';
 import {UserDataService} from '../services/userData';
 import {catchError, throwError} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
 import { ChangeDetectorRef } from '@angular/core';
 import {TranslatePipe} from '@ngx-translate/core';
 import {AuthenticationService} from '../services/authentication.service';
@@ -15,20 +11,23 @@ import {AuthenticationService} from '../services/authentication.service';
 @Component({
   selector: 'app-cart-page',
   imports: [
-    NgFor,
     TranslatePipe
   ],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.scss'
 })
 export class CartPageComponent {
-  protected ProductOrderList: CartProduct[];
   private router = inject(Router);
   private authenticationService =  inject(AuthenticationService);
-  protected ispayed: boolean = false;
+  private cartService = inject(CartService);
+  private userDataService = inject(UserDataService);
+  private route = inject(ActivatedRoute);
+  private cdr = inject(ChangeDetectorRef);
+  
+  protected ProductOrderList: CartProduct[];
+  protected isPayed: boolean = false;
 
-  constructor(private cartService: CartService, private userDataService: UserDataService, private http: HttpClient, private cdr: ChangeDetectorRef, private route: ActivatedRoute
-  ) {
+  constructor() {
     this.ProductOrderList = this.cartService.getProducts();
 
     const savedCart = localStorage.getItem('cart_products');
@@ -39,7 +38,7 @@ export class CartPageComponent {
     }
 
     this.route.queryParams.subscribe(params => {
-      this.ispayed = params['ispayed'] === 'true';
+      this.isPayed = params['isPayed'] === 'true';
     });
   }
 
@@ -70,7 +69,7 @@ export class CartPageComponent {
           this.authenticationService.setErrorType(error.status);
           this.router.navigate(['/login']);
         }
-        return throwError(error);
+        return throwError(() => error);
       })
     ).subscribe()
     this.router.navigate(['/payment']);
@@ -78,19 +77,13 @@ export class CartPageComponent {
 
   public createOrder(): void {
     let productData = this.ProductOrderList.map(product => ({
-      boekID: product.productID,
-      hoeveelheid: product.amount < 1 ? 1 : product.amount
+      productID: product.productID,
+      amount: product.amount < 1 ? 1 : product.amount
     }));
 
-    this.http.post(environment.apiUrl + "/order", productData).pipe(
-      catchError(error => {
-        console.error('Er is een fout opgetreden bij het verzenden van de order:', error);
-        return throwError(error);
-      })
-    ).subscribe(response => {
-      console.log('Order succesvol verzonden:', response);
-    });
-    this.ispayed = false;
+    this.cartService.createOrder(productData);
+    
+    this.isPayed = false;
     this.clearOrderList()
     this.router.navigate(['/']);
     alert("Bestelling is geplaatst")

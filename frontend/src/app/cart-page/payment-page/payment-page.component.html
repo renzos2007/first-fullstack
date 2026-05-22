@@ -9,28 +9,28 @@
 
     <section>
       <h2>{{ 'betaalmethode' | translate }}</h2>
-      <form (ngSubmit)="verwerkBetaling()">
+      <form (ngSubmit)="payPayment()">
         <div>
           <label>
-            <input type="radio" name="betalmethode" value="creditcard" [(ngModel)]="chosenPaymentMethod" required>
+            <input type="radio" name="chosenPaymentMethod" value="creditcard" [(ngModel)]="chosenPaymentMethod" required>
             Visa
           </label>
         </div>
         <div>
           <label>
-            <input type="radio" name="betalmethode" value="ideal" [(ngModel)]="chosenPaymentMethod" required>
+            <input type="radio" name="chosenPaymentMethod" value="ideal" [(ngModel)]="chosenPaymentMethod" required>
             iDEAL
           </label>
         </div>
         <div>
           <label>
-            <input type="radio" name="betalmethode" value="paypal" [(ngModel)]="chosenPaymentMethod" required>
+            <input type="radio" name="chosenPaymentMethod" value="paypal" [(ngModel)]="chosenPaymentMethod" required>
             PayPal
           </label>
         </div>
         <div>
           <label>
-            <input type="radio" name="betalmethode" value="bankoverschrijving" [(ngModel)]="chosenPaymentMethod" required>
+            <input type="radio" name="chosenPaymentMethod" value="mastercard" [(ngModel)]="chosenPaymentMethod" required>
             Mastercard
           </label>
         </div>
@@ -40,9 +40,9 @@
     </section>
 
     <section id="error">
-      <div *ngIf="!paymentMethodChosen && !chosenPaymentMethod">
+      @if (!paymentMethodChosen && !chosenPaymentMethod){
         <p>{{ 'betaal.error' | translate }}</p>
-      </div>
+      }
     </section>
   </article>
 </main>

@@ -2,7 +2,6 @@ import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
 import {CartProduct} from '../../models/CartProduct';
 import {CartService} from '../../services/cart.service';
 import {FormsModule} from '@angular/forms';
-import {NgIf} from '@angular/common';
 import {Router} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LoginService} from '../../services/login.service';
@@ -11,7 +10,6 @@ import {LoginService} from '../../services/login.service';
   selector: 'app-payment-page',
   imports: [
     FormsModule,
-    NgIf,
     TranslatePipe
   ],
   templateUrl: './payment-page.component.html',
@@ -19,13 +17,13 @@ import {LoginService} from '../../services/login.service';
 })
 export class PaymentPageComponent implements OnInit {
   private router = inject(Router);
+  private loginService = inject(LoginService);
+  private cartService = inject(CartService);
+
   protected ProductOrderList: CartProduct[] = [];
   protected chosenPaymentMethod: string = '';
   protected paymentMethodChosen: boolean = false;
   protected isPayed: boolean = false;
-
-
-  constructor(private cartService: CartService, private loginService: LoginService) {}
 
   ngOnInit(): void {
     if (!this.loginService.isLoggedIn()) {
@@ -47,15 +45,15 @@ export class PaymentPageComponent implements OnInit {
   }
 
   public getTotalPrice(): number {
-    let totaalPrijsWinkelwagen = 0;
+    let totalPriceCart = 0;
     for (let i = 0; i < this.ProductOrderList.length; i++) {
-      let totaalPrijsProduct = this.ProductOrderList[i].price * this.ProductOrderList[i].amount;
-      totaalPrijsWinkelwagen += totaalPrijsProduct;
+      let totalPriceByProduct = this.ProductOrderList[i].price * this.ProductOrderList[i].amount;
+      totalPriceCart += totalPriceByProduct;
     }
-    return parseFloat(totaalPrijsWinkelwagen.toFixed(2));
+    return parseFloat(totalPriceCart.toFixed(2));
   }
 
-  public verwerkBetaling(): void {
+  public payPayment(): void {
     if (this.chosenPaymentMethod) {
       console.log(`Betaling verwerkt met ${this.chosenPaymentMethod}`);
       this.paymentMethodChosen = true;

@@ -1,25 +1,27 @@
-@if (ispayed === true) {
+@if (isPayed === true) {
   {{createOrder()}}
 }
 
-<main class="winkelmand">
+<main class="cart">
   <h1>{{ 'winkelmand' | translate }}</h1>
   <article>
     <section>
       <ul>
-        <li *ngFor="let boek of getOrderList()">
-          <img src="{{boek.image}}">
-          <div>
-            <p>{{ 'titel' | translate }} {{ boek.name }} </p>
-            <p>{{ 'prijs.per.stuk' | translate }} €{{ boek.price }}</p>
-            <p>{{ 'hoeveelheid' | translate }} {{ boek.amount }}</p>
-          </div>
-        </li>
+        @for(product of getOrderList(); track product){
+          <li>
+            <img src="{{product.image}}">
+            <div>
+              <p>{{ 'titel' | translate }} {{ product.name }} </p>
+              <p>{{ 'prijs.per.stuk' | translate }} €{{ product.price }}</p>
+              <p>{{ 'hoeveelheid' | translate }} {{ product.amount }}</p>
+            </div>
+          </li>
+        }
       </ul>
     </section>
 
     <section>
-      <p id="totaleprijs">{{ 'totale.prijs' | translate }} €{{getTotalPrice()}}</p>
+      <p id="totalPrice">{{ 'totale.prijs' | translate }} €{{getTotalPrice()}}</p>
       <button (click)="clearOrderList()">{{ 'leeg.winkelmand' | translate }}</button>
       <button (click)="paymentPage()" [disabled]="ProductOrderList.length === 0">{{ 'bestel' | translate }}</button>
     </section>

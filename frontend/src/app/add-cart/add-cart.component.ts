@@ -17,30 +17,30 @@ export class AddCartComponent {
   @Output() cancel = new EventEmitter<void>();
   @Input() product!: Product;
 
-  protected hoeveelheidItem: number = 1;
+  protected amountItem: number = 1;
 
 
   constructor(private cartService: CartService) {
   }
 
   public onAdd(): void {
-    this.hoeveelheidItem += 1;
+    this.amountItem += 1;
   }
 
   public onMinus(): void {
-    if (this.hoeveelheidItem > 1) {
-      this.hoeveelheidItem -= 1;
+    if (this.amountItem > 1) {
+      this.amountItem -= 1;
     }
   }
 
   public onCancel(): void {
-    this.hoeveelheidItem = 0;
+    this.amountItem = 0;
     this.cancel.emit();
   }
 
   public onSubmit(event: Event): void {
     event.preventDefault();
-    this.cartService.addProduct(this.product, this.hoeveelheidItem);
+    this.cartService.addProduct(this.product, this.amountItem);
     this.cancel.emit();
   }
 }
