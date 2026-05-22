@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import  {ActivatedRoute} from '@angular/router';
 import {Product} from '../models/Product';
 import {ProductService} from '../services/product.service';
@@ -20,20 +20,20 @@ import {TranslatePipe} from "@ngx-translate/core";
   styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent  implements OnInit {
-  protected boekID: number | null = null;
+  private route = inject(ActivatedRoute);
+  private productService = inject(ProductService);
+
+  protected productID: number | null = null;
   protected product: Product | null = null;
-
   protected isAddingItem = false;
-
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
-      this.boekID = id ? Number(id) : null;
+      this.productID = id ? Number(id) : null;
 
-      if (this.boekID !== null) {
-        this.productService.getProductByID(this.boekID).pipe(
+      if (this.productID !== null) {
+        this.productService.getProductByID(this.productID).pipe(
           catchError(error => {
             console.log(error);
             return of(null);

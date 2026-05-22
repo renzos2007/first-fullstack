@@ -10,7 +10,7 @@
   <article class="info_container">
     <section id = "primaire_info">
       <h1>{{product?.name}}</h1>
-      <p>{{ 'schrijver' | translate }} {{product?.writer?.name}} {{product?.writer?.middleName}} {{product?.writer?.surName}}</p>
+      <p>{{ 'schrijver' | translate }} {{product?.writer?.name}} {{product?.writer?.middleName}} {{product?.writer?.surname}}</p>
       <p>{{ 'soort:' | translate }} {{ 'soort.' + product?.type | translate }} <i>{{product?.cover}}</i></p>
       <p>{{ 'taal:' | translate }} {{ 'taal.' + product?.language | translate }}</p>
       <p>{{ 'hoeveelheid.bladzijdes.1' | translate }} {{product?.pages}} {{ 'hoeveelheid.bladzijdes.2' | translate }}</p>
@@ -29,7 +29,7 @@
       <p>{{product?.summary}}</p>
     </section>
 
-    <section id="extra">
+    <section id="extra_info">
       <p>{{ 'uitgever' | translate }} {{product?.publisher?.publisherName}}</p>
       <img src="{{product?.publisher?.image}}" alt="{{ 'logo.uitgever' | translate }} {{product?.publisher?.publisherName}}">
     </section>
