@@ -49,8 +49,10 @@ export class CartService {
     this.cartProductList = cartProductList;
   }
 
+  private apiUrlPostOrder = environment.apiUrl+"/order";
+
   public createOrder(productData: any) {
-    this.http.post(environment.apiUrl + "/order", productData).pipe(
+    this.http.post(this.apiUrlPostOrder, productData).pipe(
       catchError(error => {
         console.error('Er is een fout opgetreden bij het verzenden van de order:', error);
         return throwError(() => error);
