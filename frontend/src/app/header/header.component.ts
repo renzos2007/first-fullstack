@@ -12,24 +12,23 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  private loginService = inject(LoginService);
+  private translate = inject(TranslateService);
 
-  protected loginService = inject(LoginService);
-  constructor(private translate: TranslateService) {
-    this.translate.addLangs(['de', 'en']);
-    this.translate.setDefaultLang('en');
-    this.translate.use(this.translate.getBrowserLang() || "en");
+  constructor() {
+    this.translate.addLangs(['nl', 'en']);
+
+    const browserLang = this.translate.getBrowserLang();
+    this.translate.use(browserLang?.match(/nl|en/) ? browserLang : 'en');
   }
 
-  ngOnInit(): void {
-    this.updateLoginStatus()
+  protected checkLoginStatus(): boolean {
+    const isLoggedIn = this.loginService.isLoggedIn();
+    return isLoggedIn;
   }
 
-  public updateLoginStatus(): void {
-    this.loginService.isLoggedIn();
-  }
-
-  public useLanguage(language: string): void {
+  protected useLanguage(language: string): void {
     this.translate.use(language);
   }
 }

@@ -13,8 +13,6 @@ import {FooterComponent} from './footer/footer.component';
 export class AppComponent {
   constructor(private translate: TranslateService) {
     this.translate.addLangs(['nl', 'en']);
-    this.translate.setDefaultLang('nl');
-    this.translate.use('nl');
   }
   title = 'bruna-webshop';
 }

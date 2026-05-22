@@ -7,7 +7,7 @@
 
   <section>
     <a id="profile">
-      @if (this.loginService.isLoggedIn()){
+      @if (checkLoginStatus()){
         <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.gebruikerspagina' | translate }}" [routerLink]="['/user']">
       } @else {
         <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.inlogpagina' | translate }}" [routerLink]="['/login']">
