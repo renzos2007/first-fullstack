@@ -21,10 +21,14 @@
     <section id = "secundaire_info">
       <h3>{{ 'samenvatting' | translate }}    <i>{{ 'alleen.in.nederlands' | translate }}</i></h3>
       <p>Genre:
-        <span *ngFor="let genre of product?.genreList; let last = last">
-          <i>{{ genre.name }}</i>
-          <span *ngIf="!last">, </span>
-        </span>
+        @for (genre of product?.genreList; track genre; let last = $last) {
+          <span>
+            <i>{{ genre.name }}</i>
+            @if (!last) {
+              <span>, </span>
+            }
+          </span>
+        }
       </p>
       <p>{{product?.summary}}</p>
     </section>

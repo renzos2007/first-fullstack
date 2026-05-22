@@ -4,26 +4,30 @@
     <p>{{ 'welkom' | translate }} {{userData?.userName}}</p>
   </section>
   <section>
-    <button (click)="loginService.logout()">{{ 'uitloggen' | translate }}</button>
+    <button (click)="logOut()">{{ 'uitloggen' | translate }}</button>
   </section>
   <section>
     <h3>{{ 'bestellingen' | translate }}</h3>
     <ul class="orderlist">
-      <li class = "orders" *ngFor="let orders of paginatedOrders">
-        <div class="orderdetails">
-          <p><b>{{ 'bestelnummer' | translate }} {{ orders.orderID }}</b></p>
-          <p>{{ 'datum' | translate }} {{ orders.orderDate | date:'dd-MM-yyyy' }}</p>
-          <p>{{ 'totale.prijs' | translate }} €{{calculateTotalPrice(orders)}}</p>
-          <p> {{ 'bestelde.boeken' | translate }}:</p>
-        </div>
+      @for(order of paginatedOrders; track order){
+        <li class = "orders">
+          <div class="orderdetails">
+            <p><b>{{ 'bestelnummer' | translate }} {{ order.orderID }}</b></p>
+            <p>{{ 'datum' | translate }} {{ order.orderDate | date:'dd-MM-yyyy' }}</p>
+            <p>{{ 'totale.prijs' | translate }} €{{calculateTotalPrice(order)}}</p>
+            <p> {{ 'bestelde.boeken' | translate }}:</p>
+          </div>
 
-        <ul class="orderitem">
-          <li class = "product" *ngFor="let product of orders.orderItemList">
-            <img src="{{product.product.image}}" alt="{{ 'afbeelding.van' | translate }} {{product.product.name}}">
-            {{ 'titel' | translate }} {{ product.product.name }}, {{ 'hoeveelheid' | translate }} {{ product.amount }}
-          </li>
-        </ul>
-      </li>
+          <ul class="orderitem">
+            @for(product of order.orderItemList; track product){
+              <li class = "product">
+                <img src="{{product.product.image}}" alt="{{ 'afbeelding.van' | translate }} {{product.product.name}}">
+                {{ 'titel' | translate }} {{ product.product.name }}, {{ 'hoeveelheid' | translate }} {{ product.amount }}
+              </li>
+            }
+          </ul>
+        </li>
+      }
     </ul>
   </section>
   <section class="pagination">

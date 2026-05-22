@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {UserData} from '../models/UserData';
 import {UserDataService} from '../services/userData';
-import {of} from 'rxjs';
-import {CurrencyPipe, DatePipe, NgForOf, NgIf, ViewportScroller} from '@angular/common';
+import {DatePipe, ViewportScroller} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
@@ -11,7 +10,6 @@ import {OrderData} from '../models/OrderData';
 @Component({
   selector: 'app-user-data',
   imports: [
-    NgForOf,
     DatePipe,
     TranslatePipe,
   ],
@@ -19,12 +17,14 @@ import {OrderData} from '../models/OrderData';
   styleUrl: './user-data.component.scss'
 })
 export class UserDataComponent implements OnInit {
+  private userDataService = inject(UserDataService);
+  private loginService = inject(LoginService);
+  private viewportScroller = inject(ViewportScroller);
+  private router = inject(Router);
+
   protected userData?: UserData;
   protected currentPage: number = 1;
   protected itemsPerPage: number = 10;
-
-  constructor(private userDataService: UserDataService, protected loginService: LoginService, private viewportScroller: ViewportScroller, private router: Router) {
-  }
 
   ngOnInit(): void {
     if (!this.loginService.isLoggedIn()) {
@@ -35,6 +35,11 @@ export class UserDataComponent implements OnInit {
       this.userData = userData;
     })
   }
+
+  protected logOut(): void{
+    this.loginService.logout()
+  }
+
   public get paginatedOrders(): OrderData[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     return this.userData?.orderData.slice(startIndex, startIndex + this.itemsPerPage) || [];
@@ -54,7 +59,6 @@ export class UserDataComponent implements OnInit {
       this.viewportScroller.scrollToPosition([0, 0]);
     }
   }
-
 
   public get totalPages(): number {
     const orderDataLength = this.userData?.orderData?.length || 0;
