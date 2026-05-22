@@ -11,7 +11,7 @@
     <h2 class="product-title">{{ product.name }}</h2>
     <p class="product-author">{{ product.writer.name}} {{ product.writer.middleName }} {{ product.writer.surName }}</p>
     <p class="product-price">€{{ product.price }}</p>
-    <a class="btn-buy" (click)="onStartAddItem($event)">{{ 'winkelwagen.toevoegen' | translate }}</a>
+    <a class="buy-button" (click)="onStartAddItem($event)">{{ 'winkelwagen.toevoegen' | translate }}</a>
   </a>
 </article>
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {Product} from '../../models/Product';
 import {ProductService} from '../../services/product.service';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -16,12 +16,11 @@ import { ProductDifficultyItemComponent } from '../product-difficulty-item/produ
   styleUrl: './product-all-difficulty-list.component.scss'
 })
 export class ProductAllDifficultyListComponent implements OnInit {
-  protected products: Product[] = []
+  private productService = inject(ProductService);
 
+  protected products: Product[] = []
   protected currentPage: number = 1;
   protected itemsPerPage: number = 10;
-
-  constructor(private productService: ProductService) {};
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {this.products = products})

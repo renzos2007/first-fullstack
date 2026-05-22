@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {Difficulty} from '../../models/Difficulty';
 import {DifficultyService} from '../../services/difficulty.service';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import {NgIf} from '@angular/common';
 import {TranslatePipe} from "@ngx-translate/core";
 import {Product} from '../../models/Product';
 import { ProductDifficultyItemComponent } from '../product-difficulty-item/product-difficulty-item.component';
@@ -10,7 +9,6 @@ import { ProductDifficultyItemComponent } from '../product-difficulty-item/produ
 @Component({
   selector: 'app-products-difficulty',
   imports: [
-    NgIf,
     ProductDifficultyItemComponent,
     TranslatePipe,
     RouterLink
@@ -19,37 +17,37 @@ import { ProductDifficultyItemComponent } from '../product-difficulty-item/produ
   styleUrl: './product-difficulty-list.component.scss'
 })
 export class ProductsDifficultyListComponent implements OnInit {
-  private filterId!: number;
-  protected filter!: Difficulty;
+private route = inject(ActivatedRoute);
+private difficultyService = inject(DifficultyService);
 
+  private difficultyID!: number;
+  protected difficulty!: Difficulty;
   protected currentPage: number = 1;
   protected itemsPerPage: number = 10;
 
-  constructor(private route: ActivatedRoute, private difficultyService: DifficultyService) {}
-
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.filterId = +params['id'];
-      this.loadFilterData(this.filterId);
+      this.difficultyID = +params['id'];
+      this.loadFilterData(this.difficultyID);
     });
   }
 
   public loadFilterData(id: number): void {
     this.difficultyService.getProductsByDifficulty(id).subscribe(difficulty => {
-      this.filter = difficulty;
+      this.difficulty = difficulty;
     });
   }
 
   public get paginatedProducts(): Product[] {
-    if (!this.filter || !this.filter.difficulty) {
+    if (!this.difficulty || !this.difficulty.difficulty) {
       return [];
     }
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    return this.filter.productList.slice(startIndex, startIndex + this.itemsPerPage);
+    return this.difficulty.productList.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
   public nextPage(): void {
-    if (this.currentPage * this.itemsPerPage < this.filter.difficulty.length) {
+    if (this.currentPage * this.itemsPerPage < this.difficulty.difficulty.length) {
       this.currentPage++;
     }
   }
@@ -61,6 +59,6 @@ export class ProductsDifficultyListComponent implements OnInit {
   }
 
   public get totalPages(): number {
-    return Math.ceil(this.filter?.difficulty.length / this.itemsPerPage);
+    return Math.ceil(this.difficulty?.productList.length / this.itemsPerPage);
   }
 }

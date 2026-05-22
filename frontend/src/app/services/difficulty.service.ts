@@ -20,7 +20,4 @@ export class DifficultyService {
   public getProductsByDifficulty(id: number): Observable<Difficulty> {
     return this.httpClient.get<Difficulty>(`${this.apiUrlGetDifficultyByID}${id}`);
   }
-
-
-  constructor() { }
 }

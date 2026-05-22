@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {Difficulty} from '../models/Difficulty';
 import {DifficultyService} from '../services/difficulty.service';
 import {RouterLink} from '@angular/router';
@@ -14,12 +14,12 @@ import {TranslatePipe} from "@ngx-translate/core";
   styleUrl: './difficulty-list.component.scss'
 })
 export class DifficultyListComponent implements OnInit {
+  private difficultyService = inject(DifficultyService);
+
   protected difficultylist: Difficulty[] = [];
 
-  constructor(private difficultyService: DifficultyService) {}
-
   ngOnInit():void {
-    this.difficultyService.getDifficultiyList().subscribe(filters => {this.difficultylist = filters})
+    this.difficultyService.getDifficultiyList().subscribe(difficultyList => {this.difficultylist = difficultyList})
   }
 
   public getDifficultyByID(difficulty: Difficulty): number {
