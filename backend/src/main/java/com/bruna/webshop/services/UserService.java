@@ -1,7 +1,7 @@
 package com.bruna.webshop.services;
 
 
-import com.bruna.webshop.dao.UserDataRepository;
+import com.bruna.webshop.repositories.UserDataRepository;
 import com.bruna.webshop.modules.UserData;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

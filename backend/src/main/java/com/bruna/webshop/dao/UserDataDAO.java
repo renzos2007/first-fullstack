@@ -1,6 +1,7 @@
 package com.bruna.webshop.dao;
 
 import com.bruna.webshop.modules.UserData;
+import com.bruna.webshop.repositories.UserDataRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,9 +14,8 @@ public class UserDataDAO {
         this.userDataRepository = userDataRepository;
     }
 
-    public List<UserData> getAllUserData() {
-        List<UserData> UserDataList = userDataRepository.findAll();
-        return UserDataList;
+    public UserData save(UserData userData) {
+        return userDataRepository.save(userData);
     }
 
     public UserData getUserDataByEmail(String email) {

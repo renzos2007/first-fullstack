@@ -1,6 +1,7 @@
 package com.bruna.webshop.dao;
 
 import com.bruna.webshop.modules.Product;
+import com.bruna.webshop.repositories.ProductRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

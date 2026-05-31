@@ -2,6 +2,7 @@ package com.bruna.webshop.dao;
 
 
 import com.bruna.webshop.modules.Publisher;
+import com.bruna.webshop.repositories.PublisherRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

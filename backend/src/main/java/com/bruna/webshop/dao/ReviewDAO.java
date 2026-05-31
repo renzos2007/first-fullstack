@@ -1,6 +1,7 @@
 package com.bruna.webshop.dao;
 
 import com.bruna.webshop.modules.Review;
+import com.bruna.webshop.repositories.ReviewRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

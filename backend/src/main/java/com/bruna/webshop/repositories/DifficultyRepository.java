@@ -1,4 +1,4 @@
-package com.bruna.webshop.dao;
+package com.bruna.webshop.repositories;
 
 import com.bruna.webshop.modules.Difficulty;
 import org.springframework.data.jpa.repository.JpaRepository;

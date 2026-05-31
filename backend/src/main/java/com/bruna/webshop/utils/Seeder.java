@@ -1,16 +1,14 @@
     package com.bruna.webshop.utils;
 
     import com.bruna.webshop.controller.OrderController;
-    import com.bruna.webshop.dao.*;
     import com.bruna.webshop.modules.*;
+    import com.bruna.webshop.repositories.*;
     import org.springframework.context.event.ContextRefreshedEvent;
     import org.springframework.context.event.EventListener;
     import org.springframework.stereotype.Component;
 
     import java.util.ArrayList;
-    import java.util.HashSet;
     import java.util.List;
-    import java.util.Set;
 
     @Component
     public class Seeder {

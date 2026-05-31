@@ -2,6 +2,7 @@ package com.bruna.webshop.controller;
 
 import com.bruna.webshop.dao.ProductDAO;
 import com.bruna.webshop.modules.Product;
+import com.bruna.webshop.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,22 +12,24 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-    private ProductDAO productDao;
+    private ProductService productService;
 
-    public ProductController(ProductDAO productDao) {
-        this.productDao = productDao;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping
     public List<Product> GetAllProducts(){
-        return this.productDao.getAllProducts();
+        return this.productService.GetAllProducts();
     }
 
     @GetMapping("/{id}")
     public Optional<Product> GetProductById(@PathVariable long id){
-        return productDao.getProductById(id);
+        return productService.GetProductById(id);
     }
 
-    @GetMapping("search/{naam}")
-    public Optional<List<Product>> GetProductByName(@PathVariable String naam){return productDao.getProductByName(naam);}
+    @GetMapping("search/{name}")
+    public Optional<List<Product>> GetProductByName(@PathVariable String name){
+        return productService.GetProductByName(name);
+    }
 }

@@ -3,6 +3,7 @@ package com.bruna.webshop.dao;
 import com.bruna.webshop.modules.Product;
 import com.bruna.webshop.modules.Order;
 import com.bruna.webshop.modules.OrderItem;
+import com.bruna.webshop.repositories.OrderItemRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
