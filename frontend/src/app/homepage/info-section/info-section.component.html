@@ -7,16 +7,16 @@
 
       @if(bestSellers.length > 0){
         <a [routerLink]="['/product', bestSellers[index].productID]">
-          <img [src]="bestSellers[index].image" alt="{{ 'afbeelding.van.bestseller' | translate }} {{bestSellers[index].name}}">
+          <img [src]="bestSellers[index].image" alt="{{ 'product.list.item.image.of' | translate }} {{bestSellers[index].name}}">
         </a>
       }
     </div>
     <button class="direction-right" (click)="nextBestSeller()"> > </button>
   </section>
   <section class="allProducts">
-    <img src="/images/boeken.png" alt="Een set aan boeken">
+    <img src="/images/boeken.png" alt="{{ 'homepage.info.section.books' | translate }}">
     <div class="info">
-      <button [routerLink]="['/difficulty']">{{ 'bekijk.alle.producten' | translate }}</button>
+      <button [routerLink]="['/difficulty']">{{ 'homepage.info.section.filter.button' | translate }}</button>
     </div>
   </section>
 </main>

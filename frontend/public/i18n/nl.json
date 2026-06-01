@@ -1,94 +1,140 @@
 {
-  "winkelwagen.toevoegen": "Toevoegen aan winkelwagen",
-  "toevoegen": "Toevoegen",
-  "annuleren": "Annuleren",
-  "toevoegen.zin.1": "Hoeveel boeken van '",
-  "toevoegen.zin.2": "' wil je kopen",
-  "filterlijst": "Filterlijst",
-  "alle.boeken": "Alle boeken",
+  "header": {
+    "userpage": "Ga naar gebruikerspagina",
+    "loginpage": "Ga naar inlogpagina",
+    "homepage": "Ga naar startpagina",
+    "cartpage": "Ga naar winkelmand"
+  },
+  "footer": {
+    "studentnumber": "Studentnummer:",
+    "email": "Email: s1154399@student.hsleiden.nl"
+  },
+  "add.cart": {
+    "title": "Toevoegen aan winkelwagen",
+    "add": "Toevoegen",
+    "cancel": "Annuleren",
+    "add.part.1": "Hoeveel boeken van '",
+    "add.part.2": "' wil je kopen"
+  },
+  "order": {
+    "text": "Bestellingen",
+    "cart.title": "Winkelmand",
+    "title.label": "Titel:",
+    "price.label": "Prijs per stuk:",
+    "cart.empty": "Leeg de winkelmand",
+    "cart.order": "Bestel",
+    "error": "Je moet inloggen om dit te doen!",
+    "amount.label": "Hoeveelheid:",
+    "total.price": "Totale prijs:",
+    "payment.error": "Choose your payment method.",
+    "pay": "Betalen",
+    "cancel": "Annuleren",
+    "must.pay.part.1": "Je moet",
+    "must.pay.part.2": "betalen",
+    "payment.method": "Betalingsmethoden",
+    "placed": "Bestelling is geplaatst",
+    "details": {
+      "number": "Bestelnummer:",
+      "date": "Datum:",
+      "total.price": "Totale prijs:",
+      "ordered.products": "Bestelde boeken:"
+    }
+  },
   "difficulty": {
-    "niveau start (12-15)": "Niveau start (12-15)",
-    "niveau 1 (12-15)": "Niveau 1 (12-15)",
-    "niveau 2 (12-15)": "Niveau 2 (12-15)",
-    "niveau 3 (12-15)": "Niveau 3 (12-15)",
-    "niveau 4 (12-15)": "Niveau 4 (12-15)",
-    "niveau 1 (15-18)": "Niveau 1 (15-18)",
-    "niveau 2 (15-18)": "Niveau 2 (15-18)",
-    "niveau 3 (15-18)": "Niveau 3 (15-18)",
-    "niveau 4 (15-18)": "Niveau 4 (15-18)",
-    "niveau 5 (15-18)": "Niveau 5 (15-18)",
-    "niveau 6 (15-18)": "Niveau 6 (15-18)"
+    "list": {
+      "title": "Filterlijst",
+      "all": "Alle boeken",
+      "selected.filter": "Geselecteerde Filter:",
+      "item": {
+        "niveau start (12-15)": "Niveau start (12-15)",
+        "niveau 1 (12-15)": "Niveau 1 (12-15)",
+        "niveau 2 (12-15)": "Niveau 2 (12-15)",
+        "niveau 3 (12-15)": "Niveau 3 (12-15)",
+        "niveau 4 (12-15)": "Niveau 4 (12-15)",
+        "niveau 1 (15-18)": "Niveau 1 (15-18)",
+        "niveau 2 (15-18)": "Niveau 2 (15-18)",
+        "niveau 3 (15-18)": "Niveau 3 (15-18)",
+        "niveau 4 (15-18)": "Niveau 4 (15-18)",
+        "niveau 5 (15-18)": "Niveau 5 (15-18)",
+        "niveau 6 (15-18)": "Niveau 6 (15-18)"
+      }
+    }
   },
-  "vorige": "Vorige",
-  "volgende": "Volgende",
-  "terug.naar.filter": "Terug naar filter",
-  "selecteerde.filter": "Geselecteerde Filter:",
-  "pagina": "pagina",
-  "van": "van",
-  "afbeelding.van": "afbeelding van het boek",
-  "bestellingen": "Bestellingen:",
-  "bestelnummer": "Bestelnummer:",
-  "datum": "Datum",
-  "bestelde.boeken": "Bestelde boeken",
-  "titel": "Titel:",
-  "hoeveelheid": "Hoeveelheid:",
-  "gebruikerspagina": "Gebruikerspagina",
-  "welkom": "Welkom",
-  "totale.prijs": "Totale prijs:",
-  "uitloggen": "Uitloggen",
-  "naar.gebruikerspagina": "Ga naar gebruikerspagina",
-  "naar.inlogpagina": "Ga naar inlogpagina",
-  "naar.startpagina": "Ga naar startpagina",
-  "naar.winkelmand": "Ga naar winkelmand",
-  "soort": {
-    "boek": "boek",
-    "eboek": "eboek"
+  "product": {
+    "list": {
+      "back.button": "Terug naar filter",
+      "next.button": "Volgende",
+      "prev.button": "Vorige",
+      "page": "Pagina",
+      "of": "van",
+      "item": {
+        "image.of": "Afbeelding van het boek",
+        "type": {
+          "boek": "boek",
+          "eboek": "eboek"
+        }
+      }
+    },
+    "details": {
+      "writer": "Schrijver:",
+      "type": {
+        "text": "Soort:",
+        "value": {
+          "eboek": "eboek",
+          "boek": "boek"
+        }
+      },
+      "language": {
+        "text": "Taal:",
+        "value": {
+          "Nederlands": "Nederlands"
+        }
+      },
+      "amount.pages": "Hoeveelheid bladzijdes:",
+      "price": "Prijs:",
+      "summary": "Samenvatting:",
+      "publisher": "Uitgever:",
+      "logo.publisher.alt.text": "Dit is het logo van het uitgeefbedrijf:",
+      "pages": "pagina's"
+    }
   },
-  "wachtwoord": "Wachtwoord:",
-  "registreren": "Registreren",
-  "gebruikersnaam": "Gebruikersnaam:",
-  "moet.je.invullen": "Deze moet je invullen!",
-  "minimum.lengte": "Wachtwoord moet minimaal 8 tekens",
-  "ongeldig.emailadres": "Ongeldig emailadres",
-  "wachtwoord.requirements": "Wachtwoord moet een hoofdletter, een cijfer en een speciaal teken bevatten",
-  "woonplaats": "Woonplaats:",
-  "postcode": "Postcode:",
-  "straatnaam": "Straatnaam:",
-  "huisnummer": "Huisnummer:",
-  "schrijver": "Schrijver:",
-  "soort:": "Soort:",
-  "taal:": "Taal:",
-  "hoeveelheid.bladzijdes.1": "Hoeveelheid bladzijdes",
-  "hoeveelheid.bladzijdes.2": "blz",
-  "prijs": "Prijs:",
-  "samenvatting": "Samenvatting:",
-  "alleen.in.nederlands": "",
-  "uitgever": "Uitgever:",
-  "logo.uitgever": "Dit is het logo van het uitgeefbedrijf:",
-  "winkelmand": "Winkelmand",
-  "titel": "Titel:",
-  "prijs.per.stuk": "Prijs per stuk:",
-  "leeg.winkelmand": "Leeg de winkelmand",
-  "bestel": "Bestel",
-  "bestel.error": "Je moet inloggen om dit te doen!",
-  "inlog.error": "Er is iets fout gegaan met inloggen, probeer later opnieuw.",
-  "studentnummer": "Studentnummer:",
-  "mijn.email": "Email: s1154399@student.hsleiden.nl",
-  "onze.partners": "Onze Partners:",
-  "bekijk.alle.producten": "Bekijk al onze producten",
-  "afbeelding.van.bestseller": "Afbeelding van de bestseller",
-  "registeren.titel": "Registreren",
-  "inloggen.titel": "Inloggen",
-  "geen.account": "Geen account? Registreer hier!",
-  "registreren.error": "Er ging iets mis, probeer later opnieuw",
-  "Betalen": "Betalen",
-  "je.moet.betalen.1": "Je moet",
-  "je.moet.betalen.2": "betalen",
-  "betaalmethode": "Betalingsmethoden",
-  "betaal.bevestigen": "Betaling bevestigen",
-  "annuleren": "Annuleren",
-  "betaal.error": "Kies je betaalmethode.",
-  "taal": {
-    "Nederlands": "Nederlands"
+  "homepage": {
+    "info.section": {
+      "books": "Een set aan boeken.",
+      "filter.button": "Bekijk al onze producten"
+    }
+  },
+  "auth": {
+    "login": {
+      "text": "Inloggen",
+      "password": "Wachtwoord:",
+      "error": "Er is iets fout gegaan met inloggen, probeer later opnieuw.",
+      "to.register": "Geen account? Registreer hier!"
+    },
+    "register": {
+      "text": "Registreren",
+      "form":{
+        "control": {
+          "required": "Deze moet je invullen",
+          "invalid.email": "Ongeldig emailadres",
+          "length.password": "Wachtwoord moet minimaal 8 tekens",
+          "invalid.password": "Wachtwoord moet een hoofdletter, een cijfer en een speciaal teken bevatten"
+        },
+        "username": "Gebruikersnaam:",
+        "password": "Wachtwoord:",
+        "city": "Stad:",
+        "postal.code": "Postcode:",
+        "street": "Straatnaam:",
+        "house.number": "Huisnummer:",
+        "error": "Er ging iets mis, probeer later opnieuw."
+      }
+    },
+    "logout": {
+      "text": "Uitloggen"
+    }
+  },
+  "userpage": {
+    "title": "Gebruikerspagina",
+    "welcome": "Welkom"
   }
 }

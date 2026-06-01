@@ -2,9 +2,9 @@
 <dialog open>
   <form (ngSubmit)="onSubmit($event)">
     <section>
-      <h2>{{ 'winkelwagen.toevoegen' | translate }}</h2>
+      <h2>{{ 'add.cart.title' | translate }}</h2>
       <p>
-        {{ 'toevoegen.zin.1' | translate }}{{product.name}}{{ 'toevoegen.zin.2' | translate }}
+        {{ 'add.cart.add.part.1' | translate }}{{product.name}}{{ 'add.cart.add.part.2' | translate }}
       </p>
     </section>
     <section class="change_amount">
@@ -17,8 +17,8 @@
       </button>
     </section>
     <section class="actions">
-      <button type="button" (click)="onCancel()">{{ 'annuleren' | translate }}</button>
-      <button type="submit">{{ 'toevoegen' | translate }}</button>
+      <button type="button" (click)="onCancel()">{{ 'add.cart.cancel' | translate }}</button>
+      <button type="submit">{{ 'add.cart.add' | translate }}</button>
     </section>
   </form>
 </dialog>

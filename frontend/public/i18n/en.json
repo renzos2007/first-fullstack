@@ -1,94 +1,140 @@
 {
-  "winkelwagen.toevoegen": "Add to cart",
-  "toevoegen": "Add",
-  "annuleren": "Cancel",
-  "toevoegen.zin.1": "How many books of '",
-  "toevoegen.zin.2": "' do you want to buy",
-  "filterlijst": "Filterlist",
-  "alle.boeken": "All books",
+  "header": {
+    "userpage": "Go to userpage",
+    "loginpage": "Go to login page",
+    "homepage": "Go to the homepage",
+    "cartpage": "Go to cart"
+  },
+  "footer": {
+    "studentnumber": "Student number:",
+    "email": "Email: s1154399@student.hsleiden.nl"
+  },
+  "add.cart": {
+    "title": "Add to cart",
+    "add": "Add",
+    "cancel": "Cancel",
+    "add.part.1": "How many books of ",
+    "add.part.2": "' do you want to buy"
+  },
+  "order": {
+    "text": "Orders",
+    "cart.title": "Shopping cart",
+    "title.label": "Title:",
+    "price.label": "Price per book:",
+    "cart.empty": "Empty cart",
+    "cart.order": "Order",
+    "error": "You must log in to do this!",
+    "amount.label": "Amount:",
+    "total.price": "Total price:",
+    "payment.error": "Choose your payment method.",
+    "pay": "Pay",
+    "cancel": "Cancel",
+    "must.pay.part.1": "You must pay",
+    "must.pay.part.2": "",
+    "payment.method": "Payment methods",
+    "placed": "Order is placed",
+    "details": {
+      "number": "Order number:",
+      "date": "Date:",
+      "total.price": "Total price:",
+      "ordered.products": "Ordered books:"
+    }
+  },
   "difficulty": {
-    "niveau start (12-15)": "Difficulty start (12-15)",
-    "niveau 1 (12-15)": "Difficulty 1 (12-15)",
-    "niveau 2 (12-15)": "Difficulty 2 (12-15)",
-    "niveau 3 (12-15)": "Difficulty 3 (12-15)",
-    "niveau 4 (12-15)": "Difficulty (12-15)",
-    "niveau 1 (15-18)": "Difficulty (15-18)",
-    "niveau 2 (15-18)": "Difficulty (15-18)",
-    "niveau 3 (15-18)": "Difficulty (15-18)",
-    "niveau 4 (15-18)": "Difficulty (15-18)",
-    "niveau 5 (15-18)": "Difficulty (15-18)",
-    "niveau 6 (15-18)": "Difficulty (15-18)"
+    "list": {
+      "title": "Filterlist",
+      "all": "All books",
+      "selected.filter": "Selected Filter:",
+      "item": {
+        "niveau start (12-15)": "Difficulty start (12-15)",
+        "niveau 1 (12-15)": "Difficulty 1 (12-15)",
+        "niveau 2 (12-15)": "Difficulty 2 (12-15)",
+        "niveau 3 (12-15)": "Difficulty 3 (12-15)",
+        "niveau 4 (12-15)": "Difficulty (12-15)",
+        "niveau 1 (15-18)": "Difficulty (15-18)",
+        "niveau 2 (15-18)": "Difficulty (15-18)",
+        "niveau 3 (15-18)": "Difficulty (15-18)",
+        "niveau 4 (15-18)": "Difficulty (15-18)",
+        "niveau 5 (15-18)": "Difficulty (15-18)",
+        "niveau 6 (15-18)": "Difficulty (15-18)"
+      }
+    }
   },
-  "vorige": "Previous",
-  "volgende": "Next",
-  "terug.naar.filter": "Back to filter",
-  "selecteerde.filter": "Selected Filter:",
-  "pagina": "Page",
-  "van": "of",
-  "afbeelding.van": "image of the book",
-  "bestellingen": "Orders:",
-  "bestelnummer": "OrderNumber:",
-  "datum": "Date",
-  "bestelde.boeken": "Ordered books",
-  "titel": "Title:",
-  "hoeveelheid": "amount:",
-  "gebruikerspagina": "Userpage",
-  "welkom": "Welcome",
-  "totale.prijs": "Total price:",
-  "uitloggen": "Log out",
-  "naar.gebruikerspagina": "Go to userpage",
-  "naar.inlogpagina": "Go to login page",
-  "naar.startpagina": "Go to the homepage",
-  "naar.winkelmand": "Go to cart",
-  "soort": {
-    "boek": "book",
-    "eboek": "ebook"
+  "product": {
+    "list": {
+      "back.button": "Back to filter",
+      "next.button": "Next",
+      "prev.button": "Previous",
+      "page": "Page",
+      "of": "of",
+      "item": {
+        "image.of": "Image of the book",
+        "type": {
+          "boek": "book",
+          "eboek": "ebook"
+        }
+      }
+    },
+    "details": {
+      "writer": "Writer:",
+      "type": {
+        "text": "Type:",
+        "value": {
+          "eboek": "ebook",
+          "boek": "book"
+        }
+      },
+      "language": {
+        "text": "Language:",
+        "value": {
+          "Nederlands": "Dutch"
+        }
+      },
+      "amount.pages": "Amount of pages:",
+      "price": "Price:",
+      "summary": "Summary:",
+      "publisher": "publisher:",
+      "logo.publisher.alt.text": "This is the logo of the publishing company:",
+      "pages": "pages"
+    }
   },
-  "wachtwoord": "Password:",
-  "registreren": "Register",
-  "gebruikersnaam": "Username:",
-  "moet.je.invullen": "You must fill this one in",
-  "minimum.lengte": "Password must have a minimum of 8 characters",
-  "ongeldig.emailadres": "emailadres is invalid",
-  "wachtwoord.requirements": "Password must contain a capital letter, a number and a special character",
-  "woonplaats": "Residence:",
-  "postcode": "Postal code:",
-  "straatnaam": "Street name:",
-  "huisnummer": "House number:",
-  "schrijver": "Writer:",
-  "soort:": "Type:",
-  "taal:": "Language:",
-  "hoeveelheid.bladzijdes.1": "Amount of pages:",
-  "hoeveelheid.bladzijdes.2": "pages",
-  "prijs": "Price:",
-  "samenvatting": "Summary:",
-  "alleen.in.nederlands": "only in Dutch",
-  "uitgever": "Publisher:",
-  "logo.uitgever": "This is the logo of the publishing company:",
-  "winkelmand": "Shopping cart",
-  "titel": "Title:",
-  "prijs.per.stuk": "Price per book:",
-  "leeg.winkelmand": "Empty cart",
-  "bestel": "Order",
-  "bestel.error": "You must log in to do this!",
-  "inlog.error": "Something went wrong with the login, please try again later.",
-  "studentnummer": "Student number:",
-  "mijn.email": "Email: s1154399@student.hsleiden.nl",
-  "onze.partners": "Our Partners:",
-  "bekijk.alle.producten": "See all our products",
-  "afbeelding.van.bestseller": "Image of the bestseller",
-  "registeren.titel": "Register",
-  "inloggen.titel": "Login",
-  "geen.account": "No account? Register here!",
-  "registreren.error": "Something went wrong, try again later.",
-  "Betalen": "Pay",
-  "je.moet.betalen.1": "You must pay",
-  "je.moet.betalen.2": "",
-  "betaalmethode": "Payment methods",
-  "betaal.bevestigen": "Confirm payment",
-  "annuleren": "Cancel",
-  "betaal.error": "Choose your payment method.",
-  "taal": {
-    "Nederlands": "Dutch"
+  "homepage": {
+    "info.section": {
+      "books": "A set of books.",
+      "filter.button": "View all of our products"
+    }
+  },
+  "auth": {
+    "login": {
+      "text": "Login",
+      "password": "Password:",
+      "error": "Something went wrong with the login, please try again later.",
+      "to.register": "No account? Register here!"
+    },
+    "register": {
+      "text": "Register",
+      "form": {
+        "control": {
+          "required": "You must fill this one in",
+          "invalid.email": "Invalid email",
+          "length.password": "Password must have a minimum of 8 characters",
+          "invalid.password": "Password must contain a capital letter, a number and a special character"
+        },
+        "username": "Username:",
+        "password": "Password:",
+        "city": "City:",
+        "postal.code": "Postal code:",
+        "street": "Street:",
+        "house.number": "House number:",
+        "error": "Something went wrong, try again later."
+      }
+    },
+    "logout": {
+      "text": "Logout"
+    }
+  },
+  "userpage": {
+    "title": "Userpage",
+    "welcome": "Welcome"
   }
 }

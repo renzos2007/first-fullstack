@@ -3,23 +3,23 @@
 }
 
 <main>
-  <section id="voorkant">
+  <section id="cover">
     <img src="{{product?.image}}">
   </section>
 
   <article class="info_container">
     <section id = "primaire_info">
       <h1>{{product?.name}}</h1>
-      <p>{{ 'schrijver' | translate }} {{product?.writer?.name}} {{product?.writer?.middleName}} {{product?.writer?.surname}}</p>
-      <p>{{ 'soort:' | translate }} {{ 'soort.' + product?.type | translate }} <i>{{product?.cover}}</i></p>
-      <p>{{ 'taal:' | translate }} {{ 'taal.' + product?.language | translate }}</p>
-      <p>{{ 'hoeveelheid.bladzijdes.1' | translate }} {{product?.pages}} {{ 'hoeveelheid.bladzijdes.2' | translate }}</p>
-      <h2>{{ 'prijs' | translate }} €{{product?.price}}</h2>
-      <button (click)="onStartAddItem()">{{ 'winkelwagen.toevoegen' | translate }}</button>
+      <p>{{ 'product.details.writer' | translate }} {{product?.writer?.name}} {{product?.writer?.middleName}} {{product?.writer?.surname}}</p>
+      <p>{{ 'product.details.type.text' | translate }} {{ 'product.details.type.value.' + product?.type | translate }} <i>{{product?.cover}}</i></p>
+      <p>{{ 'product.details.language.text' | translate }} {{ 'product.details.language.value.' + product?.language | translate }}</p>
+      <p>{{ 'product.details.amount.pages' | translate }} {{product?.pages}} {{ 'product.details.pages' | translate }}</p>
+      <h2>{{ 'product.details.price' | translate }} €{{product?.price}}</h2>
+      <button (click)="onStartAddItem()">{{ 'add.cart.title' | translate }}</button>
     </section>
 
     <section id = "secundaire_info">
-      <h3>{{ 'samenvatting' | translate }}    <i>{{ 'alleen.in.nederlands' | translate }}</i></h3>
+      <h3>{{ 'product.details.summary' | translate }}</h3>
       <p>Genre:
         @for (genre of product?.genreList; track genre; let last = $last) {
           <span>
@@ -34,8 +34,8 @@
     </section>
 
     <section id="extra_info">
-      <p>{{ 'uitgever' | translate }} {{product?.publisher?.publisherName}}</p>
-      <img src="{{product?.publisher?.image}}" alt="{{ 'logo.uitgever' | translate }} {{product?.publisher?.publisherName}}">
+      <p>{{ 'product.details.publisher' | translate }} {{product?.publisher?.publisherName}}</p>
+      <img src="{{product?.publisher?.image}}" alt="{{ 'product.details.logo.publisher.alt.text' | translate }} {{product?.publisher?.publisherName}}">
     </section>
   </article>
 </main>

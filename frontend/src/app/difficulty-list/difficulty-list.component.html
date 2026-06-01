@@ -1,15 +1,15 @@
 <main>
-  <h1>{{ 'filterlijst' | translate }}</h1>
+  <h1>{{ 'difficulty.list.title' | translate }}</h1>
 
   <ul class="difficulty-list">
     @for (difficulty of difficultylist ; track difficulty.difficultyID){
       <li class="difficulty-item">
-        <button [routerLink]="['/difficulty/'+getDifficultyByID(difficulty)]">{{ 'difficulty.' + difficulty.difficulty | translate }}</button>
+        <button [routerLink]="['/difficulty/'+getDifficultyByID(difficulty)]">{{ 'difficulty.list.item.' + difficulty.difficulty | translate }}</button>
       </li>
     }
 
     <li class="difficulty-item">
-      <button routerLink="/difficulty/product/all">{{ 'alle.boeken' | translate }}</button>
+      <button routerLink="/difficulty/product/all">{{ 'difficulty.list.all' | translate }}</button>
     </li>
   </ul>
 </main>

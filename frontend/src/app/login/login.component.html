@@ -12,16 +12,16 @@
 
       <div>
         <label>
-          {{ 'password' | translate }}
+          {{ 'auth.login.password' | translate }}
         </label>
         <input type="password" name="password" [(ngModel)]="password">
       </div>
 
-      <button type="submit">Login</button>
+      <button type="submit">{{ 'auth.login.text' | translate }}</button>
     </form>
     <div id="register">
-      <p>{{ 'geen.account' | translate }}</p>
-      <button [routerLink]="'/register'">{{ 'registreren' | translate }}</button>
+      <p>{{ 'auth.login.to.register' | translate }}</p>
+      <button [routerLink]="'/register'">{{ 'auth.register.text' | translate }}</button>
     </div>
 
   </section>
@@ -29,9 +29,9 @@
   <section id="error">
     @if (errorType === null){
     } @else if (errorType === 401) {
-      <h2>{{ 'bestel.error' | translate }}</h2>
+      <h2>{{ 'order.error' | translate }}</h2>
     } @else {
-      <h2>{{ 'inlog.error' | translate }}</h2>
+      <h2>{{ 'auth.login.error' | translate }}</h2>
     }
   </section>
 </main>

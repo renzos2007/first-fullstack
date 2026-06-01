@@ -1,6 +1,6 @@
 <main>
-  <h1>{{ 'alle.boeken' | translate }}</h1>
-  <button id="difficulty" [routerLink]="['/difficulty']">{{ 'terug.naar.filter' | translate }}</button>
+  <h1>{{ 'difficulty.list.all' | translate }}</h1>
+  <button id="difficulty" [routerLink]="['/difficulty']">{{ 'product.list.back.button' | translate }}</button>
   <ul>
     @for (product of paginatedProducts ; track product.productID){
       <app-product-difficulty-item [product]="product" />

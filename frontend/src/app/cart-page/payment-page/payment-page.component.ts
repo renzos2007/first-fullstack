@@ -55,7 +55,6 @@ export class PaymentPageComponent implements OnInit {
 
   public payPayment(): void {
     if (this.chosenPaymentMethod) {
-      console.log(`Betaling verwerkt met ${this.chosenPaymentMethod}`);
       this.paymentMethodChosen = true;
       this.isPayed = true;
       this.router.navigate(['/cart'], { queryParams: { isPayed: this.isPayed } });

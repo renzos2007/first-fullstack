@@ -1,28 +1,28 @@
 <main>
   <section>
-    <h1>{{ 'gebruikerspagina' | translate }}</h1>
-    <p>{{ 'welkom' | translate }} {{userData?.userName}}</p>
+    <h1>{{ 'userpage.title' | translate }}</h1>
+    <p>{{ 'userpage.welcome' | translate }} {{userData?.userName}}</p>
   </section>
   <section>
-    <button (click)="logOut()">{{ 'uitloggen' | translate }}</button>
+    <button (click)="logOut()">{{ 'auth.logout.text' | translate }}</button>
   </section>
   <section>
-    <h3>{{ 'bestellingen' | translate }}</h3>
+    <h3>{{ 'order.text' | translate }}</h3>
     <ul class="orderlist">
       @for(order of paginatedOrders; track order){
         <li class = "orders">
           <div class="orderdetails">
-            <p><b>{{ 'bestelnummer' | translate }} {{ order.orderID }}</b></p>
-            <p>{{ 'datum' | translate }} {{ order.orderDate | date:'dd-MM-yyyy' }}</p>
-            <p>{{ 'totale.prijs' | translate }} €{{calculateTotalPrice(order)}}</p>
-            <p> {{ 'bestelde.boeken' | translate }}:</p>
+            <p><b>{{ 'order.details.number' | translate }} {{ order.orderID }}</b></p>
+            <p>{{ 'order.details.date' | translate }} {{ order.orderDate | date:'dd-MM-yyyy' }}</p>
+            <p>{{ 'order.details.total.price' | translate }} €{{calculateTotalPrice(order)}}</p>
+            <p> {{ 'order.details.ordered.products' | translate }}:</p>
           </div>
 
           <ul class="orderitem">
             @for(product of order.orderItemList; track product){
               <li class = "product">
-                <img src="{{product.product.image}}" alt="{{ 'afbeelding.van' | translate }} {{product.product.name}}">
-                {{ 'titel' | translate }} {{ product.product.name }}, {{ 'hoeveelheid' | translate }} {{ product.amount }}
+                <img src="{{product.product.image}}" alt="{{ 'product.list.item.image.of' | translate }} {{product.product.name}}">
+                {{ 'order.title.label' | translate }} {{ product.product.name }}, {{ 'order.amount.label' | translate }} {{ product.amount }}
               </li>
             }
           </ul>
@@ -31,9 +31,9 @@
     </ul>
   </section>
   <section class="pagination">
-    <button (click)="previousPage()" [disabled]="currentPage === 1">{{ 'vorige' | translate }}</button>
-    <span>{{ 'pagina' | translate }} {{ currentPage }} {{ 'van' | translate }} {{ totalPages }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage >= totalPages">{{ 'volgende' | translate }}</button>
+    <button (click)="previousPage()" [disabled]="currentPage === 1">{{ 'product.list.prev.button' | translate }}</button>
+    <span>{{ 'product.list.page' | translate }} {{ currentPage }} {{ 'product.list.of' | translate }} {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage >= totalPages">{{ 'product.list.next.button' | translate }}</button>
   </section>
 </main>
 

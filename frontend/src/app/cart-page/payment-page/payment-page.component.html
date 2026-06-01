@@ -2,9 +2,9 @@
   <article>
     <section>
       <h1>
-        {{ 'Betalen' | translate }}
+        {{ 'order.pay' | translate }}
       </h1>
-      <p> {{ 'je.moet.betalen.1' | translate }} €{{ getTotalPrice() }} {{ 'je.moet.betalen.2' | translate }}</p>
+      <p> {{ 'order.must.pay.part.1' | translate }} €{{ getTotalPrice() }} {{ 'order.must.pay.part.2' | translate }}</p>
     </section>
 
     <section>
@@ -34,14 +34,14 @@
             Mastercard
           </label>
         </div>
-        <button type="submit">{{ 'betaal.bevestigen' | translate }}</button>
-        <button type="button" (click)="cancelPayment()">{{ 'annuleren' | translate }}</button>
+        <button type="submit">{{ 'order.pay' | translate }}</button>
+        <button type="button" (click)="cancelPayment()">{{ 'order.cancel' | translate }}</button>
       </form>
     </section>
 
     <section id="error">
       @if (!paymentMethodChosen && !chosenPaymentMethod){
-        <p>{{ 'betaal.error' | translate }}</p>
+        <p>{{ 'order.payment.error' | translate }}</p>
       }
     </section>
   </article>

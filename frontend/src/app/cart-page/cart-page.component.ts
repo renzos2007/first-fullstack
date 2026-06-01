@@ -5,7 +5,7 @@ import {UserDataService} from '../services/userData';
 import {catchError, throwError} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
@@ -23,6 +23,7 @@ export class CartPageComponent {
   private userDataService = inject(UserDataService);
   private route = inject(ActivatedRoute);
   private cdr = inject(ChangeDetectorRef);
+  private translate = inject(TranslateService)
   
   protected ProductOrderList: CartProduct[];
   protected isPayed: boolean = false;
@@ -86,6 +87,6 @@ export class CartPageComponent {
     this.isPayed = false;
     this.clearOrderList()
     this.router.navigate(['/']);
-    alert("Bestelling is geplaatst")
+    alert(this.translate.instant('order.placed'));
   };
 }

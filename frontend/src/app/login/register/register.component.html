@@ -1,12 +1,12 @@
 <main>
-  <h1>{{ 'registeren.titel' | translate }}</h1>
+  <h1>{{ 'auth.register.text' | translate }}</h1>
 
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <section>
-      <label for="userName">{{ 'gebruikersnaam' | translate }}</label>
+      <label for="userName">{{ 'auth.register.form.username' | translate }}</label>
       <input type="text" formControlName="userName" id="userName">
       @if (registerForm.get('userName')?.touched && registerForm.get('userName')?.invalid){
-        <span>{{ 'moet.je.invullen' | translate }}</span>
+        <span>{{ 'auth.register.form.control.required' | translate }}</span>
       }
     </section>
 
@@ -15,60 +15,60 @@
       <input type="email" formControlName="email" id="email">
       @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid){
         @if (registerForm.get('email')?.errors?.['required']){
-          <span>{{ 'moet.je.invullen' | translate }}</span>
+          <span>{{ 'auth.register.form.control.required' | translate }}</span>
         } @else if (registerForm.get('email')?.errors?.['email']){
-          <span>{{ 'ongeldig.emailadres' | translate }}</span>
+          <span>{{ 'auth.register.form.control.invalid.email' | translate }}</span>
         }
       }
     </section>
 
     <section>
-      <label for="password">{{ 'password' | translate }}</label>
+      <label for="password">{{ 'auth.register.form.password' | translate }}</label>
       <input type="password" formControlName="password" id="password">
       @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid){
         @if(registerForm.get('password')?.errors?.['required']){
-          <span>{{ 'moet.je.invullen' | translate }}</span>
+          <span>{{ 'auth.register.form.control.required' | translate }}</span>
         } @else if (registerForm.get('password')?.errors?.['minlength']) {
-          <span>{{ 'minimum.lengte' | translate }}</span>
+          <span>{{ 'auth.register.form.control.length.password' | translate }}</span>
         } @else if (registerForm.get('password')?.errors?.['pattern']){
-          <span>{{ 'password.requirements' | translate }}</span>
+          <span>{{ 'auth.register.form.control.invalid.password' | translate }}</span>
         }
       }
     </section>
 
     <section>
-      <label for="city">{{ 'city' | translate }}</label>
+      <label for="city">{{ 'auth.register.form.city' | translate }}</label>
       <input type="text" formControlName="city" id="city">
       @if (registerForm.get('city')?.touched && registerForm.get('city')?.invalid){
-        <span>{{ 'moet.je.invullen' | translate }}</span>
+        <span>{{ 'auth.register.form.control.required' | translate }}</span>
       }
     </section>
 
     <section>
-      <label for="postalCode">{{ 'postalCode' | translate }}</label>
+      <label for="postalCode">{{ 'auth.register.form.postal.code' | translate }}</label>
       <input type="text" formControlName="postalCode" id="postalCode">
       @if (registerForm.get('postalCode')?.touched && registerForm.get('postalCode')?.invalid){
-        <span>{{ 'moet.je.invullen' | translate }}</span>
+        <span>{{ 'auth.register.form.control.required' | translate }}</span>
       }
     </section>
 
     <section>
-      <label for="streetName">{{ 'straatnaam' | translate }}</label>
+      <label for="streetName">{{ 'auth.register.form.street' | translate }}</label>
       <input type="text" formControlName="streetName" id="streetName">
       @if (registerForm.get('streetName')?.touched && registerForm.get('streetName')?.invalid){
-        <span>{{ 'moet.je.invullen' | translate }}</span>
+        <span>{{ 'auth.register.form.control.required' | translate }}</span>
       }
     </section>
 
     <section>
-      <label for="houseNumber">{{ 'houseNumber' | translate }}</label>
+      <label for="houseNumber">{{ 'auth.register.form.house.number' | translate }}</label>
       <input type="text" formControlName="houseNumber" id="houseNumber">
       @if (registerForm.get('houseNumber')?.touched && registerForm.get('houseNumber')?.invalid){
-        <span>{{ 'moet.je.invullen' | translate }}</span>
+        <span>{{ 'auth.register.form.control.required' | translate }}</span>
       }
     </section>
 
-    <button type="submit" [disabled]="registerForm.invalid">{{ 'registreren' | translate }}</button>
+    <button type="submit" [disabled]="registerForm.invalid">{{ 'auth.register.text' | translate }}</button>
 
     <section id="error-register">
       @if (this.error === null){

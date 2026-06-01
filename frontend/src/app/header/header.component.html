@@ -1,30 +1,30 @@
 <nav>
   <section>
     <a id="homepageButton">
-      <img src="/images/thumbnail_Bruna-logo_wit.png" alt="{{ 'naar.startpagina' | translate }}" [routerLink]="['/']">
+      <img src="/images/thumbnail_Bruna-logo_wit.png" alt="{{ 'header.homepage' | translate }}" [routerLink]="['/']">
     </a>
   </section>
 
   <section>
     <a id="profile">
       @if (checkLoginStatus()){
-        <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.gebruikerspagina' | translate }}" [routerLink]="['/user']">
+        <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'header.userpage' | translate }}" [routerLink]="['/user']">
       } @else {
-        <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'naar.inlogpagina' | translate }}" [routerLink]="['/login']">
+        <img src="/images/thumbnail_profileButton_wit.png" alt="{{ 'header.loginpage' | translate }}" [routerLink]="['/login']">
       }
     </a>
 
     <a id="cart">
-      <img src="/images/thumbnail_winkelMandButton_wit.png" alt="{{ 'naar.winkelmand' | translate }}" [routerLink]="['/cart']">
+      <img src="/images/thumbnail_winkelMandButton_wit.png" alt="{{ 'header.cart' | translate }}" [routerLink]="['/cart']">
     </a>
   </section>
 
   <section class="language">
     <a (click)="useLanguage('nl')">
-      <img src="/images/Flag_of_the_Netherlands.png" alt="wissel naar Nederlands">
+      <img src="/images/Flag_of_the_Netherlands.png" alt="Wissel naar Nederlands">
     </a>
     <a (click)="useLanguage('en')">
-      <img src="/images/Flag_of_the_United_Kingdom.png" alt="switch to english ">
+      <img src="/images/Flag_of_the_United_Kingdom.png" alt="Switch to english ">
     </a>
   </section>
 </nav>
