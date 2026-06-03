@@ -1,7 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100svh;
 }
 
 app-header {
@@ -10,6 +10,7 @@ app-header {
 
 router-outlet + * {
   flex: 1;
+  min-height: 81svh;
 }
 
 app-footer {
