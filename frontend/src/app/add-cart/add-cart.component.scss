@@ -1,5 +1,5 @@
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   top: 0;
   left: 0;
@@ -8,85 +8,143 @@
 }
 
 dialog {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  background-color: white;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
   width: 100%;
-  max-width: 40rem;
-  height: 15rem;
-  background-color: #F9E4E1;
-  border-radius: 6px;
-  padding: 1rem;
+  max-width: 38rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 
-  section{
-    margin-bottom: 20px;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    background-color: #fce8e6;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    background-color: #fce8e6;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    text-align: center;
+    // &::after verwijderd → rode streep weg
+  }
+
+  p {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: center;
   }
 
   .change_amount {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
 
     .addMinusButton {
-      background-color: yellow;
+      flex: 1;
+      background-color: white;
+      color: #1a1a1a;
       border: none;
-      padding: 10px 20px;
+      padding: 0.65rem 0;
+      font-size: 1.1rem;
       cursor: pointer;
-      font-size: 20px;
-      color: black;
-      font-weight: bold;
+      text-align: center;
+      transition: background-color 0.15s ease;
 
       &:hover {
-        background-color: #F57A00;
+        background-color: #f5f5f5;
       }
     }
 
-    .actions{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-
     p {
+      flex: 1;
+      background-color: white;
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.65rem 0;
       margin: 0;
-      font-size: 20px;
-      background-color: yellow;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      height: 100%;
-      font-weight: bold;
+      text-align: center;
+      border-left: 1.5px solid #e0e0e0;
+      border-right: 1.5px solid #e0e0e0;
     }
   }
 
-  h2 {
-    margin: 5px;
-    color: black;
-  }
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
 
-  button {
-    font: inherit;
-    cursor: pointer;
-    border: none;
-    padding: 0.35rem 1.25rem;
-    border-radius: 4px;
-  }
+    button[type="button"] {
+      flex: 1;
+      background-color: white;
+      color: #1a1a1a;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 0.7rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
 
-  button[type="button"] {
-    color: #ED3325;
-    background-color: transparent;
-  }
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
 
-  button[type="submit"] {
-    background-color: #ED3325;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    button[type="submit"] {
+      flex: 2;
+      background-color: #ED3325;
+      color: white;
+      border: 1.5px solid #ED3325;
+      border-radius: 10px;
+      padding: 0.7rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.15s ease;
+
+      &:hover {
+        background-color: #c72a1e;
+        border-color: #c72a1e;
+      }
+    }
   }
 }
 
