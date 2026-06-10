@@ -15,14 +15,15 @@
             <p><b>{{ 'order.details.number' | translate }} {{ order.orderID }}</b></p>
             <p>{{ 'order.details.date' | translate }} {{ order.orderDate | date:'dd-MM-yyyy' }}</p>
             <p>{{ 'order.details.total.price' | translate }} €{{calculateTotalPrice(order)}}</p>
-            <p> {{ 'order.details.ordered.products' | translate }}:</p>
+            <p> {{ 'order.details.ordered.products' | translate }}</p>
           </div>
 
           <ul class="orderitem">
             @for(product of order.orderItemList; track product){
-              <li class = "product">
+              <li class="product">
                 <img src="{{product.product.image}}" alt="{{ 'product.list.item.image.of' | translate }} {{product.product.name}}">
-                {{ 'order.title.label' | translate }} {{ product.product.name }}, {{ 'order.amount.label' | translate }} {{ product.amount }}
+                <p class="product-name">{{ 'order.title.label' | translate }} {{ product.product.name }}</p>
+                <p>{{ 'order.amount.label' | translate }} {{ product.amount }}</p>
               </li>
             }
           </ul>
