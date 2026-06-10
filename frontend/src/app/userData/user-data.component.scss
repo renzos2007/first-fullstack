@@ -68,7 +68,7 @@ main {
       display: flex;
       align-items: center;
 
-      .orderitem{
+      .orderitem {
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -76,24 +76,32 @@ main {
         flex-wrap: wrap;
         gap: 12px;
 
-
-        .product{
+        .product {
           border: 1px solid #ddd;
           border-radius: 5px;
-          margin-bottom: 10px;
-          padding: 15px;
-
+          overflow: hidden;
           display: flex;
+          flex-direction: column;
           align-items: center;
+          width: 110px;
 
           img {
-            max-width: 50px;
-            margin-right: 10px;
-            border-radius: 5px;
+            width: 110px;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+          }
+
+          p {
+            font-size: 1.0rem;
+            text-align: center;
+            padding: 4px 6px;
+            margin: 0;
+            color: #1a1a1a;
+            line-height: 1.3;
           }
         }
       }
-
     }
   }
   .pagination {
@@ -106,29 +114,28 @@ main {
       color: black;
     }
   }
-}
+  @media (max-width: 768px) {
+    .order{
+      width: 70vw;
+    }
 
-@media (max-width: 768px) {
-  .order{
-    width: 70vw;
-  }
+    .orderitem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 70vw;
+    }
 
-  .orderitem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 70vw;
-  }
-
-  .product {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    max-width: 90vw;
-    margin: 0;
+    .product {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      max-width: 90vw;
+      margin: 0;
+    }
   }
 }
 
