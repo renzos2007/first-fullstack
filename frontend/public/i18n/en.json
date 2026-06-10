@@ -8,7 +8,8 @@
   "footer": {
     "studentnumber": "Student number:",
     "email": "Email: s1154399@student.hsleiden.nl",
-    "partners": "Our partners:"
+    "partners": "Our partners:",
+    "disclaimer": "This website/application was developed solely for educational purposes as part of a school assignment. There is no official relationship with Bruna. Bruna and any associated brands are the property of their respective owners."
   },
   "add.cart": {
     "title": "Add to cart",
