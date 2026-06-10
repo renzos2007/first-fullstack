@@ -5,6 +5,7 @@ import com.bruna.webshop.dao.RoleDAO;
 import com.bruna.webshop.dao.UserDataDAO;
 import com.bruna.webshop.dto.AuthenticationDTO;
 import com.bruna.webshop.dto.LoginResponse;
+import com.bruna.webshop.dto.UserDataDTO;
 import com.bruna.webshop.modules.ERole;
 import com.bruna.webshop.modules.Role;
 import com.bruna.webshop.modules.UserData;

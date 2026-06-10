@@ -1,5 +1,6 @@
 package com.bruna.webshop.controller;
 
+import com.bruna.webshop.dto.UserDataDTO;
 import com.bruna.webshop.services.UserDataService;
 import com.bruna.webshop.modules.UserData;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +20,12 @@ public class userController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<UserData> authenticatedUser() {
+    public ResponseEntity<UserDataDTO> authenticatedUser() {
         UserData userData = userDataService.getUserByToken();
 
-        return ResponseEntity.ok(userData);
+        UserDataDTO userDataDTO = new UserDataDTO(userData.getUserID(), userData.getUserName(), userData.getEmail(), userData.getCity(), userData.getPostalCode(), userData.getStreetName(), userData.getHouseNumber(), userData.getOrderData(), userData.getReviewData());
+
+        return ResponseEntity.ok(userDataDTO);
     }
 
 }
